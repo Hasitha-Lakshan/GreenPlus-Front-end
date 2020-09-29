@@ -41,6 +41,7 @@ This repository is created for the development of the front-end of a web-based a
    * Add jQuery and JS into the scripts of angular.json file:
    ```
    "./node_modules/jquery/dist/jquery.min.js",
+   "./node_modules/popper.js/dist/umd/popper.min.js",
    "./node_modules/bootstrap/dist/js/bootstrap.min.js"
    ```
    * Installing ngx-webstorage:
