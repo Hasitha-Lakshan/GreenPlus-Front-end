@@ -1,3 +1,17 @@
 #navbar{
     background-color: black;
 }
+
+#active_tab{
+    margin: 0px 5px;
+    border-bottom: 2px solid #1AD60D;
+}
+
+.navbar-brand{
+    font-size: 30px;
+}
+
+li{
+    margin-left: 15px;
+    margin-right: 15px;
+}

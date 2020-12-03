@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './home/search-bar/search-bar.component';
+import { ShopCardsComponent } from './home/shop-cards/shop-cards.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SearchBarComponent } from './home/search-bar/search-bar.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ShopCardsComponent
   ],
   imports: [
     BrowserModule,
