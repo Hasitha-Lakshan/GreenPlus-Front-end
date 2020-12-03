@@ -39,13 +39,12 @@ import { AuthGuard } from './security/auth.guard';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem("authenticationToken");
+          return localStorage.getItem("authenticationtoken");
         },
       }
     }),
   ],
   providers: [AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true }],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }

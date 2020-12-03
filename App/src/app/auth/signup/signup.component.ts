@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators} from '@angular/forms'
 import { SignupPayload } from './signup-payload';
-import { LocalStorageService } from 'ngx-webstorage';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private authService: AuthService, private formbuilder: FormBuilder, private router: Router, private localStorageService: LocalStorageService) { }
+  constructor(private authService: AuthService, private formbuilder: FormBuilder) { }
 
   title = 'User Signup Page';
 
@@ -22,43 +20,19 @@ export class SignupComponent implements OnInit {
   datanotsaved: boolean;
 
   ngOnInit(): void {
-    this.logincheck();
 
     this.signupForm = this.formbuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       role: ['', [Validators.required]],
+      mobileNumber: ['', [Validators.required, Validators.pattern('[0][1-9][0-9]{8}')]],
+      email:['', [Validators.required, Validators.email]],
       addressLine1: ['', [Validators.required]],
       addressLine2: ['', [Validators.required]],
       addressLine3: ['', [Validators.required]],
-      phoneNumbers: this.formbuilder.array([this.phoneNumberObj()]),
       username: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9])([a-zA-Z0-9*.!@#$%^&(){}|]+){6}$')]]
     })
-  }
-
-  naviageByRole(role: string) {
-
-    if (role == "ADMIN") {
-      this.router.navigateByUrl('admin');
-    }
-    else if (role == "ANALYZER") {
-      this.router.navigateByUrl('header');
-    }
-    else if (role == "INVENTORY_MANAGER") {
-      this.router.navigateByUrl('inventory_manager');
-    }
-    else if (role == "CASH_COLLECTOR") {
-      this.router.navigateByUrl('header');
-    }
-  }
-
-  logincheck() {
-
-    if (this.authService.isAuthenticated) {
-      let role = this.localStorageService.retrieve("role");
-      this.naviageByRole(role);
-    }
   }
 
   get addressLine1() {
@@ -89,23 +63,12 @@ export class SignupComponent implements OnInit {
     return this.signupForm.get('password');
   }
 
-  phoneNumberObj() {
-    return this.formbuilder.group({
-      phoneType: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('[0][1-9][0-9]{8}')]],
-    });
+  get mobileNumber() {
+    return this.signupForm.get('mobileNumber');
   }
 
-  get phoneNumbers() {
-    return this.signupForm.get('phoneNumbers') as FormArray;
-  }
-
-  addNewNumber() {
-    this.phoneNumbers.push(this.phoneNumberObj());
-  }
-
-  deletePhoneNumber(i: number) {
-    this.phoneNumbers.removeAt(i);
+  get email() {
+    return this.signupForm.get('email');
   }
 
   clearForm() {

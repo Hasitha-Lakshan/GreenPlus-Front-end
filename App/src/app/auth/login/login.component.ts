@@ -12,16 +12,13 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class LoginComponent implements OnInit {
 
-  title = 'User Login Page';
-
   loginForm: FormGroup;
   loginPayload: LoginPayload;
   notRegistered: boolean;
 
-  constructor(private authService: AuthService, private formbuilder: FormBuilder, private router: Router, private localStorageService: LocalStorageService) { }
+  constructor(private authService: AuthService, private formbuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    this.logincheck();
 
     this.loginForm = this.formbuilder.group({
       username: ['', [Validators.required]],
@@ -36,34 +33,11 @@ export class LoginComponent implements OnInit {
 
   postData(loginPayloadData: LoginPayload) {
     this.authService.connectLoginApi(loginPayloadData).subscribe(role => {
-      this.naviageByRole(role);
+      this.router.navigate(['home']);
     },
       error => {
         this.notRegistered = true;
       });
   }
 
-  naviageByRole(role: string) {
-
-    if (role == "ADMIN") {
-      this.router.navigateByUrl('admin');
-    }
-    else if (role == "ANALYZER") {
-      this.router.navigateByUrl('analyzer_dashboard');
-    }
-    else if (role == "INVENTORY_MANAGER") {
-      this.router.navigateByUrl('inventory_manager');
-    }
-    else if (role == "CASH_COLLECTOR") {
-      this.router.navigateByUrl('header');
-    }
-  }
-
-  logincheck() {
-
-    if (this.authService.isAuthenticated) {
-      let role = this.localStorageService.retrieve("role");
-      this.naviageByRole(role);
-    }
-  }
 }

@@ -25,27 +25,25 @@ export class AuthService {
     return this.http.post<SignupPayload>(this.url + 'signup', signupPayload, options);
   }
 
-  connectLoginApi(loginPayload: LoginPayload): Observable<string> {
+  connectLoginApi(loginPayload: LoginPayload): Observable<void> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
     let options = {
       headers: httpHeader
     };
     return this.http.post<JwtAuthResponse>(this.url + 'login', loginPayload, options).pipe(map(data => {
-      this.localStorageService.store('authenticationToken', data.authenticationToken);
+      this.localStorageService.store('authenticationtoken', data.authenticationtoken);
       this.localStorageService.store('username', data.username);
       this.localStorageService.store('role', data.role);
-
-      return data.role;
     }))
   }
 
   isAuthenticated(): Boolean {
-    const authenticationToken = this.localStorageService.retrieve('authenticationToken');
-    return !this.jwtHelper.isTokenExpired(authenticationToken);
+    const authenticationtoken = this.localStorageService.retrieve('authenticationtoken');
+    return !this.jwtHelper.isTokenExpired(authenticationtoken);
   }
 
   logout() {
-    this.localStorageService.clear('authenticationToken');
+    this.localStorageService.clear('authenticationtoken');
     this.localStorageService.clear('username');
     this.localStorageService.clear('role');
   }
