@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5 mb-5 p-4 col-lg-6 border border-primary">
+    <div *ngIf="datasaved" class="message alert alert-success" role="alert">
+        <h4 class="alert-heading">You are Successfully registered!</h4>
+        <hr>
+        <p>Please contact system administrator to activate your account.</p>
+    </div>
+    <p *ngIf="datanotsaved" class="message alert alert-danger">Registration is failed!</p>
+    <form [formGroup]="signupForm" (ngSubmit)="submitUserData()">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" [formControlName]="'firstName'" class="form-control" placeholder="Enter your first name">
+            <span class="form-text text-danger" *ngIf="firstName.errors?.required && firstName.touched">
+                First Name is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" [formControlName]="'lastName'" class="form-control" placeholder="Enter your last name">
+            <span class="form-text text-danger" *ngIf="lastName.errors?.required && lastName.touched">
+                Last Name is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Your Role</label>
+            <select class="form-control col-md-6" [formControlName]="'role'">
+                <option value="" selected disabled>Role...</option>
+                <option value="ADMIN">Admin</option>
+                <option value="INVENTORY_MANAGER">Inventory Manager</option>
+                <option value="ANALYZER">Analyzer</option>
+                <option value="CASH_COLLECTOR">Cash Collector</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" [formControlName]="'addressLine1'" class="form-control" placeholder="Address line 1">
+            <span class="form-text text-danger" *ngIf="addressLine1.errors?.required && addressLine1.touched">
+                Address Line 1 is required!
+            </span>
+            <input type="text" [formControlName]="'addressLine2'" class="form-control mt-2"
+                placeholder="Address line 2">
+            <span class="form-text text-danger" *ngIf="addressLine2.errors?.required && addressLine2.touched">
+                Address Line 2 is required!
+            </span>
+            <input type="text" [formControlName]="'addressLine3'" class="form-control mt-2"
+                placeholder="Address line 3">
+            <span class="form-text text-danger" *ngIf="addressLine3.errors?.required && addressLine3.touched">
+                Address Line 3 is required!
+            </span>
+        </div>
+        <p>Telephone Numbers</p>
+        <div formArrayName="phoneNumbers" *ngFor="let phoneNumber of phoneNumbers.controls; let i=index">
+            <div class="form-row" [formGroupName]="i">
+                <div class="form-group col-md-4">
+                    <select class="form-control" [formControlName]="'phoneType'">
+                        <option value="" selected disabled>Type..</option>
+                        <option value="Office">Office</option>
+                        <option value="Home">Home</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <input [formControlName]="'phoneNumber'" type="text" class="form-control"
+                        placeholder="Phone Number">
+                    <span class="form-text text-danger" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                        Phone number must contains 10 numbers!
+                    </span>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" (click)="deletePhoneNumber(i)">X</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary mb-4" (click)="addNewNumber()">Add Number</button>
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" [formControlName]="'username'" class="form-control" placeholder="Enter an unique name">
+            <span class="form-text text-danger" *ngIf="datanotsaved">
+                Username already taken!
+            </span>
+            <span class="form-text text-danger" *ngIf="username.errors?.required && username.touched">
+                Username is required
+            </span>
+            <span class="form-text text-danger" *ngIf="username.errors?.minlength && username.touched">
+                Username must contains at least 5 characters!
+            </span>
+        </div>
+        <div class=" form-group">
+            <label>Password</label>
+            <input type="password" [formControlName]="'password'" class="form-control" placeholder="Password">
+            <span class="form-text text-danger" *ngIf="password.errors?.pattern && password.touched">
+                Password must contains at least 7 characters with including a number!
+            </span>
+            <span class="form-text text-danger" *ngIf="password.errors?.required && password.touched">
+                Password is required!
+            </span>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
+            <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">SignUp</button>
+        </div>
+    </form>
+</div>
