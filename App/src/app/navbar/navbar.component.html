@@ -22,8 +22,8 @@
             <li class="nav-item mt-2" *ngIf="isLogin">
                 <a class="nav-link" [routerLink]="['/profile']" routerLinkActive="active">Profile</a>
             </li>
-            <li class="nav-item mt-2" *ngIf="isLogin">
-                <a class="nav-link" [routerLink]="['/home']">Sign Out</a>
+            <li class="nav-item mt-2" *ngIf="isLogin" >
+                <a class="nav-link" [routerLink]="['/home']" (click)="logout()">Logout</a>
             </li>
         </ul>
 
