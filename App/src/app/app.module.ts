@@ -17,6 +17,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './security/auth.guard';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component
     ShopCardsComponent,
     LoginComponent,
     SignupComponent,
-    SignupAdminComponent
+    SignupAdminComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

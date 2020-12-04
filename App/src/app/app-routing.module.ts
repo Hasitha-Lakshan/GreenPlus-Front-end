@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component'
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component'
+import { ProfileComponent } from './profile/profile.component'
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'signup-admin', component: SignupAdminComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent },
 
   // Auto Redirection for Unknown paths
   { path: '**', redirectTo: '' }

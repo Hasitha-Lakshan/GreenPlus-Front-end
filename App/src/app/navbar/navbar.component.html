@@ -13,11 +13,17 @@
             <li id="active_tab" class="nav-item mt-2">
                 <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
             </li>
-            <li class="nav-item mt-2">
+            <li class="nav-item mt-2" *ngIf="!isLogin">
                 <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">LOGIN</a>
             </li>
-            <li class="nav-item mt-2">
+            <li class="nav-item mt-2" *ngIf="!isLogin">
                 <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">SIGNUP</a>
+            </li>
+            <li class="nav-item mt-2" *ngIf="isLogin">
+                <a class="nav-link" [routerLink]="['/profile']" routerLinkActive="active">Profile</a>
+            </li>
+            <li class="nav-item mt-2" *ngIf="isLogin">
+                <a class="nav-link" [routerLink]="['/home']">Sign Out</a>
             </li>
         </ul>
 
