@@ -24,7 +24,7 @@
     </div>
 </nav>
 
-<div class="container mt-5 mb-5 p-4 col-lg-6 border border-primary">
+<div class="container mt-5 mb-5 p-4 col-lg-6">
     <div *ngIf="datasaved" class="message alert alert-success" role="alert">
         <h4 class="alert-heading">You are Successfully registered!</h4>
         <hr>
@@ -114,8 +114,8 @@
             </span>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
-            <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">SignUp</button>
+            <button id="clear-btn" type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
+            <button id="signup-btn" type="submit" class="btn btn-secondary" [disabled]="signupForm.invalid">SignUp</button>
         </div>
     </form>
 </div>

@@ -1,3 +1,5 @@
+/****************nav-bar styles**********************/
+
 #navbar{
     background-color: black;
 }
@@ -14,4 +16,28 @@
 li{
     margin-left: 15px;
     margin-right: 15px;
+}
+
+/****************form styles**********************/
+
+.container{
+    border: 1px solid #1AD60D;
+}
+
+.btn:focus{
+    box-shadow: none;
+    border: 1px solid #1AD60D;
+}
+
+#signup-btn{
+    background-color: #000000;
+}
+
+#clear-btn{
+    background-color: #000000;
+}
+.container input:focus{
+    background-color:#f0f5ef;
+    border: 1px solid #1AD60D;
+    box-shadow: none;
 }
