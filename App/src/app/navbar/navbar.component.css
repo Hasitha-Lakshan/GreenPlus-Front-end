@@ -2,7 +2,7 @@
     background-color: black;
 }
 
-#active_tab{
+.active{
     margin: 0px 5px;
     border-bottom: 2px solid #1AD60D;
 }
