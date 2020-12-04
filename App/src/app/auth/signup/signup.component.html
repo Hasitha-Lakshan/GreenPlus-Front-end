@@ -32,7 +32,8 @@
         </div>
         <div class="form-group">
             <label>Mobile Number</label>
-            <input [formControlName]="'mobileNumber'" type="text" class="form-control col-md-6" placeholder="Mobile Number">
+            <input [formControlName]="'mobileNumber'" type="text" class="form-control col-md-6"
+                placeholder="Mobile Number">
             <span class="form-text text-danger" *ngIf="mobileNumber.errors?.required && mobileNumber.touched">
                 Mobile number is required!
             </span>
@@ -92,7 +93,8 @@
         </div>
         <div class="modal-footer">
             <button id="clear-btn" type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
-            <button id="signup-btn" type="submit" class="btn btn-secondary" [disabled]="signupForm.invalid">SignUp</button>
+            <button id="signup-btn" type="submit" class="btn btn-secondary"
+                [disabled]="signupForm.invalid">SignUp</button>
         </div>
     </form>
 </div>
