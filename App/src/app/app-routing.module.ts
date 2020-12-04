@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'signup-admin', component: SignupAdminComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
   // Auto Redirection for Unknown paths
   { path: '**', redirectTo: '' }
