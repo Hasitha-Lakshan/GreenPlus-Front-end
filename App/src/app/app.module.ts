@@ -16,6 +16,7 @@ import { ShopCardsComponent } from './home/shop-cards/shop-cards.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './security/auth.guard';
+import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AuthGuard } from './security/auth.guard';
     SearchBarComponent,
     ShopCardsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SignupAdminComponent
   ],
   imports: [
     BrowserModule,

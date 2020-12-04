@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms'
-import { SignupPayload } from './signup-payload';
+import { SignupPayload } from '../signup/signup-payload';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-signup-admin',
+  templateUrl: './signup-admin.component.html',
+  styleUrls: ['./signup-admin.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupAdminComponent implements OnInit {
 
   constructor(private authService: AuthService, private formbuilder: FormBuilder) { }
 

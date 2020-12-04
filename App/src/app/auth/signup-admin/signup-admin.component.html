@@ -1,0 +1,121 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top sticky-top p-3">
+
+    <a class="navbar-brand" href="/"><span style="color:#1AD60D;">Green</span>Plus</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavDropdown">
+
+        <ul class="navbar-nav text-uppercase text-center">
+            <li id="active_tab" class="nav-item mt-2">
+                <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">LOGIN</a>
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link" [routerLink]="['/signup-admin']" routerLinkActive="active">SIGNUP</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5 p-4 col-lg-6 border border-primary">
+    <div *ngIf="datasaved" class="message alert alert-success" role="alert">
+        <h4 class="alert-heading">You are Successfully registered!</h4>
+        <hr>
+        <p>Please contact system administrator to activate your account.</p>
+    </div>
+    <p *ngIf="datanotsaved" class="message alert alert-danger">Registration is failed!</p>
+    <form [formGroup]="signupForm" (ngSubmit)="submitUserData()">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" [formControlName]="'firstName'" class="form-control" placeholder="Enter your first name">
+            <span class="form-text text-danger" *ngIf="firstName.errors?.required && firstName.touched">
+                First Name is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" [formControlName]="'lastName'" class="form-control" placeholder="Enter your last name">
+            <span class="form-text text-danger" *ngIf="lastName.errors?.required && lastName.touched">
+                Last Name is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Your Role</label>
+            <select class="form-control col-md-6" [formControlName]="'role'">
+                <option value="" selected disabled>Role...</option>
+                <option value="ADMIN">Admin</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input [formControlName]="'mobileNumber'" type="text" class="form-control col-md-6" placeholder="Mobile Number">
+            <span class="form-text text-danger" *ngIf="mobileNumber.errors?.required && mobileNumber.touched">
+                Mobile number is required!
+            </span>
+            <span class="form-text text-danger" *ngIf="mobileNumber.errors?.pattern && mobileNumber.touched">
+                You entered an invalid mobile number!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input [formControlName]="'email'" type="text" class="form-control col-md-6" placeholder="Email">
+            <span class="form-text text-danger" *ngIf="email.errors?.required && email.touched">
+                Email is required!
+            </span>
+            <span class="form-text text-danger" *ngIf="email.errors?.email && email.touched">
+                You entered an invalid email!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" [formControlName]="'addressLine1'" class="form-control" placeholder="Address line 1">
+            <span class="form-text text-danger" *ngIf="addressLine1.errors?.required && addressLine1.touched">
+                Address Line 1 is required!
+            </span>
+            <input type="text" [formControlName]="'addressLine2'" class="form-control mt-2"
+                placeholder="Address line 2">
+            <span class="form-text text-danger" *ngIf="addressLine2.errors?.required && addressLine2.touched">
+                Address Line 2 is required!
+            </span>
+            <input type="text" [formControlName]="'addressLine3'" class="form-control mt-2"
+                placeholder="Address line 3">
+            <span class="form-text text-danger" *ngIf="addressLine3.errors?.required && addressLine3.touched">
+                Address Line 3 is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" [formControlName]="'username'" class="form-control" placeholder="Enter an unique name">
+            <span class="form-text text-danger" *ngIf="datanotsaved">
+                Username already taken!
+            </span>
+            <span class="form-text text-danger" *ngIf="username.errors?.required && username.touched">
+                Username is required!
+            </span>
+            <span class="form-text text-danger" *ngIf="username.errors?.minlength && username.touched">
+                Username must contains at least 5 characters!
+            </span>
+        </div>
+        <div class=" form-group">
+            <label>Password</label>
+            <input type="password" [formControlName]="'password'" class="form-control" placeholder="Password">
+            <span class="form-text text-danger" *ngIf="password.errors?.pattern && password.touched">
+                Password must contains at least 7 characters with including a number!
+            </span>
+            <span class="form-text text-danger" *ngIf="password.errors?.required && password.touched">
+                Password is required!
+            </span>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
+            <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">SignUp</button>
+        </div>
+    </form>
+</div>
