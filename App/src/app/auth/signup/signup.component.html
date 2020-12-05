@@ -4,7 +4,7 @@
     <div *ngIf="datasaved" class="message alert alert-success" role="alert">
         <h4 class="alert-heading">You are Successfully registered!</h4>
         <hr>
-        <p>Please contact system administrator to activate your account.</p>
+        <p>Please login with using your username and password.</p>
     </div>
     <p *ngIf="datanotsaved" class="message alert alert-danger">Registration is failed!</p>
     <form [formGroup]="signupForm" (ngSubmit)="submitUserData()">
