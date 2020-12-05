@@ -10,4 +10,5 @@ export class SignupPayload {
     addressLine3: string;
     username: string;
     password: string;
+    confirmPassword: string;
 }

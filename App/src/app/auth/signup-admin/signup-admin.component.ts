@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { SignupPayload } from '../signup/signup-payload';
+import { MustMatch } from '../../shared/mustMatch';
 
 @Component({
   selector: 'app-signup-admin',
@@ -29,8 +30,11 @@ export class SignupAdminComponent implements OnInit {
       addressLine2: ['', [Validators.required]],
       addressLine3: ['', [Validators.required]],
       username: ['', [Validators.required, Validators.minLength(5)]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9])([a-zA-Z0-9*.!@#$%^&(){}|]+){6}$')]]
-    })
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9])([a-zA-Z0-9*.!@#$%^&(){}|]+){6}$')]],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: MustMatch('password', 'confirmPassword')
+    });
   }
 
   get formControls() {
