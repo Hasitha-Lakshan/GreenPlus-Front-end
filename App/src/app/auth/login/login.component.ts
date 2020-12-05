@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginPayload } from "./login-payload";
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-login',

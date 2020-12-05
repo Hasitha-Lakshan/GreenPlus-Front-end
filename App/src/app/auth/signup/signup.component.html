@@ -11,14 +11,16 @@
         <div class="form-group">
             <label>First Name</label>
             <input type="text" [formControlName]="'firstName'" class="form-control" placeholder="Enter your first name">
-            <span class="form-text text-danger" *ngIf="firstName.errors?.required && firstName.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.firstName.errors?.required && formControls.firstName.touched">
                 First Name is required!
             </span>
         </div>
         <div class="form-group">
             <label>Last Name</label>
             <input type="text" [formControlName]="'lastName'" class="form-control" placeholder="Enter your last name">
-            <span class="form-text text-danger" *ngIf="lastName.errors?.required && lastName.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.lastName.errors?.required && formControls.lastName.touched">
                 Last Name is required!
             </span>
         </div>
@@ -34,37 +36,43 @@
             <label>Mobile Number</label>
             <input [formControlName]="'mobileNumber'" type="text" class="form-control col-md-6"
                 placeholder="Mobile Number">
-            <span class="form-text text-danger" *ngIf="mobileNumber.errors?.required && mobileNumber.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.mobileNumber.errors?.required && formControls.mobileNumber.touched">
                 Mobile number is required!
             </span>
-            <span class="form-text text-danger" *ngIf="mobileNumber.errors?.pattern && mobileNumber.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.mobileNumber.errors?.pattern && formControls.mobileNumber.touched">
                 You entered an invalid mobile number!
             </span>
         </div>
         <div class="form-group">
             <label>Email</label>
             <input [formControlName]="'email'" type="text" class="form-control col-md-6" placeholder="Email">
-            <span class="form-text text-danger" *ngIf="email.errors?.required && email.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.email.errors?.required && formControls.email.touched">
                 Email is required!
             </span>
-            <span class="form-text text-danger" *ngIf="email.errors?.email && email.touched">
+            <span class="form-text text-danger" *ngIf="formControls.email.errors?.email && formControls.email.touched">
                 You entered an invalid email!
             </span>
         </div>
         <div class="form-group">
             <label>Address</label>
             <input type="text" [formControlName]="'addressLine1'" class="form-control" placeholder="Address line 1">
-            <span class="form-text text-danger" *ngIf="addressLine1.errors?.required && addressLine1.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine1.errors?.required && formControls.addressLine1.touched">
                 Address Line 1 is required!
             </span>
             <input type="text" [formControlName]="'addressLine2'" class="form-control mt-2"
                 placeholder="Address line 2">
-            <span class="form-text text-danger" *ngIf="addressLine2.errors?.required && addressLine2.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine2.errors?.required && formControls.addressLine2.touched">
                 Address Line 2 is required!
             </span>
             <input type="text" [formControlName]="'addressLine3'" class="form-control mt-2"
                 placeholder="Address line 3">
-            <span class="form-text text-danger" *ngIf="addressLine3.errors?.required && addressLine3.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine3.errors?.required && formControls.addressLine3.touched">
                 Address Line 3 is required!
             </span>
         </div>
@@ -74,20 +82,24 @@
             <span class="form-text text-danger" *ngIf="datanotsaved">
                 Username already taken!
             </span>
-            <span class="form-text text-danger" *ngIf="username.errors?.required && username.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.username.errors?.required && formControls.username.touched">
                 Username is required!
             </span>
-            <span class="form-text text-danger" *ngIf="username.errors?.minlength && username.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.username.errors?.minlength && formControls.username.touched">
                 Username must contains at least 5 characters!
             </span>
         </div>
         <div class=" form-group">
             <label>Password</label>
             <input type="password" [formControlName]="'password'" class="form-control" placeholder="Password">
-            <span class="form-text text-danger" *ngIf="password.errors?.pattern && password.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.password.errors?.pattern && formControls.password.touched">
                 Password must contains at least 7 characters with including a number!
             </span>
-            <span class="form-text text-danger" *ngIf="password.errors?.required && password.touched">
+            <span class="form-text text-danger"
+                *ngIf="formControls.password.errors?.required && formControls.password.touched">
                 Password is required!
             </span>
         </div>

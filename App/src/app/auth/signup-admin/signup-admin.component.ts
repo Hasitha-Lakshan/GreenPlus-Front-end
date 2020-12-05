@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { SignupPayload } from '../signup/signup-payload';
 
 @Component({
@@ -24,7 +24,7 @@ export class SignupAdminComponent implements OnInit {
       lastName: ['', [Validators.required]],
       role: ['', [Validators.required]],
       mobileNumber: ['', [Validators.required, Validators.pattern('[0][1-9][0-9]{8}')]],
-      email:['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       addressLine1: ['', [Validators.required]],
       addressLine2: ['', [Validators.required]],
       addressLine3: ['', [Validators.required]],
@@ -33,40 +33,8 @@ export class SignupAdminComponent implements OnInit {
     })
   }
 
-  get addressLine1() {
-    return this.signupForm.get('addressLine1');
-  }
-
-  get addressLine2() {
-    return this.signupForm.get('addressLine2');
-  }
-
-  get addressLine3() {
-    return this.signupForm.get('addressLine3');
-  }
-
-  get firstName() {
-    return this.signupForm.get('firstName');
-  }
-
-  get lastName() {
-    return this.signupForm.get('lastName');
-  }
-
-  get username() {
-    return this.signupForm.get('username');
-  }
-
-  get password() {
-    return this.signupForm.get('password');
-  }
-
-  get mobileNumber() {
-    return this.signupForm.get('mobileNumber');
-  }
-
-  get email() {
-    return this.signupForm.get('email');
+  get formControls() {
+    return this.signupForm.controls;
   }
 
   clearForm() {
