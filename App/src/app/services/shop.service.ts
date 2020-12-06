@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Shop } from '../home/shops-home/shop';
+import { HomeShop } from '../shops/shops-home/home-shop';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShopsPublicService {
+export class ShopService {
 
   private url = "http://localhost:8080/api/public/";
 
   constructor(private http: HttpClient) { }
 
-  connectShopsApi(): Observable<Shop[]> {
-    return this.http.get<Shop[]>(this.url + "shops");
+  connectHomeShopsApi(): Observable<HomeShop[]> {
+    return this.http.get<HomeShop[]>(this.url + "shops");
   }
 }

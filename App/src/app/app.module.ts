@@ -17,7 +17,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './security/auth.guard';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ShopsHomeComponent } from './home/shops-home/shops-home.component';
+import { ShopsHomeComponent } from './shops/shops-home/shops-home.component';
+import { ShopDetailsComponent } from './shops/shop-details/shop-details.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ShopsHomeComponent } from './home/shops-home/shops-home.component';
     SignupComponent,
     SignupAdminComponent,
     ProfileComponent,
-    ShopsHomeComponent
+    ShopsHomeComponent,
+    ShopDetailsComponent
   ],
   imports: [
     BrowserModule,
