@@ -17,7 +17,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './security/auth.guard';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ShopCardsPublicComponent } from './home/shop-cards-public/shop-cards-public.component';
+import { ShopsHomeComponent } from './home/shops-home/shops-home.component';
 
 
 @NgModule({
@@ -27,12 +27,11 @@ import { ShopCardsPublicComponent } from './home/shop-cards-public/shop-cards-pu
     NavbarComponent,
     FooterComponent,
     SearchBarComponent,
-    ShopCardsPublicComponent,
     LoginComponent,
     SignupComponent,
     SignupAdminComponent,
     ProfileComponent,
-    ShopCardsPublicComponent
+    ShopsHomeComponent
   ],
   imports: [
     BrowserModule,

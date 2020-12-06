@@ -1,4 +1,4 @@
-export class ShopDetailsPayload {
+export class Shop {
 
     shopId: number;
     title: string;
