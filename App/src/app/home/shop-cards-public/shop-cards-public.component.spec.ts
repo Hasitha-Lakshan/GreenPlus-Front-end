@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShopCardsComponent } from './shop-cards.component';
+import { ShopCardsPublicComponent } from './shop-cards-public.component';
 
-describe('ShopCardsComponent', () => {
-  let component: ShopCardsComponent;
-  let fixture: ComponentFixture<ShopCardsComponent>;
+describe('ShopCardsPublicComponent', () => {
+  let component: ShopCardsPublicComponent;
+  let fixture: ComponentFixture<ShopCardsPublicComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShopCardsComponent ]
+      declarations: [ ShopCardsPublicComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShopCardsComponent);
+    fixture = TestBed.createComponent(ShopCardsPublicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

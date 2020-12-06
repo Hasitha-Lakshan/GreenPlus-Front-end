@@ -12,12 +12,12 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './home/search-bar/search-bar.component';
-import { ShopCardsComponent } from './home/shop-cards/shop-cards.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './security/auth.guard';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ShopCardsPublicComponent } from './home/shop-cards-public/shop-cards-public.component';
 
 
 @NgModule({
@@ -27,11 +27,12 @@ import { ProfileComponent } from './profile/profile.component';
     NavbarComponent,
     FooterComponent,
     SearchBarComponent,
-    ShopCardsComponent,
+    ShopCardsPublicComponent,
     LoginComponent,
     SignupComponent,
     SignupAdminComponent,
-    ProfileComponent
+    ProfileComponent,
+    ShopCardsPublicComponent
   ],
   imports: [
     BrowserModule,
