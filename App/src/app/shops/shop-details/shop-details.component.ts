@@ -28,11 +28,12 @@ export class ShopDetailsComponent implements OnInit {
 
     this.shopService.connectShopByShopidApi(this.shopId).subscribe((data) => {
 
-      if (data == null) {
-        this.router.navigate(['error']);
+      if (data != null) {
+        this.shop = data;
+        console.log(data);
 
       } else {
-        this.shop = data;
+        this.router.navigate(['error']);
       }
 
     },

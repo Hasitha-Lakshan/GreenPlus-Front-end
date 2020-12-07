@@ -1,0 +1,133 @@
+#main_banner img{
+    width: 100%;
+}
+
+button{
+    border-radius: 0px;
+}
+
+button:focus{
+    box-shadow: none;
+}
+
+.username{
+    color: black;
+}
+
+.username:hover{
+    color: #1AD60D;
+    text-decoration: none;
+}
+
+#orderNow{
+    background-color: black;
+}
+
+#orderNow:hover{
+    background-color: #1AD60D;
+}
+
+@media screen and (max-width: 576px)
+{
+  h1 {
+          font-size: 28px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    h4{
+        font-size: 19px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+#orderNow{
+    width: 200px;
+    height: 0px;
+}
+
+button{
+    color: white !important;
+    background-color: black;
+    margin-top: 15px;
+}
+
+button:hover{
+    color: white !important;
+    background-color: #1AD60D !important;
+}
+
+
+@media screen and (max-width: 992px)
+{
+  h1 {
+          font-size: 28px;
+    }
+
+    p{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 435px)
+{
+  h1 {
+          font-size: 26px;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    #shopHeader{
+        border-bottom: 1px solid rgb(218, 218, 218);
+    }
+
+    #orderNow{
+        text-align: center !important;
+        margin-top: 10px;
+    }
+}*/

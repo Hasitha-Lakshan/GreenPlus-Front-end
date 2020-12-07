@@ -21,3 +21,20 @@ li{
     border: 1px solid #1AD60D;
     border-radius: .25rem;
 }
+
+@media screen and (max-width: 992px)
+{
+    .navbar-brand{
+        font-size: 24px;
+    }
+
+}
+
+@media screen and (max-width: 768px)
+{
+    .navbar-brand{
+        font-size: 22px;
+    }
+
+}
+
