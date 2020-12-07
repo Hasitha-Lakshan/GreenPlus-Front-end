@@ -17,7 +17,7 @@ export class ShopService {
     return this.http.get<HomeShop[]>(this.url + "shops");
   }
 
-  connectShopByShopidApi(shopId: number): Observable<Shop[]> {
-    return this.http.get<Shop[]>(this.url + "shopbyshopid/" + shopId);
+  connectShopByShopidApi(shopId: string): Observable<Shop> {
+    return this.http.get<Shop>(this.url + "shopbyshopid/" + shopId);
   }
 }

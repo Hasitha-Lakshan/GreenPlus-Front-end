@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component'
 import { ProfileComponent } from './profile/profile.component'
 import { ShopDetailsComponent } from './shops/shop-details/shop-details.component'
+import { ErrorComponent } from './error/error/error.component'
 
 
 const routes: Routes = [
@@ -20,10 +21,13 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
   // Main Components
-  { path: 'shop', component: ShopDetailsComponent },
+  { path: 'shop/:shopId', component: ShopDetailsComponent },
+
+  // Error Components
+  { path: 'error', component: ErrorComponent },
 
   // Auto Redirection for Unknown paths
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'error' }
 ];
 
 @NgModule({

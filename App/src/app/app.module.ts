@@ -19,6 +19,7 @@ import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component
 import { ProfileComponent } from './profile/profile.component';
 import { ShopsHomeComponent } from './shops/shops-home/shops-home.component';
 import { ShopDetailsComponent } from './shops/shop-details/shop-details.component';
+import { ErrorComponent } from './error/error/error.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ShopDetailsComponent } from './shops/shop-details/shop-details.componen
     SignupAdminComponent,
     ProfileComponent,
     ShopsHomeComponent,
-    ShopDetailsComponent
+    ShopDetailsComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
