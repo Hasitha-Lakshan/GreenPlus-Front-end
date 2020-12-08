@@ -16,10 +16,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './security/auth.guard';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
-import { ProfileComponent } from './profile/profile.component';
 import { ShopsHomeComponent } from './shops/shops-home/shops-home.component';
 import { ShopDetailsComponent } from './shops/shop-details/shop-details.component';
 import { ErrorComponent } from './error/error/error.component';
+import { ShopsProfileComponent } from './shops/shops-profile/shops-profile.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UserDetailsComponent } from './profile/user-details/user-details.component';
 
 
 @NgModule({
@@ -32,10 +34,12 @@ import { ErrorComponent } from './error/error/error.component';
     LoginComponent,
     SignupComponent,
     SignupAdminComponent,
-    ProfileComponent,
     ShopsHomeComponent,
     ShopDetailsComponent,
-    ErrorComponent
+    ErrorComponent,
+    ShopsProfileComponent,
+    ProfileComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

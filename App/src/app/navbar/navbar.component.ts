@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,9 @@ import { AuthService } from '../services/auth.service';
 export class NavbarComponent implements OnInit {
 
   isLogin: boolean;
+  username: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
 
@@ -21,6 +23,7 @@ export class NavbarComponent implements OnInit {
 
     if (this.authService.isAuthenticated()) {
       this.isLogin = true;
+      this.username = this.localStorageService.retrieve('username');
     } else {
       this.isLogin = false;
     }

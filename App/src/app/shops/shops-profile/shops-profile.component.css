@@ -1,0 +1,17 @@
+#shop_title{
+    background-color: black;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#shop_title:hover{
+    text-decoration: none;
+    color: white !important;
+    background-color: #1AD60D;
+}
+
+ul:hover{
+ border-radius: 0px;
+}

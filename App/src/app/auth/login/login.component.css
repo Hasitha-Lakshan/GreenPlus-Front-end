@@ -12,3 +12,9 @@
     border: 1px solid #1AD60D;
     box-shadow: none;
 }
+
+.container button:focus {
+    border: none;
+    box-shadow: none;
+    border: 1px solid #1AD60D !important;
+}

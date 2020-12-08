@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './security/auth.guard'
+import { AuthGuard } from './security/auth.guard';
 
 import { HomeComponent } from './home/home.component'
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
-import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component'
-import { ProfileComponent } from './profile/profile.component'
-import { ShopDetailsComponent } from './shops/shop-details/shop-details.component'
-import { ErrorComponent } from './error/error/error.component'
+import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ShopDetailsComponent } from './shops/shop-details/shop-details.component';
+import { ErrorComponent } from './error/error/error.component';
 
 
 const routes: Routes = [
@@ -18,9 +18,11 @@ const routes: Routes = [
   { path: 'signup-admin', component: SignupAdminComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
-  // Main Components
+  // Profile Components
+  { path: 'profile/:username', component: ProfileComponent }, //, canActivate: [AuthGuard]
+
+  // Shop Components
   { path: 'shop/:shopId', component: ShopDetailsComponent },
 
   // Error Components

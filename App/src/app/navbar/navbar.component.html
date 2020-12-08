@@ -20,7 +20,7 @@
                 <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">SIGNUP</a>
             </li>
             <li class="nav-item mt-2" *ngIf="isLogin">
-                <a class="nav-link" [routerLink]="['/profile']" routerLinkActive="active">Profile</a>
+                <a class="nav-link" routerLink='/profile/{{username}}' routerLinkActive="active">Profile</a>
             </li>
             <li class="nav-item mt-2" *ngIf="isLogin" >
                 <a class="nav-link" [routerLink]="['/home']" (click)="logout()">Logout</a>

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HomeShop } from '../shops/shops-home/home-shop';
 import { Shop } from '../shops/shop-details/shop';
+import { ProfileShop } from '../shops/shops-profile/profile-shop';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class ShopService {
 
   connectShopByShopidApi(shopId: string): Observable<Shop> {
     return this.http.get<Shop>(this.url + "shopbyshopid/" + shopId);
+  }
+
+  connectShopByUsernameApi(username: string): Observable<ProfileShop[]> {
+    return this.http.get<ProfileShop[]>(this.url + "shopsbyuser/" + username);
   }
 }

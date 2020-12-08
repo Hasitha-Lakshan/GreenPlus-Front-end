@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../../services/shop.service'
 import { HomeShop } from './home-shop';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shops-home',
@@ -12,7 +11,7 @@ export class ShopsHomeComponent implements OnInit {
 
   homeShops: HomeShop[];
 
-  constructor(private shopService: ShopService, private router: Router) { }
+  constructor(private shopService: ShopService) { }
 
   ngOnInit(): void {
 
