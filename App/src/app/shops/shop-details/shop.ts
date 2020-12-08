@@ -1,6 +1,5 @@
 export class Shop {
 
-    shopId: number;
     title: string;
     description: string;
     category: string;
@@ -11,5 +10,5 @@ export class Shop {
     createdDate: Date;
     createdTime: Date;
     deliveryTime: Date;
-    shopStatus: boolean;
+    username: string;
 } 

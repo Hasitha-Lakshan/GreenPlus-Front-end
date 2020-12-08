@@ -30,7 +30,6 @@ export class ShopDetailsComponent implements OnInit {
 
       if (data != null) {
         this.shop = data;
-        console.log(data);
 
       } else {
         this.router.navigate(['error']);

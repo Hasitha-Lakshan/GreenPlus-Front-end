@@ -12,16 +12,17 @@
 
 <div class="container mt-4">
     <div>
-        <h1>I will sell fresh fruit and vegitables for low price</h1>
-        <p>Created On: 2020.12.07 | Created By: <a class="username" [routerLink]="['/login']"><b>Hasitha</b></a>
+        <h1>{{shop?.title}}</h1>
+        <p>Created On: {{shop?.createdDate}} at {{shop?.createdTime}} | Created By: <a class="username"
+                [routerLink]="['/login']"><b>{{shop?.username}}</b></a>
         </p>
     </div>
     <hr>
 
     <div class="row">
-        <button class="col btn btn-secondary py-3">Category</button>
-        <button class="col btn btn-dark">Sub Category</button>
-        <button class="col btn btn-secondary">Location</button>
+        <button class="col btn btn-secondary py-3">Category: {{shop?.category}}</button>
+        <button class="col btn btn-dark">Sub Category: {{shop?.subCategory}}</button>
+        <button class="col btn btn-secondary">Location: {{shop?.location}}</button>
     </div>
 
     <div class="row text-center">
@@ -29,24 +30,21 @@
     </div>
 
     <div class="row">
-        <button class="col btn btn-secondary py-3">Quantity</button>
-        <button class="col btn btn-dark">Price</button>
-        <button class="col btn btn-secondary">Delivery Time</button>
+        <button class="col btn btn-secondary py-3">Quantity: {{shop?.quantity}} Kg</button>
+        <button class="col btn btn-dark">Price: {{shop?.price}}.00 LKR</button>
+        <button class="col btn btn-secondary">Delivery Time: {{shop?.deliveryTime}}</button>
     </div>
 
     <div class="row mt-3">
-        <h4 class="col bg-light py-3 text-center">Description</h4>
-        <hr>
-        <p class="text-justify p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis dui quis massa
-            accumsan vehicula eget ac mauris. In ornare ligula eget leo mollis aliquam. Proin non mauris tristique,
-            efficitur orci a, porta nulla. Mauris nec sem laoreet, accumsan orci a, suscipit magna. Donec ornare non
-            elit in euismod. In varius a leoeu fringilla. Phasellus auctor est ornare diam porttitor ullamcorper. Sed in
-            ligula vitae metus eleifendcongue. Nunc sollicitudin a ex sed condimentum. Duis risus ex, rutrum at
-            tristique quis, interdum non eros.Curabitur et ipsum lobortis diam pellentesque malesuada in vel orci. Sed
-            aliquet, nisl id feugiat.</p>
+        <h4 class="col py-3 text-center">Description</h4>
     </div>
     <div>
-        <button id="orderNow" class="col btn text-light py-3" [routerLink]="['/login']"><h5>ORDER NOW</h5></button>
+        <p class="text-justify p-3">{{shop?.description}}</p>
+    </div>
+    <div>
+        <button id="orderNow" class="col btn text-light py-3" [routerLink]="['/login']">
+            <h5>ORDER NOW</h5>
+        </button>
     </div>
     <hr>
 </div>
