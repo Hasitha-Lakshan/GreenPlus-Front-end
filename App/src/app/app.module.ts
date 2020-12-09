@@ -21,7 +21,6 @@ import { ShopDetailsComponent } from './shops/shop-details/shop-details.componen
 import { ErrorComponent } from './error/error/error.component';
 import { ShopsProfileComponent } from './shops/shops-profile/shops-profile.component';
 import { ProfileComponent } from './profile/profile.component';
-import { UserDetailsComponent } from './profile/user-details/user-details.component';
 
 
 @NgModule({
@@ -39,7 +38,6 @@ import { UserDetailsComponent } from './profile/user-details/user-details.compon
     ErrorComponent,
     ShopsProfileComponent,
     ProfileComponent,
-    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

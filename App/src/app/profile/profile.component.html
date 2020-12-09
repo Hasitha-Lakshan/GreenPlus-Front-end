@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
 
-<app-user-details></app-user-details>
+<button class="btn btn-secondary" *ngIf="isValidateUser">Edit Profile</button>
 
-<app-shops-profile></app-shops-profile>
+<app-shops-profile *ngIf="userPublic?.role == 'FARMER'"></app-shops-profile>
