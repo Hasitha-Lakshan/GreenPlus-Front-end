@@ -19,11 +19,11 @@ button:focus{
     text-decoration: none;
 }
 
-#orderNow{
+.bigButton{
     background-color: black;
 }
 
-#orderNow:hover{
+.bigButton:hover{
     background-color: #1AD60D;
 }
 

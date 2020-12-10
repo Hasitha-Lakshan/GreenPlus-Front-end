@@ -44,7 +44,6 @@ export class ProfileComponent implements OnInit {
 
       if (data != null) {
         this.userPublic = data;
-        console.log(data);
 
       } else {
         this.router.navigate(['error']);

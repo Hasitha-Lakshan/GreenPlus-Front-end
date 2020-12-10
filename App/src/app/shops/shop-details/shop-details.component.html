@@ -42,8 +42,13 @@
         <p class="text-justify p-3">{{shop?.description}}</p>
     </div>
     <div>
-        <button id="orderNow" class="col btn text-light py-3" [routerLink]="['/login']">
+        <button *ngIf="usernameFromLocalStorage != shop?.username" class="bigButton col btn text-light py-3"
+            [routerLink]="['/login']">
             <h5>ORDER NOW</h5>
+        </button>
+        <button *ngIf="usernameFromLocalStorage == shop?.username" class="bigButton col btn text-light py-3"
+            routerLink='/profile/{{shop?.username}}'>
+            <h5>EDIT SHOP</h5>
         </button>
     </div>
     <hr>

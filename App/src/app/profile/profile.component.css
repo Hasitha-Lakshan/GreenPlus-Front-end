@@ -1,0 +1,43 @@
+#profile_picture{
+    width: 250px;
+}
+
+#profile_settings{
+    width: 40px;
+}
+
+.btn{
+    border-radius: 0px;
+}
+
+@media screen and (max-width: 768px)
+{
+    h3{
+        text-align: center;
+    }
+
+    #profile_picture_position{
+        text-align: center;
+    }
+
+    #user_details .data{
+        text-align: right !important;
+    }
+
+    #profile_settings{
+        width: 30px;
+    }
+}
+
+
+@media screen and (max-width: 380px)
+{
+
+    #profile_picture{
+        width: 200px;
+    }
+
+    h6{
+        font-size: 14px;
+    }
+}
