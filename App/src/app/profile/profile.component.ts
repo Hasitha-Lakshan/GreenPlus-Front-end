@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit {
 
       if (data != null) {
         this.userPublic = data;
+        this.validateUserRole(data.role);
 
       } else {
         this.router.navigate(['error']);
@@ -54,4 +55,20 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['error']);
       });
   }
+
+
+  validateUserRole(userRole: string) {
+
+    if ((userRole == "ADMIN" && !this.isValidateUser)) {
+      this.router.navigate(['error']);
+    }
+
+    if ((userRole == "BUYER" && !this.isValidateUser)) {
+
+      if (!(this.localStorageService.retrieve('role') == "ADMIN")) {  // Better to validate data from database instead oof local storage
+        this.router.navigate(['error']);
+      }
+    }
+  }
+
 }

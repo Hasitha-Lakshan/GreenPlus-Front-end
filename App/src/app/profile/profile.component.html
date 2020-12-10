@@ -48,6 +48,8 @@
                     </div>
                 </div>
                 <hr class="my-2">
+
+                <!--Better to validate data from database instead oof local storage-->
                 <div *ngIf="isValidateUser" class="container">
                     <div *ngIf="userPublic?.role == 'FARMER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
