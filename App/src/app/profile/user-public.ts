@@ -1,5 +1,6 @@
 export class UserPublic {
 
+    userId: number;
     firstName: string;
     lastName: string;
     username: string;

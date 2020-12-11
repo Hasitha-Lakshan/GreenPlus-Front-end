@@ -13,38 +13,33 @@ import { UserPublic } from './user-public';
 export class ProfileComponent implements OnInit {
 
   isValidateUser: boolean;
+  isValidateUserRole: boolean;
   url: string;
   usernameFromUrl: string;
-  usernameFromLocalStorage: string;
   userPublic: UserPublic;
-
 
   constructor(private profileService: ProfileService, private authService: AuthService, private router: Router, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
-    this.validateUser();
     this.getUserDetailsPublic();
+
   }
 
-  validateUser() {
+  getUsernameFromUrl() {
     this.url = this.router.url;
     this.usernameFromUrl = this.url.slice(9, this.url.length);
-    this.usernameFromLocalStorage = this.localStorageService.retrieve('username');
-
-    if (this.usernameFromUrl == this.usernameFromLocalStorage && this.authService.isAuthenticated()) {
-      this.isValidateUser = true;
-    } else {
-      this.isValidateUser = false;
-    }
+    return this.usernameFromUrl;
   }
 
   getUserDetailsPublic() {
 
+    this.getUsernameFromUrl();
     this.profileService.connectUserDetailsPublicApi(this.usernameFromUrl).subscribe((data) => {
 
       if (data != null) {
         this.userPublic = data;
-        this.validateUserRole(data.role);
+        this.validateUserByUserIds(data.userId);
+        this.validateUserByUserRole(data.role, data.userId);
 
       } else {
         this.router.navigate(['error']);
@@ -56,19 +51,32 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  private validateUserByUserIds(userIdByUsernameFromUrl: number) {
+    this.profileService.connectUserDetailsPublicApi(this.localStorageService.retrieve('username')).subscribe((data) => {
 
-  validateUserRole(userRole: string) {
+      if (this.authService.isAuthenticated() && (userIdByUsernameFromUrl == data.userId)) {
+        this.isValidateUser = true;
 
-    if ((userRole == "ADMIN" && !this.isValidateUser)) {
-      this.router.navigate(['error']);
-    }
+      } else {
+        this.isValidateUser = false;
+      }
+    })
+  }
 
-    if ((userRole == "BUYER" && !this.isValidateUser)) {
+  validateUserByUserRole(userRoleByUsernameFromUrl: string, userIdByUsernameFromUrl: number) {
 
-      if (!(this.localStorageService.retrieve('role') == "ADMIN")) {  // Better to validate data from database instead oof local storage
+    this.profileService.connectUserDetailsPublicApi(this.localStorageService.retrieve('username')).subscribe((data) => {
+
+      if (this.authService.isAuthenticated() && (userRoleByUsernameFromUrl === "ADMIN") && !(data.userId === userIdByUsernameFromUrl)) {
         this.router.navigate(['error']);
       }
-    }
+      if (this.authService.isAuthenticated() && (userRoleByUsernameFromUrl == "BUYER") && !(data.userId === userIdByUsernameFromUrl)) {
+
+        if (!(this.localStorageService.retrieve('role') == "ADMIN")) {
+          this.router.navigate(['error']);
+        }
+      }
+    })
   }
 
 }
