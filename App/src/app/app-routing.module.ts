@@ -6,9 +6,9 @@ import { HomeComponent } from './home/home.component'
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
-import { ProfileComponent } from './profile/profile.component';
 import { ShopDetailsComponent } from './shops/shop-details/shop-details.component';
 import { ErrorComponent } from './error/error/error.component';
+import { ProfilePublicComponent } from './profile/profile-public/profile-public.component';
 
 
 const routes: Routes = [
@@ -17,10 +17,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'signup-admin', component: SignupAdminComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent }, //, canActivate: [AuthGuard]  
 
   // Profile Components
-  { path: 'profile/:username', component: ProfileComponent }, //, canActivate: [AuthGuard]
+  //{ path: 'profile/:username', component: ProfilePrivateComponent}, 
+  { path: 'user/:username', component: ProfilePublicComponent },
 
   // Shop Components
   { path: 'shop/:shopId', component: ShopDetailsComponent },

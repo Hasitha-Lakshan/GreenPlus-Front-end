@@ -20,10 +20,17 @@ export class ShopsProfileComponent implements OnInit {
     this.getProfileShops();
   }
 
+  //Get profile shop detials using the username form url
   getProfileShops() {
-
     this.url = this.router.url;
-    this.username = this.url.slice(9, this.url.length);
+
+    if (this.url.slice(1, 8) === "profile") {
+      this.username = this.url.slice(9, this.url.length);
+    }
+
+    if (this.url.slice(1, 5) === "user") {
+      this.username = this.url.slice(6, this.url.length);
+    }
 
     this.shopService.connectShopByUsernameApi(this.username).subscribe((data) => {
       this.profileShops = data;

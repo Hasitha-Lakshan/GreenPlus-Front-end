@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserPublic } from '../profile/user-public'
+import { UserProfile } from '../profile/profile-public/user-profile'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  connectUserDetailsPublicApi(username: string): Observable<UserPublic> {
-    return this.http.get<UserPublic>(this.url + "user/" + username);
+  connectUserDetailsPublicApi(username: string): Observable<UserProfile> {
+    return this.http.get<UserProfile>(this.url + "user/" + username);
   }
 }

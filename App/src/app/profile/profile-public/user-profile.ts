@@ -1,4 +1,4 @@
-export class UserPublic {
+export class UserProfile {
 
     userId: number;
     firstName: string;

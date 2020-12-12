@@ -20,7 +20,7 @@ import { ShopsHomeComponent } from './shops/shops-home/shops-home.component';
 import { ShopDetailsComponent } from './shops/shop-details/shop-details.component';
 import { ErrorComponent } from './error/error/error.component';
 import { ShopsProfileComponent } from './shops/shops-profile/shops-profile.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfilePublicComponent } from './profile/profile-public/profile-public.component';
 
 
 @NgModule({
@@ -37,7 +37,7 @@ import { ProfileComponent } from './profile/profile.component';
     ShopDetailsComponent,
     ErrorComponent,
     ShopsProfileComponent,
-    ProfileComponent,
+    ProfilePublicComponent,
   ],
   imports: [
     BrowserModule,

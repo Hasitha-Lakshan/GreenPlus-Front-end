@@ -7,7 +7,7 @@
                 [routerLink]="['/login']">
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7  col-sm-12 pt-3">
-            <h3>{{userPublic?.firstName}} {{userPublic?.lastName}}</h3>
+            <h3>{{userProfile?.firstName}} {{userProfile?.lastName}}</h3>
 
             <hr>
             <div id="user_details" class="text-secondary text-left">
@@ -16,7 +16,7 @@
                         <h6>Username :</h6>
                     </div>
                     <div class="col data">
-                        <h6>{{userPublic?.username}}</h6>
+                        <h6>{{userProfile?.username}}</h6>
                     </div>
                 </div>
                 <hr class="my-2">
@@ -25,7 +25,7 @@
                         <h6>Email :</h6>
                     </div>
                     <div class="col data">
-                        <h6>{{userPublic?.email}}</h6>
+                        <h6>{{userProfile?.email}}</h6>
                     </div>
                 </div>
                 <hr class="my-2">
@@ -34,7 +34,7 @@
                         <h6>Mobile Number :</h6>
                     </div>
                     <div class="col data">
-                        <h6>{{userPublic?.mobileNumber}}</h6>
+                        <h6>{{userProfile?.mobileNumber}}</h6>
                     </div>
                 </div>
                 <hr class="my-2">
@@ -43,22 +43,22 @@
                         <h6>Address :</h6>
                     </div>
                     <div class="col data">
-                        <h6>{{userPublic?.addressLine1}}, {{userPublic?.addressLine2}}, {{userPublic?.addressLine3}}.
+                        <h6>{{userProfile?.addressLine1}}, {{userProfile?.addressLine2}}, {{userProfile?.addressLine3}}.
                         </h6>
                     </div>
                 </div>
                 <hr class="my-2">
 
                 <div *ngIf="isValidateUser" class="container">
-                    <div *ngIf="userPublic?.role == 'FARMER'" class="row mt-5">
+                    <div *ngIf="userProfile?.role == 'FARMER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
                         <button class="col-6 btn btn-dark py-3">Edit Profile</button>
                     </div>
-                    <div *ngIf="userPublic?.role == 'BUYER'" class="row mt-5">
+                    <div *ngIf="userProfile?.role == 'BUYER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
                         <button class="col-6 btn btn-dark py-3">Edit Profile</button>
                     </div>
-                    <div *ngIf="userPublic?.role == 'ADMIN'" class="row mt-5">
+                    <div *ngIf="userProfile?.role == 'ADMIN'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Admin Dashboard</button>
                         <button class="col-6 btn btn-dark py-3">Edit Profile</button>
                     </div>
@@ -69,4 +69,4 @@
 </div>
 <hr class="mt-5">
 
-<app-shops-profile *ngIf="userPublic?.role == 'FARMER'"></app-shops-profile>
+<app-shops-profile *ngIf="userProfile?.role == 'FARMER'"></app-shops-profile>
