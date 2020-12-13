@@ -79,6 +79,13 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['error']);
       }
 
+      //Only the user can access the router, profile
+      if (this.router.url.endsWith('/profile')) {
+        if (!(data.userId === userIdByUsernameFromUrl)) {
+          this.router.navigate(['error']);
+        }
+      }
+
     })
   }
 
