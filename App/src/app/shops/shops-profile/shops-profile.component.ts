@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 export class ShopsProfileComponent implements OnInit {
 
   profileShops: ProfileShop[];
-  username: string;
-  url: string;
 
   constructor(private shopService: ShopService, private router: Router) { }
 
@@ -20,19 +18,20 @@ export class ShopsProfileComponent implements OnInit {
     this.getProfileShops();
   }
 
+  //Slice the current url and get the username
+  getUsernameFromUrl(): string {
+
+    if (this.router.url.endsWith('/profile')) {
+      return this.router.url.slice(6, (this.router.url.length - 8));
+
+    } else {
+      return this.router.url.slice(6, this.router.url.length);
+    }
+  }
+
   //Get profile shop detials using the username form url
   getProfileShops() {
-    this.url = this.router.url;
-
-    if (this.url.slice(1, 8) === "profile") {
-      this.username = this.url.slice(9, this.url.length);
-    }
-
-    if (this.url.slice(1, 5) === "user") {
-      this.username = this.url.slice(6, this.url.length);
-    }
-
-    this.shopService.connectShopByUsernameApi(this.username).subscribe((data) => {
+    this.shopService.connectShopByUsernameApi(this.getUsernameFromUrl()).subscribe((data) => {
       this.profileShops = data;
 
     },

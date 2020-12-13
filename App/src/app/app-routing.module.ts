@@ -8,7 +8,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
 import { ShopDetailsComponent } from './shops/shop-details/shop-details.component';
 import { ErrorComponent } from './error/error/error.component';
-import { ProfilePublicComponent } from './profile/profile-public/profile-public.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { UserComponent } from './user/user.component';
 
 
 const routes: Routes = [
@@ -17,11 +18,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'signup-admin', component: SignupAdminComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent }, //, canActivate: [AuthGuard]  
+  { path: 'login', component: LoginComponent },
 
   // Profile Components
-  //{ path: 'profile/:username', component: ProfilePrivateComponent}, 
-  { path: 'user/:username', component: ProfilePublicComponent },
+  { path: 'user/:username', component: UserComponent },
+  { path: 'user/:username/profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
   // Shop Components
   { path: 'shop/:shopId', component: ShopDetailsComponent },

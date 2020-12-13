@@ -8,7 +8,6 @@
     </button>
 
     <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavDropdown">
-
         <ul class="navbar-nav text-uppercase text-center">
             <li id="active_tab" class="nav-item mt-2">
                 <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
@@ -19,13 +18,13 @@
             <li class="nav-item mt-2" *ngIf="!isLogin">
                 <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">SIGNUP</a>
             </li>
-            <li class="nav-item mt-2" *ngIf="isLogin">
-                <a class="nav-link" routerLink='/profile/{{username}}' routerLinkActive="active">Profile</a>
+            <li class="nav-item mt-2" *ngIf="isLogin" routerLinkActive="active">
+                <a class="nav-link" routerLink='/user/{{username}}/profile'>Profile</a>
+                <a class="nav-link" routerLink='/user/{{username}}' style="display: none"></a>
             </li>
-            <li class="nav-item mt-2" *ngIf="isLogin" >
+            <li class="nav-item mt-2" *ngIf="isLogin">
                 <a class="nav-link" [routerLink]="['/home']" (click)="logout()">Logout</a>
             </li>
         </ul>
-
     </div>
 </nav>

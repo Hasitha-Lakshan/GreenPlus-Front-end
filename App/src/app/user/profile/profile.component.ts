@@ -6,11 +6,11 @@ import { ProfileService } from '../../services/profile.service';
 import { UserProfile } from './user-profile';
 
 @Component({
-  selector: 'app-profile-public',
-  templateUrl: './profile-public.component.html',
-  styleUrls: ['./profile-public.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class ProfilePublicComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   isValidateUser: boolean;
   userProfile: UserProfile;
@@ -23,7 +23,13 @@ export class ProfilePublicComponent implements OnInit {
 
   //Slice the current url and get the username
   getUsernameFromUrl(): string {
-    return this.router.url.slice(6, this.router.url.length);
+
+    if (this.router.url.endsWith('/profile')) {
+      return this.router.url.slice(6, (this.router.url.length - 8));
+
+    } else {
+      return this.router.url.slice(6, this.router.url.length);
+    }
   }
 
   //Connect the user details-publiic api and fetching the data from database using the username from url. Using the subscribe(), assigning user data to userProfile varialbe
