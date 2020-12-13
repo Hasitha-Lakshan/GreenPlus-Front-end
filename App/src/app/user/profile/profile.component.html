@@ -52,15 +52,14 @@
                 <div *ngIf="isValidateUser" class="container">
                     <div *ngIf="userProfile?.role == 'FARMER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
-                        <button class="col-6 btn btn-dark py-3">Edit Profile</button>
+                        <button class="col-6 btn btn-dark py-3">+ New Shop Card</button>
                     </div>
                     <div *ngIf="userProfile?.role == 'BUYER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
-                        <button class="col-6 btn btn-dark py-3">Edit Profile</button>
+                        <button class="col-6 btn btn-dark py-3">+ New Request</button>
                     </div>
                     <div *ngIf="userProfile?.role == 'ADMIN'" class="row mt-5">
-                        <button class="col-6 btn btn-secondary py-3">Admin Dashboard</button>
-                        <button class="col-6 btn btn-dark py-3">Edit Profile</button>
+                        <button class="col-12 btn btn-secondary py-3">Admin Dashboard</button>
                     </div>
                 </div>
             </div>

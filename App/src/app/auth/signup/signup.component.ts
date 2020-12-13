@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { SignupPayload } from './signup-payload';
-import { MustMatch }  from '../../shared/mustMatch';
+import { MustMatch } from '../../shared/mustMatch';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ import { MustMatch }  from '../../shared/mustMatch';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private authService: AuthService, private formbuilder: FormBuilder) { }
+  constructor(private authService: AuthService, private formbuilder: FormBuilder, private router: Router) { }
 
   signupForm: FormGroup;
   signupPayload: SignupPayload;
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
   datanotsaved: boolean;
 
   ngOnInit(): void {
-
+    this.logincheck();
     this.signupForm = this.formbuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -66,6 +67,12 @@ export class SignupComponent implements OnInit {
         this.datanotsaved = true;
       }
     });
+  }
+
+  logincheck() {
+    if (this.authService.isAuthenticated) {
+      this.router.navigate(['home']);
+    }
   }
 
 }

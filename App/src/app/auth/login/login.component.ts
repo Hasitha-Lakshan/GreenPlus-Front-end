@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private formbuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-
+    this.logincheck();
     this.loginForm = this.formbuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -37,6 +37,12 @@ export class LoginComponent implements OnInit {
       error => {
         this.notRegistered = true;
       });
+  }
+
+  logincheck() {
+    if (this.authService.isAuthenticated) {
+      this.router.navigate(['home']);
+    }
   }
 
 }
