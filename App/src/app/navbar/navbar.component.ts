@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
 
   isLogin: boolean;
   username: string;
+  isFarmer: boolean;
 
   constructor(private authService: AuthService, private localStorageService: LocalStorageService) { }
 
@@ -24,6 +25,11 @@ export class NavbarComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       this.isLogin = true;
       this.username = this.localStorageService.retrieve('username');
+
+      if (this.localStorageService.retrieve('role') === "FARMER") {
+        this.isFarmer = true;
+      }
+
     } else {
       this.isLogin = false;
     }

@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   logincheck() {
-    if (this.authService.isAuthenticated) {
+    if (this.authService.isAuthenticated()) {
       this.router.navigate(['home']);
     }
   }
