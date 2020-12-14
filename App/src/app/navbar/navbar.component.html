@@ -9,8 +9,10 @@
 
     <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavDropdown">
         <ul class="navbar-nav text-uppercase text-center">
-            <li id="active_tab" class="nav-item mt-2">
-                <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+            <li id="active_tab" class="nav-item mt-2" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/home']">Home</a>
+                <a class="nav-link" [routerLink]="['/']" style="display: none"></a>
             </li>
             <li id="active_tab" class="nav-item mt-2" *ngIf="isLogin && isFarmer">
                 <a class="nav-link" [routerLink]="['/###']" routerLinkActive="active">Buyer Requests</a>
@@ -21,7 +23,8 @@
             <li class="nav-item mt-2" *ngIf="!isLogin">
                 <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">SIGNUP</a>
             </li>
-            <li class="nav-item mt-2" *ngIf="isLogin" routerLinkActive="active">
+            <li class="nav-item mt-2" *ngIf="isLogin" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" routerLink='/user/{{username}}/profile'>Profile</a>
                 <a class="nav-link" routerLink='/user/{{username}}' style="display: none"></a>
             </li>
