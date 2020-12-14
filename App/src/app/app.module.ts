@@ -25,6 +25,7 @@ import { UserComponent } from './user/user.component';
 import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { BuyerRequestDetailsComponent } from './buyer-request/buyer-request-details/buyer-request-details.component';
+import { SearchBarBuyerRequestsComponent } from './buyer-request/search-bar-buyer-requests/search-bar-buyer-requests.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { BuyerRequestDetailsComponent } from './buyer-request/buyer-request-deta
     BuyerRequestComponent,
     SettingsComponent,
     BuyerRequestDetailsComponent,
+    SearchBarBuyerRequestsComponent,
   ],
   imports: [
     BrowserModule,
