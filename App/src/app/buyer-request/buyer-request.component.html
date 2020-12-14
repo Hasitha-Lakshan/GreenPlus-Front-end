@@ -1,1 +1,17 @@
-<p>buyer-request works!</p>
+<app-navbar></app-navbar>
+
+<div id="main_banner">
+    <picture>
+        <source media="(max-width:576px)" srcset="../../assets/Banner_S.jpg">
+        <source media="(max-width:768px)" srcset="../../assets/Banner_M.jpg">
+        <source media="(max-width:992px)" srcset="../../assets/Banner_L.jpg">
+        <source media="(max-width:1920px)" srcset="../../assets/Banner_XL.jpg">
+        <img src="../../assets/Banner_xL.jpg">
+    </picture>
+</div>
+
+<app-search-bar-buyer-request></app-search-bar-buyer-request>
+
+<app-buyer-request-list></app-buyer-request-list>
+
+<app-footer></app-footer>
