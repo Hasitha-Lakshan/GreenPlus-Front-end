@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './security/auth.guard';
 
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
@@ -10,6 +10,8 @@ import { ShopDetailsComponent } from './shops/shop-details/shop-details.componen
 import { ErrorComponent } from './error/error/error.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserComponent } from './user/user.component';
+import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
+import { SettingsComponent } from './user/settings/settings.component';
 
 
 const routes: Routes = [
@@ -20,12 +22,16 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
 
-  // Profile Components
+  // User Components
   { path: 'user/:username', component: UserComponent },
   { path: 'user/:username/profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
 
   // Shop Components
   { path: 'shop/:shopId', component: ShopDetailsComponent },
+
+  // Buyer Request Components
+  { path: 'buyer-requests', component: BuyerRequestComponent, canActivate: [AuthGuard] },
 
   // Error Components
   { path: 'error', component: ErrorComponent },

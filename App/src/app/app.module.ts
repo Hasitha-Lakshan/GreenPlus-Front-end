@@ -22,6 +22,9 @@ import { ErrorComponent } from './error/error/error.component';
 import { ShopsProfileComponent } from './shops/shops-profile/shops-profile.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserComponent } from './user/user.component';
+import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
+import { SettingsComponent } from './user/settings/settings.component';
+import { BuyerRequestDetailsComponent } from './buyer-request/buyer-request-details/buyer-request-details.component';
 
 
 @NgModule({
@@ -40,6 +43,9 @@ import { UserComponent } from './user/user.component';
     ShopsProfileComponent,
     ProfileComponent,
     UserComponent,
+    BuyerRequestComponent,
+    SettingsComponent,
+    BuyerRequestDetailsComponent,
   ],
   imports: [
     BrowserModule,
