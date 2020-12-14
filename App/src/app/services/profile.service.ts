@@ -13,6 +13,9 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
   connectUserDetailsPublicApi(username: string): Observable<UserProfile> {
-    return this.http.get<UserProfile>(this.url + "user/" + username);
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<UserProfile>(this.url + "user/" + username, options);
   }
 }

@@ -12,6 +12,39 @@
 
 <app-search-bar-buyer-request></app-search-bar-buyer-request>
 
-<app-buyer-request-list></app-buyer-request-list>
+<div class="container">
+    <div class="row mt-4" *ngFor="let buyerRequest of buyerRequests">
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header bg-dark text-light">{{buyerRequest?.title}}</h5>
+                <p class="card-header"><b>Created On: </b>{{buyerRequest?.createdDate}} at
+                <div class="card-body">
+                    <p class="text-justify">{{buyerRequest?.description}}</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <span><b>Category: </b></span><span>{{buyerRequest?.category}}</span>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <span><b>Sub Category: </b></span><span>{{buyerRequest?.subCategory}}</span>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <span><b>Quantity: </b></span><span>{{buyerRequest?.quantity}}</span>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <span><b>Price: </b></span><span>{{buyerRequest?.price}}</span>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <span><b>Location: </b></span><span>{{buyerRequest?.location}}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <a routerLink='/user/{{buyerRequest?.username}}' class="btn btn-primary float-right">Contact
+                        Buyer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <app-footer></app-footer>

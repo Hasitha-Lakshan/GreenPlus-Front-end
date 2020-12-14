@@ -15,14 +15,23 @@ export class ShopService {
   constructor(private http: HttpClient) { }
 
   connectHomeShopsApi(): Observable<HomeShop[]> {
-    return this.http.get<HomeShop[]>(this.url + "shops");
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<HomeShop[]>(this.url + "shops", options);
   }
 
   connectShopByShopidApi(shopId: string): Observable<Shop> {
-    return this.http.get<Shop>(this.url + "shopbyshopid/" + shopId);
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<Shop>(this.url + "shopbyshopid/" + shopId, options);
   }
 
   connectShopByUsernameApi(username: string): Observable<ProfileShop[]> {
-    return this.http.get<ProfileShop[]>(this.url + "shopsbyuser/" + username);
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<ProfileShop[]>(this.url + "shopsbyuser/" + username, options);
   }
 }

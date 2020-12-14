@@ -23,11 +23,9 @@ import { ShopsProfileComponent } from './shops/shops-profile/shops-profile.compo
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserComponent } from './user/user.component';
 import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
-import { SettingsComponent } from './user/settings/settings.component';
-import { BuyerRequestDetailsComponent } from './buyer-request/buyer-request-details/buyer-request-details.component';
-import { BuyerRequestListComponent } from './buyer-request/buyer-request-list/buyer-request-list.component';
-import { BuyerRequestListProfileComponent } from './buyer-request/buyer-request-list-profile/buyer-request-list-profile.component';
 import { SearchBarBuyerRequestComponent } from './buyer-request/search-bar-buyer-request/search-bar-buyer-request.component';
+import { SettingsComponent } from './user/settings/settings.component';
+import { BuyerRequestProfileComponent } from './buyer-request/buyer-request-profile/buyer-request-profile.component';
 
 
 @NgModule({
@@ -47,11 +45,9 @@ import { SearchBarBuyerRequestComponent } from './buyer-request/search-bar-buyer
     ProfileComponent,
     UserComponent,
     BuyerRequestComponent,
-    SettingsComponent,
-    BuyerRequestDetailsComponent,
-    BuyerRequestListComponent,
-    BuyerRequestListProfileComponent,
     SearchBarBuyerRequestComponent,
+    SettingsComponent,
+    BuyerRequestProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BuyerRequestService } from '../services/buyer-request.service'
+import { BuyerRequest } from './buyer-request';
 
 @Component({
   selector: 'app-buyer-request',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuyerRequestComponent implements OnInit {
 
-  constructor() { }
+  buyerRequests: BuyerRequest[];
+
+  constructor(private buyerRequestService: BuyerRequestService) { }
 
   ngOnInit(): void {
+    this.getBuyerRequestsPublic();
+  }
+
+  getBuyerRequestsPublic() {
+    this.buyerRequestService.connectHomeShopsApi().subscribe((data) => {
+      this.buyerRequests = data;
+    })
   }
 
 }
