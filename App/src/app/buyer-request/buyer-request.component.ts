@@ -19,7 +19,7 @@ export class BuyerRequestComponent implements OnInit {
   }
 
   getBuyerRequestsPublic() {
-    this.buyerRequestService.connectHomeShopsApi().subscribe((data) => {
+    this.buyerRequestService.connectAllBuyerRequestsApi().subscribe((data) => {
 
       if (data != null) {
         this.buyerRequests = data;

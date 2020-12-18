@@ -9,13 +9,21 @@ import { BuyerRequest } from '../buyer-request/buyer-request'
 export class BuyerRequestService {
 
   private url = "http://localhost:8080/api/farmer/";
+  private url_2 = "http://localhost:8080/api/buyer/";
 
   constructor(private http: HttpClient) { }
 
-  connectHomeShopsApi(): Observable<BuyerRequest[]> {
+  connectAllBuyerRequestsApi(): Observable<BuyerRequest[]> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
     let options = { headers: httpHeader };
 
     return this.http.get<BuyerRequest[]>(this.url + "buyerrequests", options);
+  }
+
+  connectActiveBuyerRequestsByUserApi(username: string): Observable<BuyerRequest[]> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<BuyerRequest[]>(this.url_2 + "activebuyerrequestsbyuser/" + username, options);
   }
 }

@@ -51,14 +51,20 @@
                 <div *ngIf="isValidateUser" class="container">
                     <div *ngIf="userProfile?.role == 'FARMER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
-                        <button [routerLink]="['/farmer-dashboard']" class="col-6 btn btn-dark py-3">Manage Shop Cards</button>
+                        <button routerLink='/user/{{userProfile?.username}}/farmer-dashboard'
+                            class="col-6 btn btn-dark py-3">Manage Shop
+                            Cards</button>
                     </div>
                     <div *ngIf="userProfile?.role == 'BUYER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
-                        <button [routerLink]="['/buyer-dashboard']" class="col-6 btn btn-dark py-3">Manage Requests</button>
+                        <button routerLink='/user/{{userProfile?.username}}/buyer-dashboard'
+                            class="col-6 btn btn-dark py-3">Manage
+                            Requests</button>
                     </div>
                     <div *ngIf="userProfile?.role == 'ADMIN'" class="row mt-5">
-                        <button [routerLink]="['/admin-dashboard']" class="col-12 btn btn-secondary py-3">Admin Dashboard</button>
+                        <button routerLink='/user/{{userProfile?.username}}/admin-dashboard'
+                            class="col-12 btn btn-secondary py-3">Admin
+                            Dashboard</button>
                     </div>
                 </div>
             </div>
@@ -70,3 +76,5 @@
 <app-shops-profile *ngIf="userProfile?.role == 'FARMER'"></app-shops-profile>
 
 <app-buyer-request-profile *ngIf="userProfile?.role == 'BUYER'"></app-buyer-request-profile>
+
+<app-footer></app-footer>
