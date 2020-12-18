@@ -3,8 +3,7 @@
 <div class="container mt-5">
     <div class="row">
         <div id="profile_picture_position" class="col-xl-3 col-lg-4 col-md-5 col-sm-12 my-auto">
-            <img id="profile_picture" class="rounded-circle" src="../../assets/Profile.jpg" alt="profile_picture"
-                [routerLink]="['/login']">
+            <img id="profile_picture" class="rounded-circle" src="../../assets/Profile.jpg" alt="profile_picture">
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7  col-sm-12 pt-3">
             <h3>{{userProfile?.firstName}} {{userProfile?.lastName}}</h3>
@@ -52,14 +51,14 @@
                 <div *ngIf="isValidateUser" class="container">
                     <div *ngIf="userProfile?.role == 'FARMER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
-                        <button class="col-6 btn btn-dark py-3">+ New Shop Card</button>
+                        <button [routerLink]="['/farmer-dashboard']" class="col-6 btn btn-dark py-3">Manage Shop Cards</button>
                     </div>
                     <div *ngIf="userProfile?.role == 'BUYER'" class="row mt-5">
                         <button class="col-6 btn btn-secondary py-3">Orders</button>
-                        <button class="col-6 btn btn-dark py-3">+ New Request</button>
+                        <button [routerLink]="['/buyer-dashboard']" class="col-6 btn btn-dark py-3">Manage Requests</button>
                     </div>
                     <div *ngIf="userProfile?.role == 'ADMIN'" class="row mt-5">
-                        <button class="col-12 btn btn-secondary py-3">Admin Dashboard</button>
+                        <button [routerLink]="['/admin-dashboard']" class="col-12 btn btn-secondary py-3">Admin Dashboard</button>
                     </div>
                 </div>
             </div>

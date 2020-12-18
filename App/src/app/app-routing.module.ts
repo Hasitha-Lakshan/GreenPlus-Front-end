@@ -12,6 +12,9 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { UserComponent } from './user/user.component';
 import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
 import { SettingsComponent } from './user/settings/settings.component';
+import { AdminDashboardComponent } from './user/profile/admin-dashboard/admin-dashboard.component';
+import { BuyerDashboardComponent } from './user/profile/buyer-dashboard/buyer-dashboard.component';
+import { FarmerDashboardComponent } from './user/profile/farmer-dashboard/farmer-dashboard.component';
 
 
 const routes: Routes = [
@@ -26,6 +29,9 @@ const routes: Routes = [
   { path: 'user/:username', component: UserComponent },
   { path: 'user/:username/profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'buyer-dashboard', component: BuyerDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'farmer-dashboard', component: FarmerDashboardComponent, canActivate: [AuthGuard] },
 
   // Shop Components
   { path: 'shop/:shopId', component: ShopDetailsComponent },

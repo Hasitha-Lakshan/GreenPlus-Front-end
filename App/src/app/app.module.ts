@@ -26,6 +26,9 @@ import { BuyerRequestComponent } from './buyer-request/buyer-request.component';
 import { SearchBarBuyerRequestComponent } from './buyer-request/search-bar-buyer-request/search-bar-buyer-request.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { BuyerRequestProfileComponent } from './buyer-request/buyer-request-profile/buyer-request-profile.component';
+import { AdminDashboardComponent } from './user/profile/admin-dashboard/admin-dashboard.component';
+import { BuyerDashboardComponent } from './user/profile/buyer-dashboard/buyer-dashboard.component';
+import { FarmerDashboardComponent } from './user/profile/farmer-dashboard/farmer-dashboard.component';
 
 
 @NgModule({
@@ -48,6 +51,9 @@ import { BuyerRequestProfileComponent } from './buyer-request/buyer-request-prof
     SearchBarBuyerRequestComponent,
     SettingsComponent,
     BuyerRequestProfileComponent,
+    AdminDashboardComponent,
+    BuyerDashboardComponent,
+    FarmerDashboardComponent,
   ],
   imports: [
     BrowserModule,
