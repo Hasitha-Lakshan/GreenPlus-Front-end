@@ -12,39 +12,49 @@
 
 <app-search-bar-buyer-request></app-search-bar-buyer-request>
 
-<div class="container">
-    <div class="row mt-4" *ngFor="let buyerRequest of buyerRequests">
-        <div class="col">
-            <div class="card">
-                <h5 class="card-header bg-dark text-light">{{buyerRequest?.title}}</h5>
-                <p class="card-header"><b>Created On: </b>{{buyerRequest?.createdDate}} at
+<div class="container pt-3 mt-3">
+    <div class="accordion pb-1" id="accordionExample" *ngFor="let buyerRequest of buyerRequests">
+        <div class="card mb-3">
+            <button id="headingOne" class="btn text-left card-header border-0 py-3" type="button" data-toggle="collapse"
+                [attr.data-target]="'#buyerRequestId_'+[buyerRequest?.buyerRequestId]" aria-expanded="true"
+                aria-controls="collapseOne">
+                {{buyerRequest?.title}}
+            </button>
+            <p class="card-header"><b>Created By:</b> {{buyerRequest?.username}} on {{buyerRequest?.createdDate}} at
+                {{buyerRequest?.createdTime}}</p>
+            <div id="buyerRequestId_{{buyerRequest?.buyerRequestId}}" class="collapse hide" aria-labelledby="headingOne"
+                data-parent="#accordionExample">
                 <div class="card-body">
                     <p class="text-justify">{{buyerRequest?.description}}</p>
                     <hr>
                     <div class="row">
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-6 details">
                             <span><b>Category: </b></span><span>{{buyerRequest?.category}}</span>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-6 details">
                             <span><b>Sub Category: </b></span><span>{{buyerRequest?.subCategory}}</span>
                         </div>
-                        <div class="col-md-4 col-sm-6">
-                            <span><b>Quantity: </b></span><span>{{buyerRequest?.quantity}}</span>
+                        <div class="col-md-4 col-sm-6 details">
+                            <span><b>Quantity: </b></span><span>{{buyerRequest?.quantity}} Kg</span>
                         </div>
-                        <div class="col-md-4 col-sm-6">
-                            <span><b>Price: </b></span><span>{{buyerRequest?.price}}</span>
+                        <div class="col-md-4 col-sm-6 details">
+                            <span><b>Price: </b></span><span>{{buyerRequest?.price}}.00 LKR</span>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-6 details">
                             <span><b>Location: </b></span><span>{{buyerRequest?.location}}</span>
                         </div>
                     </div>
                     <hr>
-                    <a routerLink='/user/{{buyerRequest?.username}}' class="btn btn-primary float-right">Contact
-                        Buyer</a>
+                    <div class="text-right">
+                        <a id="contactBuyer" routerLink='/user/{{buyerRequest?.username}}' class="btn">Contact
+                            Buyer</a>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+    <hr>
 </div>
 
 <app-footer></app-footer>

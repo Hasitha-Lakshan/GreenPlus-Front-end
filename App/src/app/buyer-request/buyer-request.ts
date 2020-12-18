@@ -1,6 +1,7 @@
 export class BuyerRequest {
 
     buyerRequestId: number;
+    username: string;
     title: string;
     description: string;
     category: string;

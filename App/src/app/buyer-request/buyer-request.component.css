@@ -1,3 +1,69 @@
 #main_banner img{
     width: 100%;
 }
+
+#headingOne {
+    background-color: black;
+    color: white;
+    font-size: 22px;
+}
+
+#headingOne:hover {
+    background-color: #1AD60D;
+}
+
+#headingOne:focus {
+    background-color: #1AD60D;
+    border: none;
+    box-shadow: none;
+}
+
+span {
+    font-size: 15px;
+}
+
+b{
+    color: #747474;
+}
+
+#contactBuyer {
+    background-color: black;
+    color: white;
+}
+
+#contactBuyer:hover {
+    background-color: #1AD60D;
+    color: white;
+}
+
+#contactBuyer:focus {
+    background-color: #1AD60D;
+    box-shadow: none;
+    color: white;
+}
+
+@media screen and (max-width: 576px)
+{
+    #headingOne{
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    span {
+        font-size: 12px;
+    }
+
+    .details {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 360px)
+{
+    #contactBuyer {
+        width: 100%;
+    }
+}
