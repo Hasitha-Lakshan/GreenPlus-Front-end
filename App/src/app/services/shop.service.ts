@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HomeShop } from '../shops/shops-home/home-shop';
 import { Shop } from '../shops/shop-details/shop';
 import { ProfileShop } from '../shops/shops-profile/profile-shop';
+import { DashboardShop } from '../user/profile/farmer-dashboard/dashboard-shop'
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { ProfileShop } from '../shops/shops-profile/profile-shop';
 export class ShopService {
 
   private url = "http://localhost:8080/api/public/";
+  private url_2 = "http://localhost:8080/api/farmer/";
 
   constructor(private http: HttpClient) { }
 
@@ -34,4 +36,12 @@ export class ShopService {
 
     return this.http.get<ProfileShop[]>(this.url + "shopsbyuser/" + username, options);
   }
+
+  connectDashboardShopsByUsernameApi(username: string): Observable<DashboardShop[]> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<DashboardShop[]>(this.url_2 + "shopsbyuser/" + username, options);
+  }
+
 }

@@ -1,3 +1,27 @@
 <app-navbar></app-navbar>
 
-<p>farmer-dashboard works!</p>
+<div id="main_banner">
+    <picture>
+        <source media="(max-width:576px)" srcset="../../assets/Banner_S.jpg">
+        <source media="(max-width:768px)" srcset="../../assets/Banner_M.jpg">
+        <source media="(max-width:992px)" srcset="../../assets/Banner_L.jpg">
+        <source media="(max-width:1920px)" srcset="../../assets/Banner_XL.jpg">
+        <img src="../../assets/Banner_xL.jpg">
+    </picture>
+</div>
+
+<div class="container pt-3 mt-3">
+    <button id="newShop" type="button" class="btn btn-secondary btn-lg btn-block">Create New Shop +</button>
+    <hr>
+    <div class="card mb-4" *ngFor="let dashboardShop of dashboardShops">
+        <h4 class="card-header">{{dashboardShop?.title}}</h4>
+        <div class="card-body">
+            <span class="time">Created on : {{dashboardShop?.createdDate}} at {{dashboardShop?.createdTime}}</span>
+            <hr>
+            <span class="badge badge-success" *ngIf="dashboardShop?.shopStatus">Active</span>
+            <span class="badge badge-danger" *ngIf="!dashboardShop?.shopStatus">Inactive</span>
+            <button class="btn btn-dark float-right edit"
+                routerLink='/farmer-dashboard/update-shop/{{dashboardShop?.shopId}}'>Edit Shop</button>
+        </div>
+    </div>
+</div>

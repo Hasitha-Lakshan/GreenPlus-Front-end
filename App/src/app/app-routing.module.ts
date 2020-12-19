@@ -15,6 +15,7 @@ import { SettingsComponent } from './user/settings/settings.component';
 import { AdminDashboardComponent } from './user/profile/admin-dashboard/admin-dashboard.component';
 import { BuyerDashboardComponent } from './user/profile/buyer-dashboard/buyer-dashboard.component';
 import { FarmerDashboardComponent } from './user/profile/farmer-dashboard/farmer-dashboard.component';
+import { ShopUpdateComponent } from './shops/shop-update/shop-update.component'
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
 
   // Shop Components
   { path: 'shop/:shopId', component: ShopDetailsComponent },
+  { path: 'farmer-dashboard/update-shop/:shopId', component: ShopUpdateComponent, canActivate: [AuthGuard] },
 
   // Buyer Request Components
   { path: 'buyer-requests', component: BuyerRequestComponent, canActivate: [AuthGuard] },

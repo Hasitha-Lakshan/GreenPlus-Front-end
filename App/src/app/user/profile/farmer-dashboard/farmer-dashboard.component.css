@@ -1,0 +1,28 @@
+#main_banner img{
+    width: 100%;
+}
+
+@media screen and (max-width: 768px)
+{
+  h4 {
+      font-size: 18px;
+  }
+
+  .time {
+      font-size: 14px;
+  }
+
+  .card-body {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  #newShop {
+    font-size: 18px;
+  }
+
+  .edit {
+    font-size: 12px;
+  }
+
+}
