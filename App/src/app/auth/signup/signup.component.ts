@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private authService: AuthService, private formbuilder: FormBuilder, private router: Router) { }
-
   signupForm: FormGroup;
   signupPayload: SignupPayload;
   datasaved: boolean;
   datanotsaved: boolean;
+
+  constructor(private authService: AuthService, private formbuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.logincheck();
