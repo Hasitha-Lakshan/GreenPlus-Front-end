@@ -31,6 +31,8 @@ import { BuyerDashboardComponent } from './user/profile/buyer-dashboard/buyer-da
 import { FarmerDashboardComponent } from './user/profile/farmer-dashboard/farmer-dashboard.component';
 import { ShopUpdateComponent } from './shops/shop-update/shop-update.component';
 import { ShopCreateComponent } from './shops/shop-create/shop-create.component';
+import { BuyerRequestCreateComponent } from './buyer-request/buyer-request-create/buyer-request-create.component';
+import { BuyerRequestUpdateComponent } from './buyer-request/buyer-request-update/buyer-request-update.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { ShopCreateComponent } from './shops/shop-create/shop-create.component';
     FarmerDashboardComponent,
     ShopUpdateComponent,
     ShopCreateComponent,
+    BuyerRequestCreateComponent,
+    BuyerRequestUpdateComponent,
   ],
   imports: [
     BrowserModule,
