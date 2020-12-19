@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BuyerRequestService } from '../services/buyer-request.service'
-import { BuyerRequest } from './buyer-request';
+import { BuyerRequestPayload } from './buyer-request-payload';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class BuyerRequestComponent implements OnInit {
 
-  buyerRequests: BuyerRequest[];
+  buyerRequests: BuyerRequestPayload[];
 
   constructor(private buyerRequestService: BuyerRequestService, private router: Router) { }
 

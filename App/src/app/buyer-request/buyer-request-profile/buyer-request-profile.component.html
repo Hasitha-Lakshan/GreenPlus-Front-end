@@ -3,11 +3,9 @@
         <div class="card mb-3">
             <button id="headingOne" class="btn text-left card-header border-0 py-3" type="button" data-toggle="collapse"
                 [attr.data-target]="'#buyerRequestId_'+[buyerRequest?.buyerRequestId]" aria-expanded="true"
-                aria-controls="collapseOne">
-                {{buyerRequest?.title}}
+                aria-controls="collapseOne">{{buyerRequest?.title}}
             </button>
-            <p class="card-header"><b>Created By:</b> {{buyerRequest?.username}} on {{buyerRequest?.createdDate}} at
-                {{buyerRequest?.createdTime}}</p>
+            <p class="card-header">Created On: {{buyerRequest?.createdDate}}  |  Created By: <b>{{buyerRequest?.username}}</b></p>
             <div id="buyerRequestId_{{buyerRequest?.buyerRequestId}}" class="collapse hide" aria-labelledby="headingOne"
                 data-parent="#accordionExample">
                 <div class="card-body">
@@ -21,7 +19,7 @@
                             <span><b>Sub Category: </b></span><span>{{buyerRequest?.subCategory}}</span>
                         </div>
                         <div class="col-md-4 col-sm-6 details">
-                            <span><b>Quantity: </b></span><span>{{buyerRequest?.quantity}} Kg</span>
+                            <span><b>Quantity: </b></span><span>{{buyerRequest?.quantity}} {{buyerRequest?.unit}}</span>
                         </div>
                         <div class="col-md-4 col-sm-6 details">
                             <span><b>Price: </b></span><span>{{buyerRequest?.price}}.00 LKR</span>

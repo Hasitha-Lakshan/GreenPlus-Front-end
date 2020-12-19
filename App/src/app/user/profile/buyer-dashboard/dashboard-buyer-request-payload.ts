@@ -1,8 +1,7 @@
-export class DashboardBuyerRequest {
+export class DashboardBuyerRequestPayload {
 
     buyerRequestId: number;
     title: string;
     buyerRequestStatus: boolean;
     createdDate: Date;
-    createdTime: Date;
 } 

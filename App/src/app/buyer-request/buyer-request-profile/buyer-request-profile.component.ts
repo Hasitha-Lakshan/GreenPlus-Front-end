@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BuyerRequestService } from '../../services/buyer-request.service'
-import { BuyerRequest } from './buyer-request';
+import { BuyerRequestProfilePayload } from './buyer-request-profile-payload';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { AuthService } from '../../services/auth.service'
@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth.service'
 })
 export class BuyerRequestProfileComponent implements OnInit {
 
-  buyerRequests: BuyerRequest[];
+  buyerRequests: BuyerRequestProfilePayload[];
   usernameFromLocalStorage: string;
 
   constructor(private buyerRequestService: BuyerRequestService, private router: Router, private localStorageService: LocalStorageService, private authService: AuthService) { }

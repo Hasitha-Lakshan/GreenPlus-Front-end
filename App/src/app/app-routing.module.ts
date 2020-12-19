@@ -44,8 +44,8 @@ const routes: Routes = [
 
   // Buyer Request Components
   { path: 'buyer-requests', component: BuyerRequestComponent, canActivate: [AuthGuard] },
-  { path: 'buyer-dashboard/update-buyer-request/:buyerRequestId', component: ShopUpdateComponent, canActivate: [AuthGuard] },
-  { path: 'buyer-dashboard/create-buyer-request', component: ShopCreateComponent, canActivate: [AuthGuard] },
+  { path: 'buyer-dashboard/update-buyer-request/:buyerRequestId', component: BuyerRequestUpdateComponent, canActivate: [AuthGuard] },
+  { path: 'buyer-dashboard/create-buyer-request', component: BuyerRequestCreateComponent, canActivate: [AuthGuard] },
 
   // Error Components
   { path: 'error', component: ErrorComponent },

@@ -1,4 +1,4 @@
-export class BuyerRequest {
+export class BuyerRequestProfilePayload {
 
     buyerRequestId: number;
     username: string;
@@ -6,10 +6,10 @@ export class BuyerRequest {
     description: string;
     category: string;
     subCategory: string;
+    unit: string;
     quantity: number;
     price: number;
     location: string;
     createdDate: Date;
-    createdTime: Date;
-    deliveryTime: Date;
+    expectDays: number;
 }

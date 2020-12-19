@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardBuyerRequest } from './dashboard-buyer-request';
+import { DashboardBuyerRequestPayload } from './dashboard-buyer-request-payload';
 import { BuyerRequestService } from '../../../services/buyer-request.service'
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
@@ -11,7 +11,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class BuyerDashboardComponent implements OnInit {
 
-  dashboardBuyerRequests: DashboardBuyerRequest[];
+  dashboardBuyerRequests: DashboardBuyerRequestPayload[];
 
   constructor(private buyerRequestService: BuyerRequestService, private router: Router, private authService: AuthService) { }
 
