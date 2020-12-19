@@ -11,7 +11,8 @@
 </div>
 
 <div class="container pt-3 mt-3">
-    <button id="newShop" type="button" class="btn btn-secondary btn-lg btn-block">Create New Shop +</button>
+    <button id="newShop" type="button" class="btn btn-secondary btn-lg btn-block"
+        [routerLink]="['/farmer-dashboard/create-shop']">Create New Shop +</button>
     <hr>
     <div class="card mb-4" *ngFor="let dashboardShop of dashboardShops">
         <h4 class="card-header">{{dashboardShop?.title}}</h4>
@@ -24,4 +25,7 @@
                 routerLink='/farmer-dashboard/update-shop/{{dashboardShop?.shopId}}'>Edit Shop</button>
         </div>
     </div>
+    <hr>
 </div>
+
+<app-footer></app-footer>

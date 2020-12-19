@@ -30,6 +30,7 @@ import { AdminDashboardComponent } from './user/profile/admin-dashboard/admin-da
 import { BuyerDashboardComponent } from './user/profile/buyer-dashboard/buyer-dashboard.component';
 import { FarmerDashboardComponent } from './user/profile/farmer-dashboard/farmer-dashboard.component';
 import { ShopUpdateComponent } from './shops/shop-update/shop-update.component';
+import { ShopCreateComponent } from './shops/shop-create/shop-create.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { ShopUpdateComponent } from './shops/shop-update/shop-update.component';
     BuyerDashboardComponent,
     FarmerDashboardComponent,
     ShopUpdateComponent,
+    ShopCreateComponent,
   ],
   imports: [
     BrowserModule,
