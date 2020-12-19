@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileShop } from './profile-shop';
+import { ProfileShopPayload } from './profile-shop-payload';
 import { ShopService } from '../../services/shop.service'
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ShopsProfileComponent implements OnInit {
 
-  profileShops: ProfileShop[];
+  profileShops: ProfileShopPayload[];
 
   constructor(private shopService: ShopService, private router: Router) { }
 

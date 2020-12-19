@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../../services/shop.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Shop } from './shop';
-import { MustMatch } from '../../shared/mustMatch';
+import { ShopCreatePayload } from './shop-create-payload';
+import {formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ShopCreateComponent implements OnInit {
 
   newShopFrom: FormGroup;
-  shop: Shop;
+  shop: ShopCreatePayload;
   datasaved: boolean;
   datanotsaved: boolean;
 
@@ -26,9 +26,9 @@ export class ShopCreateComponent implements OnInit {
       category: ['', [Validators.required]],
       subCategory: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      quantity: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      deliveryTime: ['', [Validators.required]],
+      unit: ['', [Validators.required]],
+      priceOfOneUnit: ['', [Validators.required]],
+      deliveryDays: ['', [Validators.required]],
       location: ['', [Validators.required]],
     });
   }
@@ -46,8 +46,9 @@ export class ShopCreateComponent implements OnInit {
     this.datasaved = false;
     this.datanotsaved = false;
     this.shop = this.newShopFrom.value;
-    this.shop.createdDate = new Date();
-    console.log(this.shop);
+
+    let createdDate = new Date();
+    this.shop.createdDate = formatDate(createdDate, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
     //this.postData(this.shop);
   }
 

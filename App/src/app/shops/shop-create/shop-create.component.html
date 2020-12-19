@@ -43,29 +43,30 @@
             </span>
         </div>
         <div class="form-group">
-            <label>Quantity</label>
-            <input type="text" [formControlName]="'quantity'" class="form-control col-md-6"
-                placeholder="Enter quantity">
-            <span class="form-text text-danger"
-                *ngIf="formControls.quantity.errors?.required && formControls.quantity.touched">
-                Quantity is required!
-            </span>
+            <label>Unit</label>
+            <select class="form-control col-md-6" [formControlName]="'unit'">
+                <option value="" selected disabled>Unit...</option>
+                <option value="1 milligram">1 milligram</option>
+                <option value="1 gram">1 gram</option>
+                <option value="1 kilogram">1 kilogram</option>
+                <option value="1 tonne">1 tonne</option>
+            </select>
         </div>
         <div class="form-group">
-            <label>Price</label>
-            <input type="text" [formControlName]="'price'" class="form-control col-md-6" placeholder="Enter price">
+            <label>Price of One Unit</label>
+            <input type="text" [formControlName]="'priceOfOneUnit'" class="form-control col-md-6" placeholder="Enter price">
             <span class="form-text text-danger"
-                *ngIf="formControls.price.errors?.required && formControls.price.touched">
+                *ngIf="formControls.priceOfOneUnit.errors?.required && formControls.priceOfOneUnit.touched">
                 Price is required!
             </span>
         </div>
         <div class="form-group">
-            <label>Delivery Time</label>
-            <input type="text" [formControlName]="'deliveryTime'" class="form-control col-md-6"
-                placeholder="Enter delivery time">
+            <label>Delivery Days</label>
+            <input type="text" [formControlName]="'deliveryDays'" class="form-control col-md-6"
+                placeholder="Enter delivery days">
             <span class="form-text text-danger"
-                *ngIf="formControls.deliveryTime.errors?.required && formControls.deliveryTime.touched">
-                Delivery Time is required!
+                *ngIf="formControls.deliveryDays.errors?.required && formControls.deliveryDays.touched">
+                Delivery Days is required!
             </span>
         </div>
         <div class="form-group">

@@ -1,5 +1,7 @@
 #shop_title{
-    background-color: black;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border: none;
 }
 
 a:hover{
@@ -9,9 +11,13 @@ a:hover{
 #shop_title:hover{
     text-decoration: none;
     color: white !important;
-    background-color: #1AD60D;
+    background-color: #1AD60D !important;
 }
 
 ul:hover{
  border-radius: 0px;
+}
+
+p {
+    font-size: 14px;
 }

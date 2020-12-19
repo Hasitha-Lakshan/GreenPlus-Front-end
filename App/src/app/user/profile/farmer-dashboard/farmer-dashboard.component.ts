@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardShop } from './dashboard-shop';
+import { DashboardShopPayload } from './dashboard-shop-payload';
 import { ShopService } from '../../../services/shop.service'
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
@@ -11,7 +11,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class FarmerDashboardComponent implements OnInit {
 
-  dashboardShops: DashboardShop[];
+  dashboardShops: DashboardShopPayload[];
 
   constructor(private shopService: ShopService, private router: Router, private authService: AuthService) { }
 

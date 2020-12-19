@@ -13,7 +13,7 @@
 <div class="container mt-4">
     <div>
         <h1>{{shop?.title}}</h1>
-        <p>Created On: {{shop?.createdDate}} at {{shop?.createdTime}} | Created By: <a class="username"
+        <p>Created On: {{shop?.createdDate}} | Created By: <a class="username"
                 routerLink='/user/{{shop?.username}}'><b>{{shop?.username}}</b></a>
         </p>
     </div>
@@ -30,9 +30,8 @@
     </div>
 
     <div class="row">
-        <button class="col btn btn-secondary py-3">Quantity: {{shop?.quantity}} Kg</button>
-        <button class="col btn btn-dark">Price: {{shop?.price}}.00 LKR</button>
-        <button class="col btn btn-secondary">Delivery Time: {{shop?.deliveryTime}}</button>
+        <button class="col btn btn-dark py-3">{{shop?.unit}} for {{shop?.priceOfOneUnit}}.00 LKR</button>
+        <button class="col btn btn-secondary">Delivery in {{shop?.deliveryDays}} Days</button>
     </div>
 
     <div class="row mt-3">
@@ -47,7 +46,7 @@
             <h5>ORDER NOW</h5>
         </button>
         <button *ngIf="usernameFromLocalStorage == shop?.username" class="bigButton col btn text-light py-3"
-            [routerLink]="['/farmer-dashboard']">
+            routerLink='/farmer-dashboard/update-shop/{{shopId}}'>
             <h5>EDIT SHOP</h5>
         </button>
     </div>

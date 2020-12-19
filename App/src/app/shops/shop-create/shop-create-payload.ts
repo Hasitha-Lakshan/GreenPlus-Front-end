@@ -1,14 +1,13 @@
-export class Shop {
+export class ShopCreatePayload {
 
     title: string;
     description: string;
     category: string;
     subCategory: string;
-    quantity: number;
-    price: number;
+    unit: string;
+    priceOfOneUnit: number;
     location: string;
-    createdDate: Date;
-    createdTime: Date;
-    deliveryTime: Date;
+    createdDate: string;
+    deliveryDays: number;
     username: string;
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HomeShop } from '../shops/shops-home/home-shop';
-import { Shop } from '../shops/shop-details/shop';
-import { ProfileShop } from '../shops/shops-profile/profile-shop';
-import { DashboardShop } from '../user/profile/farmer-dashboard/dashboard-shop'
+import { HomeShopPayload } from '../shops/shops-home/home-shop-payload';
+import { ShopDetailsPayload } from '../shops/shop-details/shop-details-payload';
+import { ProfileShopPayload } from '../shops/shops-profile/profile-shop-payload';
+import { DashboardShopPayload } from '../user/profile/farmer-dashboard/dashboard-shop-payload'
 
 @Injectable({
   providedIn: 'root'
@@ -16,32 +16,32 @@ export class ShopService {
 
   constructor(private http: HttpClient) { }
 
-  connectHomeShopsApi(): Observable<HomeShop[]> {
+  connectHomeShopsApi(): Observable<HomeShopPayload[]> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
     let options = { headers: httpHeader };
 
-    return this.http.get<HomeShop[]>(this.url + "shops", options);
+    return this.http.get<HomeShopPayload[]>(this.url + "shops", options);
   }
 
-  connectShopByShopidApi(shopId: string): Observable<Shop> {
+  connectShopByShopidApi(shopId: string): Observable<ShopDetailsPayload> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
     let options = { headers: httpHeader };
 
-    return this.http.get<Shop>(this.url + "shopbyshopid/" + shopId, options);
+    return this.http.get<ShopDetailsPayload>(this.url + "shopbyshopid/" + shopId, options);
   }
 
-  connectShopByUsernameApi(username: string): Observable<ProfileShop[]> {
+  connectShopByUsernameApi(username: string): Observable<ProfileShopPayload[]> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
     let options = { headers: httpHeader };
 
-    return this.http.get<ProfileShop[]>(this.url + "shopsbyuser/" + username, options);
+    return this.http.get<ProfileShopPayload[]>(this.url + "shopsbyuser/" + username, options);
   }
 
-  connectDashboardShopsByUsernameApi(username: string): Observable<DashboardShop[]> {
+  connectDashboardShopsByUsernameApi(username: string): Observable<DashboardShopPayload[]> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
     let options = { headers: httpHeader };
 
-    return this.http.get<DashboardShop[]>(this.url_2 + "shopsbyuser/" + username, options);
+    return this.http.get<DashboardShopPayload[]>(this.url_2 + "shopsbyuser/" + username, options);
   }
 
 }

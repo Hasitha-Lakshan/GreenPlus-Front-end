@@ -17,7 +17,7 @@
     <div class="card mb-4" *ngFor="let dashboardShop of dashboardShops">
         <h4 class="card-header">{{dashboardShop?.title}}</h4>
         <div class="card-body">
-            <span class="time">Created on : {{dashboardShop?.createdDate}} at {{dashboardShop?.createdTime}}</span>
+            <span class="time">Created on : {{dashboardShop?.createdDate}}</span>
             <hr>
             <span class="badge badge-success" *ngIf="dashboardShop?.shopStatus">Active</span>
             <span class="badge badge-danger" *ngIf="!dashboardShop?.shopStatus">Inactive</span>

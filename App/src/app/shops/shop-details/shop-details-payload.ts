@@ -1,14 +1,13 @@
-export class Shop {
+export class ShopDetailsPayload {
 
     title: string;
     description: string;
     category: string;
     subCategory: string;
-    quantity: number;
-    price: number;
+    unit: string;
+    priceOfOneUnit: number;
     location: string;
     createdDate: Date;
-    createdTime: Date;
-    deliveryTime: Date;
+    deliveryDays: number;
     username: string;
 } 

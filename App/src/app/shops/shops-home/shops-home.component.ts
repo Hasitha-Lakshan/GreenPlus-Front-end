@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../../services/shop.service'
-import { HomeShop } from './home-shop';
+import { HomeShopPayload } from './home-shop-payload';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ShopsHomeComponent implements OnInit {
 
-  homeShops: HomeShop[];
+  homeShops: HomeShopPayload[];
 
   constructor(private shopService: ShopService, private router: Router) { }
 

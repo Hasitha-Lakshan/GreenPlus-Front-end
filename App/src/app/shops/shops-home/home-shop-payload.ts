@@ -1,8 +1,9 @@
-export class ProfileShop {
-    
+export class HomeShopPayload {
+
     shopId: number;
     title: string;
-    price: number;
+    unit: string;
+    priceOfOneUnit: number;
     location: string;
     createdDate: Date;
 }

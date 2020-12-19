@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { ShopService } from '../../services/shop.service'
 import { AuthService } from '../../services/auth.service'
-import { Shop } from './shop';
+import { ShopDetailsPayload } from './shop-details-payload';
 
 @Component({
   selector: 'app-shop-details',
@@ -14,7 +14,7 @@ export class ShopDetailsComponent implements OnInit {
 
   url: string;
   shopId: string;
-  shop: Shop;
+  shop: ShopDetailsPayload;
   usernameFromLocalStorage: string;
 
   constructor(private shopService: ShopService, private router: Router, private localStorageService: LocalStorageService, private authService: AuthService) { }
