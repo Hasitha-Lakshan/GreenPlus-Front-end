@@ -2,8 +2,7 @@
 
 <div class="container mt-5 mb-5 p-4 col-lg-6">
     <div *ngIf="datasaved" class="message alert alert-success" role="alert">
-        <h4 class="alert-heading">The Shop Successfully Created!</h4>
-        <hr>
+        <p class="alert-heading">The Shop Successfully Created!</p>
     </div>
     <p *ngIf="datanotsaved" class="message alert alert-danger">Shop Creating is failed!</p>
     <form [formGroup]="newShopFrom" (ngSubmit)="submitNewShopData()">

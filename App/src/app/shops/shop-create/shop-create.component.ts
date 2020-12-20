@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../../services/shop.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ShopCreatePayload } from './shop-create-payload';
-import {formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+import { ResponsePayload } from 'src/app/shared/response-payload';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-shop-create',
@@ -17,7 +19,7 @@ export class ShopCreateComponent implements OnInit {
   datasaved: boolean;
   datanotsaved: boolean;
 
-  constructor(private shopService: ShopService, private formbuilder: FormBuilder, private router: Router) { }
+  constructor(private shopService: ShopService, private formbuilder: FormBuilder, private router: Router, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
 
@@ -49,22 +51,23 @@ export class ShopCreateComponent implements OnInit {
 
     let createdDate = new Date();
     this.shop.createdDate = formatDate(createdDate, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
-    //this.postData(this.shop);
+    this.shop.username = this.localStorageService.retrieve('username');
+    this.postNewShopData(this.shop);
   }
 
- /* postData(newShop: Shop) {
-    this.shopService.connectSignupApi(newShop).subscribe(status => {
-      let signupStatus: any;
-      signupStatus = status;
+  postNewShopData(newShop: ShopCreatePayload) {
+    this.shopService.connectCreateShopApi(newShop).subscribe(response => {
+      let shopCreatingResponse: ResponsePayload;
+      shopCreatingResponse = response;
 
-      if (signupStatus) {
-        this.datasaved = signupStatus;
-        this.signupForm.reset();
+      if (shopCreatingResponse.responseStatus) {
+        this.datasaved = shopCreatingResponse.responseStatus;
+        this.newShopFrom.reset();
       }
       else {
         this.datanotsaved = true;
       }
     });
-  }*/
+  }
 
 }
