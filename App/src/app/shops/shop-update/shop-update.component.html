@@ -1,1 +1,109 @@
-<p>shop-update works!</p>
+<app-navbar></app-navbar>
+
+<div class="container mt-5 mb-5 p-4 col-lg-6">
+    <div *ngIf="datasaved" class="message alert alert-success" role="alert">
+        <p class="alert-heading">The Shop Updated Created!</p>
+    </div>
+    <p *ngIf="datanotsaved" class="message alert alert-danger">Shop Updating is failed!</p>
+    <form [formGroup]="shopFrom" (ngSubmit)="updateShopData()">
+        <div class="form-group">
+            <div class="text-right text-secondary">
+                <p>Created on: {{shop?.createdDate}}</p>
+            </div>
+            <hr>
+            <label>Title</label>
+            <input type="text" [formControlName]="'title'" class="form-control" placeholder="Enter shop title">
+            <span class="form-text text-danger"
+                *ngIf="formControls.title.errors?.required && formControls.title.touched">
+                Title is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select class="form-control col-md-6" [formControlName]="'category'">
+                <option value="" selected disabled>Category...</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Vegetables">Vegetables</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Sub-Category</label>
+            <select class="form-control col-md-6" [formControlName]="'subCategory'">
+                <option value="" selected disabled>Sub-category...</option>
+                <option value="Banana">Banana</option>
+                <option value="Mango">Mango</option>
+                <option value="Apple">Apple</option>
+                <option value="Orange">Orange</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea type="text" class="form-control" [formControlName]="'description'" rows="6"
+                placeholder="Enter description..."></textarea>
+            <span class="form-text text-danger"
+                *ngIf="formControls.description.errors?.required && formControls.description.touched">
+                Description is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Unit</label>
+            <select class="form-control col-md-6" [formControlName]="'unit'">
+                <option value="" selected disabled>Unit...</option>
+                <option value="1 milligram">1 milligram</option>
+                <option value="1 gram">1 gram</option>
+                <option value="1 kilogram">1 kilogram</option>
+                <option value="1 tonne">1 tonne</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Price of One Unit</label>
+            <input type="text" [formControlName]="'priceOfOneUnit'" class="form-control col-md-6"
+                placeholder="Enter price">
+            <span class="form-text text-danger"
+                *ngIf="formControls.priceOfOneUnit.errors?.required && formControls.priceOfOneUnit.touched">
+                Price is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Delivery Days</label>
+            <input type="text" [formControlName]="'deliveryDays'" class="form-control col-md-6"
+                placeholder="Enter delivery days">
+            <span class="form-text text-danger"
+                *ngIf="formControls.deliveryDays.errors?.required && formControls.deliveryDays.touched">
+                Delivery Days is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+            <select class="form-control col-md-6" [formControlName]="'location'">
+                <option value="" selected disabled>Location...</option>
+                <option value="Gampaha">Gampaha</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Negombo">Negombo</option>
+            </select>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label>Shop Status</label>
+            <div class="form-check">
+                <div>
+                    <input class="form-check-input" type="radio" name="shopStatus" [formControlName]="'shopStatus'"
+                        [value]="true">
+                    <label class="form-check-label mr-5" for="shopStatus">Active</label>
+                    <input class="form-check-input" type="radio" name="shopStatus" [formControlName]="'shopStatus'"
+                        [value]="false">
+                    <label class="form-check-label" for="shopStatus">Inactive</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="clear-btn" type="button" class="btn btn-secondary"
+                routerLink='/user/{{username}}/farmer-dashboard'>Go to Dashboard</button>
+            <button id="submit-btn" type="submit" class="btn btn-secondary"
+                [disabled]="shopFrom.invalid">Submit</button>
+        </div>
+    </form>
+</div>
+
+<app-footer></app-footer>

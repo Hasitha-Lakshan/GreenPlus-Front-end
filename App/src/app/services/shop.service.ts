@@ -7,6 +7,9 @@ import { ProfileShopPayload } from '../shops/shops-profile/profile-shop-payload'
 import { DashboardShopPayload } from '../user/profile/farmer-dashboard/dashboard-shop-payload'
 import { ShopCreatePayload } from '../shops/shop-create/shop-create-payload';
 import { ResponsePayload } from '../shared/response-payload';
+import { ShopUpdateDetailsPayload } from '../shops/shop-update/shop-update-details-payload';
+import { ShopUpdatePayload } from '../shops/shop-update/shop-update-payload';
+
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +54,19 @@ export class ShopService {
     let options = { headers: httpHeader };
 
     return this.http.post<ResponsePayload>(this.url_2 + "shopcreating/", newShop, options);
+  }
+
+  connectShopDetailsByShopidApi(shopId: string): Observable<ShopUpdateDetailsPayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<ShopUpdateDetailsPayload>(this.url_2 + "shopsbyshopid/" + shopId, options);
+  }
+
+  connectShopUpdateApi(updatedShop: ShopUpdatePayload, shopId: string): Observable<ResponsePayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.put<ResponsePayload>(this.url_2 + "shopupdate/" + shopId, updatedShop, options);
   }
 }
