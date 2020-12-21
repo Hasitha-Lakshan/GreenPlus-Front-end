@@ -51,6 +51,7 @@ export class SignupComponent implements OnInit {
     this.datasaved = false;
     this.datanotsaved = false;
     this.signupPayload = this.signupForm.value;
+    this.signupPayload.username = this.signupPayload.username.toLowerCase();
     this.postData(this.signupPayload);
   }
 

@@ -67,7 +67,10 @@ export class ShopCreateComponent implements OnInit {
       else {
         this.datanotsaved = true;
       }
-    });
+    },
+      error => {
+        this.datanotsaved = true;
+      });
   }
 
 }

@@ -3,6 +3,7 @@ import { DashboardShopPayload } from './dashboard-shop-payload';
 import { ShopService } from '../../../services/shop.service'
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { ResponsePayload } from 'src/app/shared/response-payload';
 
 @Component({
   selector: 'app-farmer-dashboard',
@@ -12,6 +13,10 @@ import { AuthService } from '../../../services/auth.service';
 export class FarmerDashboardComponent implements OnInit {
 
   dashboardShops: DashboardShopPayload[];
+  isShopDeleted: boolean;
+  isShopNotDeleted: boolean;
+  shopId: number;
+  shopTitle: string;
 
   constructor(private shopService: ShopService, private router: Router, private authService: AuthService) { }
 
@@ -34,6 +39,30 @@ export class FarmerDashboardComponent implements OnInit {
         this.router.navigate(['error']);
       }
 
+    },
+      error => {
+        this.router.navigate(['error']);
+      });
+  }
+
+  getShopIdAndShopTitle(shopId: number, shopTitle: string) {
+    this.shopId = shopId;
+    this.shopTitle = shopTitle;
+  }
+
+  deleteShop() {
+    this.shopService.connectDeleteShopApi(this.shopId).subscribe((response) => {
+
+      let shopDeletingResponse: ResponsePayload;
+      shopDeletingResponse = response;
+
+      if (shopDeletingResponse.responseStatus) {
+        this.isShopDeleted = shopDeletingResponse.responseStatus;
+        this.ngOnInit();
+      }
+      else {
+        this.isShopNotDeleted = true;
+      }
     },
       error => {
         this.router.navigate(['error']);

@@ -14,6 +14,12 @@
     <button id="newShop" type="button" class="btn btn-secondary btn-lg btn-block"
         [routerLink]="['/farmer-dashboard/create-shop']">Create New Shop +</button>
     <hr>
+    <div *ngIf="isShopDeleted" class="message alert alert-success text-center" role="alert">
+        <h5 class="alert-heading">Shop Successfully Deleted!</h5>
+    </div>
+    <div *ngIf="isShopNotDeleted" class="message alert alert-danger text-center" role="alert">
+        <h5 class="alert-heading">Shop Deleting is failed!</h5>
+    </div>
     <div class="card mb-4" *ngFor="let dashboardShop of dashboardShops">
         <h4 class="card-header">{{dashboardShop?.title}}</h4>
         <div class="card-body">
@@ -21,11 +27,46 @@
             <hr>
             <span class="badge badge-success" *ngIf="dashboardShop?.shopStatus">Active</span>
             <span class="badge badge-danger" *ngIf="!dashboardShop?.shopStatus">Inactive</span>
-            <button class="btn btn-dark float-right edit"
-                routerLink='/farmer-dashboard/update-shop/{{dashboardShop?.shopId}}'>Edit Shop</button>
+            <div class="text-right">
+                <!--Delete Shop Button trigger modal -->
+                <button type="button" class="btn btn-danger button mr-2" data-toggle="modal"
+                    data-target="#staticBackdrop"
+                    (click)="getShopIdAndShopTitle(dashboardShop?.shopId, dashboardShop?.title)">
+                    Delete Shop
+                </button>
+                <button type="button" class="btn btn-dark button"
+                    routerLink='/farmer-dashboard/update-shop/{{dashboardShop?.shopId}}'>Edit Shop
+                </button>
+            </div>
         </div>
     </div>
     <hr>
 </div>
+
+
+<!--Delete Shop Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{shopTitle}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure, Do you want to delete this shop?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" (click)="deleteShop()" data-dismiss="modal">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <app-footer></app-footer>

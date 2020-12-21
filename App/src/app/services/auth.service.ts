@@ -32,7 +32,7 @@ export class AuthService {
     };
     return this.http.post<JwtAuthResponse>(this.url + 'login', loginPayload, options).pipe(map(data => {
       this.localStorageService.store('authenticationtoken', data.authenticationtoken);
-      this.localStorageService.store('username', data.username);
+      this.localStorageService.store('username', data.username.toLowerCase());
       this.localStorageService.store('role', data.role);
     }))
   }

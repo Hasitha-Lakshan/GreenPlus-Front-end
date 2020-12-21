@@ -101,7 +101,10 @@ export class ShopUpdateComponent implements OnInit {
       else {
         this.datanotsaved = true;
       }
-    });
+    },
+      error => {
+        this.datanotsaved = true;
+      });
   }
 
 }

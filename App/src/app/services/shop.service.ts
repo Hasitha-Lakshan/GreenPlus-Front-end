@@ -69,4 +69,12 @@ export class ShopService {
 
     return this.http.put<ResponsePayload>(this.url_2 + "shopupdate/" + shopId, updatedShop, options);
   }
+
+  connectDeleteShopApi(shopId: number): Observable<ResponsePayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.delete<ResponsePayload>(this.url_2 + "shopdelete/" + shopId, options);
+  }
+
 }

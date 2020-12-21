@@ -19,8 +19,8 @@
         <div class="card-body">
             <span class="time">Created on : {{dashboardBuyerRequest?.createdDate}}</span>
             <hr>
-            <span class="badge badge-success" *ngIf="dashboardBuyerRequest?.shopStatus">Active</span>
-            <span class="badge badge-danger" *ngIf="!dashboardBuyerRequest?.shopStatus">Inactive</span>
+            <span class="badge badge-success" *ngIf="dashboardBuyerRequest?.buyerRequestStatus">Active</span>
+            <span class="badge badge-danger" *ngIf="!dashboardBuyerRequest?.buyerRequestStatus">Inactive</span>
             <button class="btn btn-dark float-right edit"
                 routerLink='/buyer-dashboard/update-buyer-request/{{dashboardBuyerRequest?.buyerRequestId}}'>Edit Buyer Request</button>
         </div>

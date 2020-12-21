@@ -1,10 +1,12 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-5 mb-5 p-4 col-lg-6">
-    <div *ngIf="datasaved" class="message alert alert-success" role="alert">
-        <p class="alert-heading">The Shop Successfully Created!</p>
+    <div *ngIf="datasaved" class="message alert alert-success text-center" role="alert">
+        <h5 class="alert-heading">Shop Successfully Created!</h5>
     </div>
-    <p *ngIf="datanotsaved" class="message alert alert-danger">Shop Creating is failed!</p>
+    <div *ngIf="datanotsaved" class="message alert alert-danger text-center" role="alert">
+        <h5 class="alert-heading">Shop Creating is failed!</h5>
+    </div>
     <form [formGroup]="newShopFrom" (ngSubmit)="submitNewShopData()">
         <div class="form-group">
             <label>Title</label>
@@ -53,7 +55,8 @@
         </div>
         <div class="form-group">
             <label>Price of One Unit</label>
-            <input type="text" [formControlName]="'priceOfOneUnit'" class="form-control col-md-6" placeholder="Enter price">
+            <input type="text" [formControlName]="'priceOfOneUnit'" class="form-control col-md-6"
+                placeholder="Enter price">
             <span class="form-text text-danger"
                 *ngIf="formControls.priceOfOneUnit.errors?.required && formControls.priceOfOneUnit.touched">
                 Price is required!
