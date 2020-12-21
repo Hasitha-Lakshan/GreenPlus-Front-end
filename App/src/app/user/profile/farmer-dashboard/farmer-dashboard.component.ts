@@ -65,7 +65,7 @@ export class FarmerDashboardComponent implements OnInit {
       }
     },
       error => {
-        this.router.navigate(['error']);
+        this.isShopNotDeleted = true;
       });
   }
 

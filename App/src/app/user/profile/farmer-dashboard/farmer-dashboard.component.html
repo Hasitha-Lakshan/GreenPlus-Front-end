@@ -31,18 +31,16 @@
                 <!--Delete Shop Button trigger modal -->
                 <button type="button" class="btn btn-danger button mr-2" data-toggle="modal"
                     data-target="#staticBackdrop"
-                    (click)="getShopIdAndShopTitle(dashboardShop?.shopId, dashboardShop?.title)">
-                    Delete Shop
+                    (click)="getShopIdAndShopTitle(dashboardShop?.shopId, dashboardShop?.title)">Delete
                 </button>
                 <button type="button" class="btn btn-dark button"
-                    routerLink='/farmer-dashboard/update-shop/{{dashboardShop?.shopId}}'>Edit Shop
+                    routerLink='/farmer-dashboard/update-shop/{{dashboardShop?.shopId}}'>Edit
                 </button>
             </div>
         </div>
     </div>
     <hr>
 </div>
-
 
 <!--Delete Shop Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
@@ -65,8 +63,5 @@
         </div>
     </div>
 </div>
-
-
-
 
 <app-footer></app-footer>

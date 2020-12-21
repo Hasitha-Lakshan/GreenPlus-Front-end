@@ -21,8 +21,17 @@
     font-size: 18px;
   }
 
-  .edit {
+  .button {
     font-size: 12px;
   }
+  
+}
 
+@media screen and (max-width: 342px)
+{
+h5 {
+    font-size: 16px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
 }
