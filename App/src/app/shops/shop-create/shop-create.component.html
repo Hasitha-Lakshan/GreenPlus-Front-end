@@ -56,10 +56,10 @@
         <div class="form-group">
             <label>Price of One Unit</label>
             <input type="text" [formControlName]="'priceOfOneUnit'" class="form-control col-md-6"
-                placeholder="Enter price">
+                placeholder="Enter price of one unit">
             <span class="form-text text-danger"
                 *ngIf="formControls.priceOfOneUnit.errors?.required && formControls.priceOfOneUnit.touched">
-                Price is required!
+                Price of One Unit is required!
             </span>
         </div>
         <div class="form-group">

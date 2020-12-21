@@ -1,1 +1,100 @@
 <app-navbar></app-navbar>
+
+<div class="container mt-5 mb-5 p-4 col-lg-6">
+    <div *ngIf="datasaved" class="message alert alert-success text-center" role="alert">
+        <h5 class="alert-heading">Buyer Request Successfully Created!</h5>
+    </div>
+    <div *ngIf="datanotsaved" class="message alert alert-danger text-center" role="alert">
+        <h5 class="alert-heading">Buyer Request Creating is failed!</h5>
+    </div>
+    <form [formGroup]="newBuyerRequestFrom" (ngSubmit)="submitNewBuyerRequestData()">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" [formControlName]="'title'" class="form-control" placeholder="Enter buyer request title">
+            <span class="form-text text-danger"
+                *ngIf="formControls.title.errors?.required && formControls.title.touched">
+                Title is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select class="form-control col-md-6" [formControlName]="'category'">
+                <option value="" selected disabled>Category...</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Vegetables">Vegetables</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Sub-Category</label>
+            <select class="form-control col-md-6" [formControlName]="'subCategory'">
+                <option value="" selected disabled>Sub-category...</option>
+                <option value="Banana">Banana</option>
+                <option value="Mango">Mango</option>
+                <option value="Apple">Apple</option>
+                <option value="Orange">Orange</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea type="text" class="form-control" [formControlName]="'description'" rows="6"
+                placeholder="Enter description..."></textarea>
+            <span class="form-text text-danger"
+                *ngIf="formControls.description.errors?.required && formControls.description.touched">
+                Description is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Unit</label>
+            <select class="form-control col-md-6" [formControlName]="'unit'">
+                <option value="" selected disabled>Unit...</option>
+                <option value="1 milligram">1 milligram</option>
+                <option value="1 gram">1 gram</option>
+                <option value="1 kilogram">1 kilogram</option>
+                <option value="1 tonne">1 tonne</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="text" [formControlName]="'quantity'" class="form-control col-md-6" placeholder="Enter quantity">
+            <span class="form-text text-danger"
+                *ngIf="formControls.quantity.errors?.required && formControls.quantity.touched">
+                Quantity is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="text" [formControlName]="'price'" class="form-control col-md-6"
+                placeholder="Enter price">
+            <span class="form-text text-danger"
+                *ngIf="formControls.price.errors?.required && formControls.price.touched">
+                Price is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Expect Days</label>
+            <input type="text" [formControlName]="'expectDays'" class="form-control col-md-6"
+                placeholder="Enter expect days">
+            <span class="form-text text-danger"
+                *ngIf="formControls.expectDays.errors?.required && formControls.expectDays.touched">
+                Expect Days is required!
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+            <select class="form-control col-md-6" [formControlName]="'location'">
+                <option value="" selected disabled>Location...</option>
+                <option value="Gampaha">Gampaha</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Negombo">Negombo</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+            <button id="clear-btn" type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
+            <button id="submit-btn" type="submit" class="btn btn-secondary"
+                [disabled]="newBuyerRequestFrom.invalid">Submit</button>
+        </div>
+    </form>
+</div>
+
+<app-footer></app-footer>

@@ -5,6 +5,7 @@ import { BuyerRequestPayload } from '../buyer-request/buyer-request-payload'
 import { BuyerRequestProfilePayload } from '../buyer-request/buyer-request-profile/buyer-request-profile-payload'
 import { DashboardBuyerRequestPayload } from '../user/profile/buyer-dashboard/dashboard-buyer-request-payload'
 import { ResponsePayload } from '../shared/response-payload';
+import { BuyerRequestCreatePayload } from '../buyer-request/buyer-request-create/buyer-request-create-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,13 @@ export class BuyerRequestService {
     let options = { headers: httpHeader };
 
     return this.http.get<DashboardBuyerRequestPayload[]>(this.url_2 + "buyerrequestsbyuser/" + username, options);
+  }
+
+  connectCreateBuyerRequestApi(newBuyerRequest: BuyerRequestCreatePayload): Observable<ResponsePayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.post<ResponsePayload>(this.url_2 + "buyerrequestcreationg/", newBuyerRequest, options);
   }
 
   connectDeleteBuyerRequestApi(buyerRequestId: number): Observable<ResponsePayload> {
