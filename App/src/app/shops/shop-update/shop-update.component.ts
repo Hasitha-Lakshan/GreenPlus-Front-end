@@ -55,7 +55,7 @@ export class ShopUpdateComponent implements OnInit {
   }
 
   getShopDetails() {
-    this.shopService.connectShopDetailsByShopidApi(this.getShopIdFromUrl()).subscribe((data) => {
+    this.shopService.connectShopDetailsByShopIdApi(this.getShopIdFromUrl()).subscribe((data) => {
 
       if (data != null) {
         this.shop = data;

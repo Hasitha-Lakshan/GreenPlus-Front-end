@@ -6,6 +6,8 @@ import { BuyerRequestProfilePayload } from '../buyer-request/buyer-request-profi
 import { DashboardBuyerRequestPayload } from '../user/profile/buyer-dashboard/dashboard-buyer-request-payload'
 import { ResponsePayload } from '../shared/response-payload';
 import { BuyerRequestCreatePayload } from '../buyer-request/buyer-request-create/buyer-request-create-payload';
+import { BuyerRequestUpdateDetailsPayload } from '../buyer-request/buyer-request-update/buyer-request-update-details-payload';
+import { BuyerRequestUpdatePayload } from '../buyer-request/buyer-request-update/buyer-request-update-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,20 @@ export class BuyerRequestService {
     let options = { headers: httpHeader };
 
     return this.http.post<ResponsePayload>(this.url_2 + "buyerrequestcreationg/", newBuyerRequest, options);
+  }
+
+  connectBuyerRequestDetailsByBuyerRequestIdApi(buyerRequestId: string): Observable<BuyerRequestUpdateDetailsPayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<BuyerRequestUpdateDetailsPayload>(this.url_2 + "buyerrequestbybuyerrequestid/" + buyerRequestId, options);
+  }
+
+  connectBuyerRequestUpdateApi(updatedBuyerRequest: BuyerRequestUpdatePayload, buyerrequestId: string): Observable<ResponsePayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.put<ResponsePayload>(this.url_2 + "buyerrequestupdate/" + buyerrequestId, updatedBuyerRequest, options);
   }
 
   connectDeleteBuyerRequestApi(buyerRequestId: number): Observable<ResponsePayload> {

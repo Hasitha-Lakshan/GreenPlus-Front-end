@@ -5,7 +5,8 @@
                 [attr.data-target]="'#buyerRequestId_'+[buyerRequest?.buyerRequestId]" aria-expanded="true"
                 aria-controls="collapseOne">{{buyerRequest?.title}}
             </button>
-            <p class="card-header">Created On: {{buyerRequest?.createdDate}}  |  Created By: <b>{{buyerRequest?.username}}</b></p>
+            <p class="card-header">Created On: {{buyerRequest?.createdDate}} | Created By:
+                <b>{{buyerRequest?.username}}</b></p>
             <div id="buyerRequestId_{{buyerRequest?.buyerRequestId}}" class="collapse hide" aria-labelledby="headingOne"
                 data-parent="#accordionExample">
                 <div class="card-body">
@@ -34,7 +35,9 @@
                             Buyer</a>
                     </div>
                     <div class="text-right" *ngIf="usernameFromLocalStorage == buyerRequest?.username">
-                        <a id="contactBuyer" [routerLink]="['/buyer-dashboard']" class="btn">Edit Buyer Request</a>
+                        <a id="contactBuyer"
+                            routerLink='/buyer-dashboard/update-buyer-request/{{buyerRequest?.buyerRequestId}}'
+                            class="btn">Edit Buyer Request</a>
                     </div>
 
                 </div>

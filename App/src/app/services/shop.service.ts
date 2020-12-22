@@ -56,7 +56,7 @@ export class ShopService {
     return this.http.post<ResponsePayload>(this.url_2 + "shopcreating/", newShop, options);
   }
 
-  connectShopDetailsByShopidApi(shopId: string): Observable<ShopUpdateDetailsPayload> {
+  connectShopDetailsByShopIdApi(shopId: string): Observable<ShopUpdateDetailsPayload> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
     let options = { headers: httpHeader };
 

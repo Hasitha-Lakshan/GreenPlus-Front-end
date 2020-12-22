@@ -1,0 +1,30 @@
+.container{
+    border: 1px solid #1AD60D;
+}
+
+.btn:focus{
+    box-shadow: none;
+    border: 1px solid #1AD60D;
+}
+
+#submit-btn{
+    background-color: #000000;
+}
+
+#clear-btn{
+    background-color: #000000;
+}
+.container input:focus{
+    background-color:#f0f5ef;
+    border: 1px solid #1AD60D;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 342px)
+{
+  h5 {
+      font-size: 16px;
+      margin-left: 4px;
+      margin-right: 4px;
+  }
+}
