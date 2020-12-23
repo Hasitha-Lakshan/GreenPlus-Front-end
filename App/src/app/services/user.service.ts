@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { ResponsePayload } from '../shared/response-payload';
+import { UserProfile } from '../user/profile/user-profile'
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,16 @@ import { ResponsePayload } from '../shared/response-payload';
 export class UserService {
 
   private url = "http://localhost:8080/api/user/";
+  private url_2 = "http://localhost:8080/api/public/";
 
   constructor(private http: HttpClient) { }
+
+  connectUserDetailsPublicApi(username: string): Observable<UserProfile> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<UserProfile>(this.url + "user/" + username, options);
+  }
 
   connectDeactivateAccountApi(username: string): Observable<ResponsePayload> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');

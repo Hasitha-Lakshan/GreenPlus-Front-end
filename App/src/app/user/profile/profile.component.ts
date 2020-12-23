@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { AuthService } from '../../services/auth.service';
-import { ProfileService } from '../../services/profile.service';
+import { UserService } from '../../services/user.service';
 import { UserProfile } from './user-profile';
 
 @Component({
@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   isValidateUser: boolean;
   userProfile: UserProfile;
 
-  constructor(private profileService: ProfileService, private authService: AuthService, private router: Router, private localStorageService: LocalStorageService) { }
+  constructor(private userService: UserService, private authService: AuthService, private router: Router, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
     this.getUserDetailsPublic();
@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
 
   //Connect the user details-publiic api and fetching the data from database using the username from url. Using the subscribe(), assigning user data to userProfile varialbe
   getUserDetailsPublic() {
-    this.profileService.connectUserDetailsPublicApi(this.getUsernameFromUrl()).subscribe((data) => {
+    this.userService.connectUserDetailsPublicApi(this.getUsernameFromUrl()).subscribe((data) => {
 
       if (data != null) {
         this.userProfile = data;
@@ -52,7 +52,7 @@ export class ProfileComponent implements OnInit {
 
   //Validate user's Id and the user's role using the username from the url and the username from the local-storage
   private validateUser(userIdByUsernameFromUrl: number, userRoleByUsernameFromUrl: string) {
-    this.profileService.connectUserDetailsPublicApi(this.localStorageService.retrieve('username')).subscribe((data) => {
+    this.userService.connectUserDetailsPublicApi(this.localStorageService.retrieve('username')).subscribe((data) => {
 
       if (this.authService.isAuthenticated() && (userIdByUsernameFromUrl === data.userId)) {
         this.isValidateUser = true;
