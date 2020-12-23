@@ -19,6 +19,7 @@ import { ShopUpdateComponent } from './shops/shop-update/shop-update.component'
 import { ShopCreateComponent } from './shops/shop-create/shop-create.component'
 import { BuyerRequestCreateComponent } from './buyer-request/buyer-request-create/buyer-request-create.component';
 import { BuyerRequestUpdateComponent } from './buyer-request/buyer-request-update/buyer-request-update.component';
+import { UserDetailsUpdateComponent } from './user/settings/user-details-update/user-details-update.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'user/:username', component: UserComponent },
   { path: 'user/:username/profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'user/:username/settings/update-user-details', component: UserDetailsUpdateComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/buyer-dashboard', component: BuyerDashboardComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/farmer-dashboard', component: FarmerDashboardComponent, canActivate: [AuthGuard] },

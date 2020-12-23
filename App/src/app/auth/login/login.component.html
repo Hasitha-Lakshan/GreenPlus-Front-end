@@ -4,7 +4,7 @@
   <form [formGroup]="loginForm" (ngSubmit)="submitLoginData()">
     <div class="form-group">
       <label for="username">Username</label>
-      <input [formControlName]="'username'" type="email" class="form-control" placeholder="Enter your username">
+      <input [formControlName]="'username'" type="text" class="form-control" placeholder="Enter your username">
       <p class="form-text text-danger" *ngIf="notRegistered">Invalid username or passsword</p>
     </div>
     <div class="form-group">

@@ -33,6 +33,7 @@ import { ShopUpdateComponent } from './shops/shop-update/shop-update.component';
 import { ShopCreateComponent } from './shops/shop-create/shop-create.component';
 import { BuyerRequestCreateComponent } from './buyer-request/buyer-request-create/buyer-request-create.component';
 import { BuyerRequestUpdateComponent } from './buyer-request/buyer-request-update/buyer-request-update.component';
+import { UserDetailsUpdateComponent } from './user/settings/user-details-update/user-details-update.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { BuyerRequestUpdateComponent } from './buyer-request/buyer-request-updat
     ShopCreateComponent,
     BuyerRequestCreateComponent,
     BuyerRequestUpdateComponent,
+    UserDetailsUpdateComponent,
   ],
   imports: [
     BrowserModule,

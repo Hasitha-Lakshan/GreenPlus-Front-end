@@ -19,7 +19,8 @@
         <div class="col p-5 border m-3">
             <h5>Change Profile Settings</h5>
             <hr>
-            <button id="update" type="button" class="btn border-bottom btn-block mb-4 mt-5 rounded-0">Update User
+            <button id="update" type="button" class="btn border-bottom btn-block mb-4 mt-5 rounded-0"
+                routerLink='/user/{{username}}/settings/update-user-details'>Update User
                 Details</button>
             <button id="update" type="button" class="btn border-bottom btn-block rounded-0 mb-4" data-toggle="modal"
                 data-target="#resetPassword">Reset Password</button>
@@ -41,14 +42,20 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div *ngIf="isAccountNotDeactivated" class="message alert alert-danger text-center" role="alert">
+                    <h5 class="alert-heading">Account Deactivate is Failed!</h5>
+                </div>
                 <p class="text-danger">Are you sure, Do you want to deactivate your account?</p>
                 <hr>
                 <p class="message text-secondary"><b>Note:</b> You can reactivate your account by login with your
-                    username password next time.</p>
+                    username and password next time. Also your shops and buyer requests will not be visible after the
+                    deactivating.
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deactivateAccount()">Yes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="deactivateAccount()">Yes</button>
             </div>
         </div>
     </div>
@@ -66,15 +73,59 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p class="text-danger">Are you sure, Do you want to deactivate your account?</p>
-                <hr>
-                <p class="message text-secondary"><b>Note:</b> You can reactivate your account by login with your
-                    username password.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
-                <!--(click)="deleteShop()"-->
+                <div *ngIf="isPasswordNotReset" class="message alert alert-danger text-center" role="alert">
+                    <h5 class="alert-heading">Password Reset is Failed!</h5>
+                </div>
+                <div *ngIf="isPasswordReset" class="message alert alert-success text-center" role="alert">
+                    <h5 class="alert-heading">Password Reset is Successfull!</h5>
+                    <p>Please login with your new password!</p>
+                </div>
+                <form [formGroup]="resetPasswordForm" (ngSubmit)="submitResetPasswordData()">
+                    <div class="form-group">
+                        <label for="oldPassword">Old Password</label>
+                        <input [formControlName]="'oldPassword'" type="password" class="form-control"
+                            placeholder="Enter your Old password">
+                        <span class="form-text text-danger"
+                            *ngIf="formControls.oldPassword.errors?.required && formControls.oldPassword.touched">
+                            Old Password is required!
+                        </span>
+                        <span class="form-text text-danger"
+                            *ngIf="formControls.oldPassword.errors?.pattern && formControls.oldPassword.touched">
+                            You entered an invalid password!
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="userNewPassword">New Password</label>
+                        <input [formControlName]="'userNewPassword'" type="password" class="form-control"
+                            placeholder="Enter your new password">
+                        <span class="form-text text-danger"
+                            *ngIf="formControls.userNewPassword.errors?.pattern && formControls.userNewPassword.touched">
+                            Password must contains at least 7 characters with including a number!
+                        </span>
+                        <span class="form-text text-danger"
+                            *ngIf="formControls.userNewPassword.errors?.required && formControls.userNewPassword.touched">
+                            New Password is required!
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="userNewconfirmPassword">Confirm Password</label>
+                        <input [formControlName]="'userNewconfirmPassword'" type="password" class="form-control"
+                            placeholder="Enter your confirm password">
+                        <span class="form-text text-danger"
+                            *ngIf="formControls.userNewconfirmPassword.errors?.required && formControls.userNewconfirmPassword.touched">Confirm
+                            Password is required</span>
+                        <span class="form-text text-danger"
+                            *ngIf="formControls.userNewconfirmPassword.errors?.mustMatch">Confirm
+                            Password does not match</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button *ngIf="!isPasswordReset" type="submit" class="btn btn-danger"
+                            [disabled]="resetPasswordForm.invalid">Submit</button>
+                        <button *ngIf="isPasswordReset" type="button" class="btn btn-success" (click)="reLogin()"
+                            data-dismiss="modal">Login</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
