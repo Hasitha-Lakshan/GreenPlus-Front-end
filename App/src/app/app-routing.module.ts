@@ -32,7 +32,7 @@ const routes: Routes = [
   // User Components
   { path: 'user/:username', component: UserComponent },
   { path: 'user/:username/profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'user/:username/settings', component: SettingsComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/buyer-dashboard', component: BuyerDashboardComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/farmer-dashboard', component: FarmerDashboardComponent, canActivate: [AuthGuard] },
