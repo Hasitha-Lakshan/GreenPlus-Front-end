@@ -1,1 +1,82 @@
-<p>settings works!</p>
+<app-navbar></app-navbar>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col p-5 border m-3">
+            <h5>Change Profile Picture</h5>
+            <hr>
+            <img id="profile_picture" class="rounded-circle mx-auto d-block" src="../../../assets/Profile.jpg"
+                alt="profile_picture">
+            <form>
+                <div class="form-group" class="mt-4">
+                    <input type="file" class="form-control-file" id="profile_picture">
+                </div>
+                <hr>
+                <button id="save" class="btn btn-secondary float-right">Save</button>
+            </form>
+        </div>
+        <div class="col p-5 border m-3">
+            <h5>Change Profile Settings</h5>
+            <hr>
+            <button id="update" type="button" class="btn border-bottom btn-block mb-4 mt-5 rounded-0">Update User
+                Details</button>
+            <button id="update" type="button" class="btn border-bottom btn-block rounded-0 mb-4" data-toggle="modal"
+                data-target="#resetPassword">Reset Password</button>
+            <button id="deactivate" type="button" class="btn border-bottom btn-block rounded-0" data-toggle="modal"
+                data-target="#deactivateAccount">Deactivate Account</button>
+        </div>
+    </div>
+</div>
+
+<!--Deactivate Account Modal -->
+<div class="modal fade" id="deactivateAccount" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Deactivate Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">Are you sure, Do you want to deactivate your account?</p>
+                <hr>
+                <p class="message text-secondary"><b>Note:</b> You can reactivate your account by login with your
+                    username password next time.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                <!--(click)="deleteShop()"-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Reset Password Modal -->
+<div class="modal fade" id="resetPassword" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Reset Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">Are you sure, Do you want to deactivate your account?</p>
+                <hr>
+                <p class="message text-secondary"><b>Note:</b> You can reactivate your account by login with your
+                    username password.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                <!--(click)="deleteShop()"-->
+            </div>
+        </div>
+    </div>
+</div>

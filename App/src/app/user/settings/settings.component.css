@@ -1,0 +1,65 @@
+#profile_picture{
+    width: 250px;
+}
+
+#deactivate:hover {
+    border-bottom: 1px solid rgb(167, 0, 0) !important;
+    color: rgb(167, 0, 0);
+}
+
+#deactivate:focus {
+    box-shadow: none;
+}
+
+#update:hover {
+    border-bottom: 1px solid #1AD60D !important;
+    color: #1AD60D;
+}
+
+#update:focus {
+    box-shadow: none;
+}
+
+#save {
+    background-color: black;
+}
+
+#save:focus {
+    box-shadow: none;
+}
+
+#save:hover {
+    background-color: #1AD60D;
+    color: white;
+    border: 1px solid #1AD60D;
+}
+
+.modal-body .message {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px)
+{
+    #profile_picture_position{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 380px)
+{
+    #profile_picture{
+        width: 180px;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    input {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
