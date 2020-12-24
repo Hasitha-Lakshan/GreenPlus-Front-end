@@ -4,6 +4,8 @@ import { Observable } from 'rxjs'
 import { ResponsePayload } from '../shared/response-payload';
 import { UserProfile } from '../user/profile/user-profile'
 import { ResetPasswordPayload } from '../user/settings/reset-password-payload';
+import { UserDetailsGetPayload } from '../user/settings/user-details-update/user-details-get-payload';
+import { UserDetailsUpdatePayload } from '../user/settings/user-details-update/user-details-update-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +36,19 @@ export class UserService {
     let options = { headers: httpHeader };
 
     return this.http.put<ResponsePayload>(this.url + "resetpassword/" + username, resetPasswordPayloadData, options);
+  }
+
+  connectUserDetailsByUsernamedApi(username: string): Observable<UserDetailsGetPayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<UserDetailsGetPayload>(this.url + username, options);
+  }
+
+  connectUserUpdateApi(username: string, userDetailsUpdatePayloadData: UserDetailsUpdatePayload): Observable<ResponsePayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.put<ResponsePayload>(this.url + "updateuserdetails/" + username, userDetailsUpdatePayloadData, options);
   }
 }
