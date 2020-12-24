@@ -20,18 +20,12 @@
     box-shadow: none;
 }
 
-#save {
+#upload {
     background-color: black;
 }
 
-#save:focus {
+#upload:focus {
     box-shadow: none;
-}
-
-#save:hover {
-    background-color: #1AD60D;
-    color: white;
-    border: 1px solid #1AD60D;
 }
 
 .modal-body .message {

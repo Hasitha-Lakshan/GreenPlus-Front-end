@@ -20,6 +20,10 @@ export class SettingsComponent implements OnInit {
   resetPasswordForm: FormGroup;
   resetPasswordPayload: ResetPasswordPayload;
   username: string;
+  setProfilePictureForm: FormGroup;
+  profilePicture: File;
+  isProfilePictureSet: boolean;
+  isProfileNotPictureSet: boolean;
 
   constructor(private userService: UserService, private router: Router, private authService: AuthService, private formbuilder: FormBuilder) { }
 
@@ -33,7 +37,42 @@ export class SettingsComponent implements OnInit {
       userNewconfirmPassword: ['', [Validators.required]]
     }, {
       validator: MustMatch('userNewPassword', 'userNewconfirmPassword')
-    })
+    });
+
+    this.setProfilePictureForm = this.formbuilder.group({
+      profilePicture: ['', [Validators.required]]
+    });
+  }
+
+  getProfilePictureData(event: any) {
+    this.profilePicture = event.target.files[0];
+  }
+
+  uploadProfilePicture() {
+
+    const profilePictureData = new FormData();
+    profilePictureData.append('profilePicture', this.profilePicture, this.profilePicture.name);
+
+    this.userService.connectSetProfilePictureApi(profilePictureData, this.username).subscribe(response => {
+
+      let setProfilePictureResponse: ResponsePayload;
+      setProfilePictureResponse = response;
+
+      if (setProfilePictureResponse.responseStatus) {
+        this.isProfilePictureSet = setProfilePictureResponse.responseStatus;
+        this.clearSetProfilePictureForm();
+
+      } else {
+        this.isProfileNotPictureSet = !setProfilePictureResponse.responseStatus;
+      }
+    },
+      error => {
+        this.isProfileNotPictureSet = true;
+      });
+  }
+
+  clearSetProfilePictureForm() {
+    this.setProfilePictureForm.reset();
   }
 
   get formControls() {

@@ -1,19 +1,26 @@
 <app-navbar></app-navbar>
 
-
 <div class="container mt-5">
+    <div *ngIf="isProfilePictureSet" class="message alert alert-success text-center" role="alert">
+        <h5 class="alert-heading">Profile picture successfully Uploaded!</h5>
+    </div>
+    <div *ngIf="isProfileNotPictureSet" class="message alert alert-danger text-center" role="alert">
+        <h5 class="alert-heading">Profile picture uploading is failed!</h5>
+    </div>
     <div class="row">
         <div class="col p-5 border m-3">
             <h5>Change Profile Picture</h5>
             <hr>
             <img id="profile_picture" class="rounded-circle mx-auto d-block" src="../../../assets/Profile.jpg"
                 alt="profile_picture">
-            <form>
+            <form [formGroup]="setProfilePictureForm" (ngSubmit)="uploadProfilePicture()">
                 <div class="form-group" class="mt-4">
-                    <input type="file" class="form-control-file" id="profile_picture">
+                    <input type="file" class="form-control-file" id="profile_picture"
+                        (change)="getProfilePictureData($event)" [formControlName]="'profilePicture'">
                 </div>
                 <hr>
-                <button id="save" class="btn btn-secondary float-right">Save</button>
+                <button id="upload" class="btn btn-secondary float-right" type="submit"
+                    [disabled]="setProfilePictureForm.invalid">Upload</button>
             </form>
         </div>
         <div class="col p-5 border m-3">
