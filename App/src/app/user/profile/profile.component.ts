@@ -14,11 +14,16 @@ export class ProfileComponent implements OnInit {
 
   isValidateUser: boolean;
   userProfile: UserProfile;
+  isAvailableProfilePicture: boolean;
+  isAvailableNotProfilePicture: boolean;
+  profilePicture: any;
 
   constructor(private userService: UserService, private authService: AuthService, private router: Router, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
     this.getUserDetailsPublic();
+    this.isAvailableNotProfilePicture = true;
+    this.getProfilePicture();
   }
 
   //Slice the current url and get the username
@@ -87,6 +92,24 @@ export class ProfileComponent implements OnInit {
       }
 
     })
+  }
+
+  // Get the profile picture from the database
+  getProfilePicture() {
+    this.userService.connectGetProfilePictureApi(this.getUsernameFromUrl()).subscribe(response => {
+
+      if (response != null) {
+        this.profilePicture = 'data:image/jpeg;base64,' + response.pictureBytes;
+        this.isAvailableNotProfilePicture = false;
+        this.isAvailableProfilePicture = true;
+
+      } else {
+        this.isAvailableNotProfilePicture = true;
+      }
+    },
+      error => {
+        this.isAvailableNotProfilePicture = true;
+      });
   }
 
 }

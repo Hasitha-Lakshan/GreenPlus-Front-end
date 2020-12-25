@@ -1,5 +1,6 @@
 #profile_picture{
     width: 250px;
+    height: 250px;
 }
 
 #profile_settings{
@@ -35,6 +36,7 @@
 
     #profile_picture{
         width: 200px;
+        height: 200px;
     }
 
     h6{

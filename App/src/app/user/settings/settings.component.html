@@ -11,12 +11,14 @@
         <div class="col p-5 border m-3">
             <h5>Change Profile Picture</h5>
             <hr>
-            <img id="profile_picture" class="rounded-circle mx-auto d-block" src="../../../assets/Profile.jpg"
-                alt="profile_picture">
+            <img *ngIf="isAvailableProfilePicture" id="profile_picture" class="rounded-circle mx-auto d-block"
+                src="{{profilePicture}}" alt="profile_picture">
+            <img *ngIf="isAvailableNotProfilePicture" id="profile_picture" class="rounded-circle mx-auto d-block"
+                src="../../../assets/Profile.jpg" alt="profile_picture">
             <form [formGroup]="setProfilePictureForm" (ngSubmit)="uploadProfilePicture()">
                 <div class="form-group" class="mt-4">
-                    <input type="file" class="form-control-file" id="profile_picture"
-                        (change)="getProfilePictureData($event)" [formControlName]="'profilePicture'">
+                    <input type="file" class="form-control-file" (change)="getProfilePictureDataFromUser($event)"
+                        [formControlName]="'profilePicture'">
                 </div>
                 <hr>
                 <button id="upload" class="btn btn-secondary float-right" type="submit"

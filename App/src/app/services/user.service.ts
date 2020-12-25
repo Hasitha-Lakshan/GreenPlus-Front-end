@@ -6,6 +6,7 @@ import { UserProfile } from '../user/profile/user-profile'
 import { ResetPasswordPayload } from '../user/settings/reset-password-payload';
 import { UserDetailsGetPayload } from '../user/settings/user-details-update/user-details-get-payload';
 import { UserDetailsUpdatePayload } from '../user/settings/user-details-update/user-details-update-payload';
+import { ProfilePicturePayload } from '../user/settings/profile-picture-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,10 @@ export class UserService {
   connectSetProfilePictureApi(profilePictureData: FormData, username: string): Observable<ResponsePayload> {
 
     return this.http.put<ResponsePayload>(this.url + "setprofilepicture/" + username, profilePictureData);
+  }
+
+  connectGetProfilePictureApi(username: string): Observable<ProfilePicturePayload> {
+
+    return this.http.get<ProfilePicturePayload>(this.url_2 + "user/profilepicture/" + username);
   }
 }

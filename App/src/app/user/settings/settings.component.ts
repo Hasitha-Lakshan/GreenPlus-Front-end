@@ -21,9 +21,12 @@ export class SettingsComponent implements OnInit {
   resetPasswordPayload: ResetPasswordPayload;
   username: string;
   setProfilePictureForm: FormGroup;
-  profilePicture: File;
+  profilePictureFromUser: File;
   isProfilePictureSet: boolean;
   isProfileNotPictureSet: boolean;
+  isAvailableProfilePicture: boolean;
+  isAvailableNotProfilePicture: boolean;
+  profilePicture: any;
 
   constructor(private userService: UserService, private router: Router, private authService: AuthService, private formbuilder: FormBuilder) { }
 
@@ -42,16 +45,19 @@ export class SettingsComponent implements OnInit {
     this.setProfilePictureForm = this.formbuilder.group({
       profilePicture: ['', [Validators.required]]
     });
+
+    this.isAvailableNotProfilePicture = true;
+    this.getProfilePicture();
   }
 
-  getProfilePictureData(event: any) {
-    this.profilePicture = event.target.files[0];
+  getProfilePictureDataFromUser(event: Event) {
+    this.profilePictureFromUser = event.target.files[0];
   }
 
   uploadProfilePicture() {
 
     const profilePictureData = new FormData();
-    profilePictureData.append('profilePicture', this.profilePicture, this.profilePicture.name);
+    profilePictureData.append('profilePicture', this.profilePictureFromUser, this.profilePictureFromUser.name);
 
     this.userService.connectSetProfilePictureApi(profilePictureData, this.username).subscribe(response => {
 
@@ -60,19 +66,40 @@ export class SettingsComponent implements OnInit {
 
       if (setProfilePictureResponse.responseStatus) {
         this.isProfilePictureSet = setProfilePictureResponse.responseStatus;
+        this.isProfileNotPictureSet = !setProfilePictureResponse.responseStatus;
         this.clearSetProfilePictureForm();
+        this.ngOnInit();
 
       } else {
         this.isProfileNotPictureSet = !setProfilePictureResponse.responseStatus;
+        this.isProfilePictureSet = setProfilePictureResponse.responseStatus;
       }
     },
       error => {
         this.isProfileNotPictureSet = true;
+        this.isProfilePictureSet = false;
       });
   }
 
   clearSetProfilePictureForm() {
     this.setProfilePictureForm.reset();
+  }
+
+  getProfilePicture() {
+    this.userService.connectGetProfilePictureApi(this.username).subscribe(response => {
+
+      if (response != null) {
+        this.profilePicture = 'data:image/jpeg;base64,' + response.pictureBytes;
+        this.isAvailableNotProfilePicture = false;
+        this.isAvailableProfilePicture = true;
+
+      } else {
+        this.isAvailableNotProfilePicture = true;
+      }
+    },
+      error => {
+        this.isAvailableNotProfilePicture = true;
+      });
   }
 
   get formControls() {
@@ -116,7 +143,6 @@ export class SettingsComponent implements OnInit {
   getUsernameFromUrl() {
     this.username = this.router.url.slice(6, (this.router.url.length - 9));
   }
-
 
   checkUserValidation() {
     if (!this.authService.validateUserByUsernameFromUrlAndLocalStorageUsingUserId(this.username)) {

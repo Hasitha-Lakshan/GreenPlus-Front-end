@@ -1,5 +1,6 @@
 #profile_picture{
     width: 250px;
+    height: 250px;
 }
 
 #deactivate:hover {
@@ -49,6 +50,7 @@ input:focus{
 {
     #profile_picture{
         width: 180px;
+        height: 180px;
     }
 
     h5 {
