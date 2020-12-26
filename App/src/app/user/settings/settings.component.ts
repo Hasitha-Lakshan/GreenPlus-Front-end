@@ -27,6 +27,8 @@ export class SettingsComponent implements OnInit {
   isAvailableProfilePicture: boolean;
   isAvailableNotProfilePicture: boolean;
   profilePicture: any;
+  isInvalidType: boolean;
+  isExceedMax: boolean;
 
   constructor(private userService: UserService, private router: Router, private authService: AuthService, private formbuilder: FormBuilder) { }
 
@@ -50,12 +52,29 @@ export class SettingsComponent implements OnInit {
     this.getProfilePicture();
   }
 
+  get profilePictureformControls() {
+    return this.setProfilePictureForm.controls;
+  }
+
   getProfilePictureDataFromUser(event: any) {
     this.profilePictureFromUser = event.target.files[0];
+
+    if (this.profilePictureFromUser.size > 1.5e+6) {
+      this.isExceedMax = true;
+
+    } else {
+      this.isExceedMax = false;
+    }
+
+    if (!this.profilePictureFromUser.type.startsWith("image")) {
+      this.isInvalidType = true;
+
+    } else {
+      this.isInvalidType = false;
+    }
   }
 
   uploadProfilePicture() {
-
     const profilePictureData = new FormData();
     profilePictureData.append('profilePicture', this.profilePictureFromUser, this.profilePictureFromUser.name);
 

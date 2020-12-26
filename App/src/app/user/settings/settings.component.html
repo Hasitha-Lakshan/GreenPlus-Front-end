@@ -20,9 +20,15 @@
                     <input type="file" class="form-control-file" (change)="getProfilePictureDataFromUser($event)"
                         [formControlName]="'profilePicture'" accept="image/*">
                 </div>
+                <div class="form-text text-danger">
+                    <span class="mb-0" *ngIf="profilePictureformControls.profilePicture.errors?.required && profilePictureformControls.profilePicture.touched">
+                        Profile picture is required!</span>
+                    <p *ngIf="isExceedMax" class="mb-0">Max file size is 1MB!</p>
+                    <p *ngIf="isInvalidType">Invalid image type!</p>
+                </div>
                 <hr>
                 <button id="upload" class="btn btn-secondary float-right" type="submit"
-                    [disabled]="setProfilePictureForm.invalid">Upload</button>
+                    [disabled]="setProfilePictureForm.invalid || isExceedMax || isInvalidType">Upload</button>
             </form>
         </div>
         <div class="col p-5 border m-3">
