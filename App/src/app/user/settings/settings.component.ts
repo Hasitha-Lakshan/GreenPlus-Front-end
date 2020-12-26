@@ -50,7 +50,7 @@ export class SettingsComponent implements OnInit {
     this.getProfilePicture();
   }
 
-  getProfilePictureDataFromUser(event: Event) {
+  getProfilePictureDataFromUser(event: any) {
     this.profilePictureFromUser = event.target.files[0];
   }
 

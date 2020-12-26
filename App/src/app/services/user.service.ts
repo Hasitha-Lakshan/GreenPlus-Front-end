@@ -55,7 +55,7 @@ export class UserService {
 
   connectSetProfilePictureApi(profilePictureData: FormData, username: string): Observable<ResponsePayload> {
 
-    return this.http.put<ResponsePayload>(this.url + "setprofilepicture/" + username, profilePictureData);
+    return this.http.post<ResponsePayload>(this.url + "setprofilepicture/" + username, profilePictureData);
   }
 
   connectGetProfilePictureApi(username: string): Observable<ProfilePicturePayload> {

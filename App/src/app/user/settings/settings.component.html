@@ -18,7 +18,7 @@
             <form [formGroup]="setProfilePictureForm" (ngSubmit)="uploadProfilePicture()">
                 <div class="form-group" class="mt-4">
                     <input type="file" class="form-control-file" (change)="getProfilePictureDataFromUser($event)"
-                        [formControlName]="'profilePicture'">
+                        [formControlName]="'profilePicture'" accept="image/*">
                 </div>
                 <hr>
                 <button id="upload" class="btn btn-secondary float-right" type="submit"
