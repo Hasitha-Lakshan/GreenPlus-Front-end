@@ -52,10 +52,12 @@ export class SettingsComponent implements OnInit {
     this.getProfilePicture();
   }
 
+  // Getting formcontrols for profile picture
   get profilePictureformControls() {
     return this.setProfilePictureForm.controls;
   }
 
+  // Getting the image data from user and assign it into the variable and validate the file type and size
   getProfilePictureDataFromUser(event: any) {
     this.profilePictureFromUser = event.target.files[0];
 
@@ -74,6 +76,7 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  // Append the picture data into a new FormData type variable and post the data via userService with connectSetProfilePictureApi()
   uploadProfilePicture() {
     const profilePictureData = new FormData();
     profilePictureData.append('profilePicture', this.profilePictureFromUser, this.profilePictureFromUser.name);

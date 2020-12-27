@@ -7,7 +7,7 @@
     <div *ngIf="datanotsaved" class="message alert alert-danger text-center" role="alert">
         <h5 class="alert-heading">Shop Creating is failed!</h5>
     </div>
-    <form [formGroup]="newShopFrom" (ngSubmit)="submitNewShopData()">
+    <form [formGroup]="newShopFrom" (ngSubmit)="submitNewShopData()" enctype="multipart/form-data" method="post">
         <div class="form-group">
             <label>Title</label>
             <input type="text" [formControlName]="'title'" class="form-control" placeholder="Enter shop title">
@@ -43,6 +43,20 @@
                 Description is required!
             </span>
         </div>
+
+
+        <div class="form-group">
+            <label>Shop Picture</label>
+            <input type="file" class="form-control-file" (change)="getshopPictureDataFromUser($event)"
+                [formControlName]="'shopPicture'" accept="image/*">
+            <span class="form-text text-danger"
+                *ngIf="formControls.shopPicture.errors?.required && formControls.shopPicture.touched">
+                Shop Picture is required!</span>
+            <span class="form-text text-danger" *ngIf="isExceedMax">Max file size is 1MB!</span>
+            <span class="form-text text-danger" *ngIf="isInvalidType">Invalid image type!</span>
+        </div>
+
+
         <div class="form-group">
             <label>Unit</label>
             <select class="form-control col-md-6" [formControlName]="'unit'">
@@ -54,7 +68,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Price of One Unit</label>
+            <label>Price of One Unit (LKR)</label>
             <input type="text" [formControlName]="'priceOfOneUnit'" class="form-control col-md-6"
                 placeholder="Enter price of one unit">
             <span class="form-text text-danger"
@@ -84,7 +98,7 @@
         <div class="modal-footer">
             <button id="clear-btn" type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
             <button id="submit-btn" type="submit" class="btn btn-secondary"
-                [disabled]="newShopFrom.invalid">Submit</button>
+                [disabled]="newShopFrom.invalid || isExceedMax || isInvalidType">Submit</button>
         </div>
     </form>
 </div>

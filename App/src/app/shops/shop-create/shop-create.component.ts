@@ -18,6 +18,10 @@ export class ShopCreateComponent implements OnInit {
   shop: ShopCreatePayload;
   datasaved: boolean;
   datanotsaved: boolean;
+  shopPictureFromUser: File;
+  shopPicture: any;
+  isInvalidType: boolean;
+  isExceedMax: boolean;
 
   constructor(private shopService: ShopService, private formbuilder: FormBuilder, private router: Router, private localStorageService: LocalStorageService) { }
 
@@ -28,6 +32,7 @@ export class ShopCreateComponent implements OnInit {
       category: ['', [Validators.required]],
       subCategory: ['', [Validators.required]],
       description: ['', [Validators.required]],
+      shopPicture: ['', [Validators.required]],
       unit: ['', [Validators.required]],
       priceOfOneUnit: ['', [Validators.required]],
       deliveryDays: ['', [Validators.required]],
@@ -35,14 +40,39 @@ export class ShopCreateComponent implements OnInit {
     });
   }
 
+
+  // Getting the image data from user and assign it into the variable and validate the file type and size
+  getshopPictureDataFromUser(event: any) {
+    this.shopPictureFromUser = event.target.files[0];
+
+    if (this.shopPictureFromUser.size > 1.5e+6) {
+      this.isExceedMax = true;
+
+    } else {
+      this.isExceedMax = false;
+    }
+
+    if (!this.shopPictureFromUser.type.startsWith("image")) {
+      this.isInvalidType = true;
+
+    } else {
+      this.isInvalidType = false;
+    }
+  }
+
+  // Reset the from values
   clearForm() {
     this.newShopFrom.reset();
   }
 
+  // Getting the formcontrols of new shop form
   get formControls() {
     return this.newShopFrom.controls;
   }
 
+  // Get the form values and assign those into shop variable
+  // Add created date and username from local storage into shop variable and pass it into postNewShopData()
+  // Append shop picture data into FormData type
   submitNewShopData() {
 
     this.datasaved = false;
@@ -52,11 +82,18 @@ export class ShopCreateComponent implements OnInit {
     let createdDate = new Date();
     this.shop.createdDate = formatDate(createdDate, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
     this.shop.username = this.localStorageService.retrieve('username');
-    this.postNewShopData(this.shop);
+
+    const shopData = new FormData();
+    shopData.append('shopPicture', this.shopPictureFromUser, this.shopPictureFromUser.name);
+    shopData.append('shopDetails', new Blob([JSON.stringify(this.shop)], { type: "application/json" }));
+
+    this.postNewShopData(shopData);
   }
 
-  postNewShopData(newShop: ShopCreatePayload) {
-    this.shopService.connectCreateShopApi(newShop).subscribe(response => {
+  // Post the shop data via the shop service with connectCreateShopApi()
+  postNewShopData(shopData: FormData) {
+    this.shopService.connectCreateShopApi(shopData).subscribe(response => {
+
       let shopCreatingResponse: ResponsePayload;
       shopCreatingResponse = response;
 
