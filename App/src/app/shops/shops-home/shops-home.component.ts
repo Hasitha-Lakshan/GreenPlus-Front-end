@@ -15,7 +15,6 @@ export class ShopsHomeComponent implements OnInit {
   constructor(private shopService: ShopService, private router: Router) { }
 
   ngOnInit(): void {
-
     this.getHomeShops();
   }
 

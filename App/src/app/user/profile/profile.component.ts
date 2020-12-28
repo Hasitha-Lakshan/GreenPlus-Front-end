@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService, private authService: AuthService, private router: Router, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.isSameUser();
     this.getUserDetailsPublic();
     this.isAvailableNotProfilePicture = true;
     this.getProfilePicture();
@@ -43,7 +44,7 @@ export class ProfileComponent implements OnInit {
 
       if (data != null) {
         this.userProfile = data;
-        this.validateUser(data.userId, data.role);
+        this.validateUser(data.role);
 
       } else {
         this.router.navigate(['error']);
@@ -55,43 +56,42 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  private isSameUser() {
+    if (this.authService.validateUserByUsernameFromUrlAndLocalStorageUsingUserId(this.getUsernameFromUrl())) {
+      this.isValidateUser = true;
+
+    } else {
+      this.isValidateUser = false;
+    }
+  }
+
   //Validate user's Id and the user's role using the username from the url and the username from the local-storage
-  private validateUser(userIdByUsernameFromUrl: number, userRoleByUsernameFromUrl: string) {
-    this.userService.connectUserDetailsPublicApi(this.localStorageService.retrieve('username')).subscribe((data) => {
+  private validateUser(userRole: string) {
 
-      if (this.authService.isAuthenticated() && (userIdByUsernameFromUrl === data.userId)) {
-        this.isValidateUser = true;
+    if ((userRole === "ADMIN") && !this.isValidateUser) {
+      this.router.navigate(['error']);
+    }
+    if ((userRole == "BUYER") && !this.isValidateUser) {
 
-      } else {
-        this.isValidateUser = false;
-      }
-
-      if (this.authService.isAuthenticated() && (userRoleByUsernameFromUrl === "ADMIN") && !(data.userId === userIdByUsernameFromUrl)) {
+      if (!(this.localStorageService.retrieve('role') == "ADMIN")) {
         this.router.navigate(['error']);
       }
-      if (this.authService.isAuthenticated() && (userRoleByUsernameFromUrl == "BUYER") && !(data.userId === userIdByUsernameFromUrl)) {
+    }
 
-        if (!(this.localStorageService.retrieve('role') == "ADMIN")) {
-          this.router.navigate(['error']);
-        }
-      }
+    if (!this.authService.isAuthenticated() && (userRole == "BUYER")) {
+      this.router.navigate(['error']);
+    }
 
-      if (!this.authService.isAuthenticated() && (userRoleByUsernameFromUrl == "BUYER")) {
+    if (!this.authService.isAuthenticated() && (userRole === "ADMIN")) {
+      this.router.navigate(['error']);
+    }
+
+    //Only the user can access the router, profile
+    if (this.router.url.endsWith('/profile')) {
+      if (!this.isValidateUser) {
         this.router.navigate(['error']);
       }
-
-      if (!this.authService.isAuthenticated() && (userRoleByUsernameFromUrl === "ADMIN")) {
-        this.router.navigate(['error']);
-      }
-
-      //Only the user can access the router, profile
-      if (this.router.url.endsWith('/profile')) {
-        if (!(data.userId === userIdByUsernameFromUrl)) {
-          this.router.navigate(['error']);
-        }
-      }
-
-    })
+    }
   }
 
   // Get the profile picture from the database

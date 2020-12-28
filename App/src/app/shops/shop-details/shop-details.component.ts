@@ -16,11 +16,16 @@ export class ShopDetailsComponent implements OnInit {
   shopId: string;
   shop: ShopDetailsPayload;
   usernameFromLocalStorage: string;
+  shopPicture: any;
+  isAvailableNotShopPicture: boolean;
+  isAvailableShopPicture: boolean;
+  shopPictureName: string;
 
   constructor(private shopService: ShopService, private router: Router, private localStorageService: LocalStorageService, private authService: AuthService) { }
 
   ngOnInit(): void {
 
+    this.isAvailableNotShopPicture = true;
     this.getShopDetails();
     this.getUsernameFromLocalStorage();
   }
@@ -40,6 +45,10 @@ export class ShopDetailsComponent implements OnInit {
 
       if (data != null) {
         this.shop = data;
+        this.shopPicture = 'data:image/jpeg;base64,' + data.pictureBytes;
+        this.shopPictureName = data.pictureName;
+        this.isAvailableNotShopPicture = false;
+        this.isAvailableShopPicture = true;
 
       } else {
         this.router.navigate(['error']);

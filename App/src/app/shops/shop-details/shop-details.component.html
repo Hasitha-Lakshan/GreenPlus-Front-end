@@ -26,8 +26,13 @@
     </div>
 
     <div class="row text-center">
-        <img src="../../assets/shop details image.jpg" class="card-img-top" alt="...">
+        <img *ngIf="isAvailableShopPicture" id="shop_picture" class="card-img-top"
+            src="{{shopPicture}}" alt="{{shopPictureName}}">
+        <img *ngIf="isAvailableNotShopPicture" id="shop_picture" class="card-img-top"
+        src="../../assets/shop details image.jpg" alt="shop_picture">
     </div>
+
+
 
     <div class="row">
         <button class="col btn btn-dark py-3">{{shop?.unit}} for {{shop?.priceOfOneUnit}}.00 LKR</button>

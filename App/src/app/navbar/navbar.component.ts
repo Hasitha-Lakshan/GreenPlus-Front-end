@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   isLogin: boolean;
   username: string;
   isValidatedRole: boolean;
+  DashboardRouterLink: string;
 
   constructor(private authService: AuthService, private localStorageService: LocalStorageService) { }
 
@@ -28,6 +29,18 @@ export class NavbarComponent implements OnInit {
 
       if (this.localStorageService.retrieve('role') === "FARMER" || this.localStorageService.retrieve('role') === "ADMIN") {
         this.isValidatedRole = true;
+      }
+
+      if(this.localStorageService.retrieve('role') === "FARMER") {
+        this.DashboardRouterLink = '/user/'+ this.username +'/farmer-dashboard';
+      }
+
+      if(this.localStorageService.retrieve('role') === "ADMIN") {
+        this.DashboardRouterLink = '/user/'+ this.username +'/farmer-dashboard';
+      }
+
+      if(this.localStorageService.retrieve('role') === "BUYER") {
+        this.DashboardRouterLink = '/user/'+ this.username +'/farmer-dashboard';
       }
 
     } else {

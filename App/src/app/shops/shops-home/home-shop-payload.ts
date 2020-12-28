@@ -6,4 +6,7 @@ export class HomeShopPayload {
     priceOfOneUnit: number;
     location: string;
     createdDate: Date;
+    pictureName: string;
+	pictureType: string;
+	pictureBytes: Blob;
 }

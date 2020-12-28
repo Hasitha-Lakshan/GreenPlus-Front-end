@@ -10,4 +10,7 @@ export class ShopDetailsPayload {
     createdDate: Date;
     deliveryDays: number;
     username: string;
+    pictureName: string;
+	pictureType: string;
+	pictureBytes: Blob;
 } 
