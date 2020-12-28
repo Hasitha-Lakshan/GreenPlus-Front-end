@@ -58,10 +58,12 @@ export class FarmerDashboardComponent implements OnInit {
 
       if (shopDeletingResponse.responseStatus) {
         this.isShopDeleted = shopDeletingResponse.responseStatus;
+        this.isShopNotDeleted = false;
         this.ngOnInit();
       }
       else {
         this.isShopNotDeleted = true;
+        this.isShopDeleted = false;
       }
     },
       error => {
