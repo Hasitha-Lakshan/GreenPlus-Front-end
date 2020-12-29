@@ -1,15 +1,19 @@
+#main_banner img{
+    width: 100%;
+}
+
 #headingOne {
-    background-color: black;
+    background-color: #052123;
     color: white;
     font-size: 22px;
 }
 
 #headingOne:hover {
-    background-color: #1AD60D;
+    background-color: #0f484c;
 }
 
 #headingOne:focus {
-    background-color: #1AD60D;
+    background-color: #0f484c;
     border: none;
     box-shadow: none;
 }
@@ -23,17 +27,17 @@ b{
 }
 
 #contactBuyer {
-    background-color: black;
+    background-color: #052123;
     color: white;
 }
 
 #contactBuyer:hover {
-    background-color: #1AD60D;
+    background-color: #0f484c;
     color: white;
 }
 
 #contactBuyer:focus {
-    background-color: #1AD60D;
+    background-color: #0f484c;
     box-shadow: none;
     color: white;
 }

@@ -2,6 +2,45 @@
     width: 100%;
 }
 
+#headingOne{
+  font-size: 20px;
+}
+
+.card-header{
+  background-color: #052123;
+  color: white;
+}
+
+#newBuyerRequest{
+  background-color: #052123;
+  color: white;
+}
+
+#newBuyerRequest:hover{
+  background-color: #0f484c;
+  color: white;
+}
+
+#edit_button{
+  background-color: #052123;
+  color: white;
+}
+
+#edit_button:hover{
+  background-color: #0f484c;
+  color: white;
+}
+
+#no{
+  background-color: #052123;
+  color: white;
+}
+
+#no:hover{
+  background-color: #0f484c;
+  color: white;
+}
+
 @media screen and (max-width: 768px)
 {
   h4 {
@@ -17,12 +56,16 @@
     padding-top: 10px;
   }
 
-  #newShop {
+  #newBuyerRequest {
     font-size: 18px;
   }
 
   .button {
     font-size: 12px;
+  }
+
+  #headingOne {
+    font-size: 18px;
   }
   
 }
@@ -33,5 +76,9 @@ h5 {
     font-size: 16px;
     margin-left: 4px;
     margin-right: 4px;
-}
+  }
+
+  #headingOne {
+    font-size: 15px;
+  } 
 }
