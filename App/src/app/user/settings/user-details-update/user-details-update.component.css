@@ -1,34 +1,59 @@
 .container{
-    border: 1px solid #1AD60D;
+    border: 1px solid #052123;
 }
 
 .btn:focus{
     box-shadow: none;
-    border: 1px solid #1AD60D;
 }
 
 #update-btn:hover{
     box-shadow: none;
-    border: 1px solid #1AD60D;
-    background-color: #1AD60D !important;
+    background-color: #0f484c !important;
 }
 
 #go-to-Settings-btn:hover{
     box-shadow: none;
-    border: 1px solid #1AD60D;
-    background-color: #1AD60D !important;
+    background-color: #0f484c !important;
 }
 
 #update-btn{
-    background-color: #000000;
+    background-color: #052123;
 }
 
 #go-to-Settings-btn{
-    background-color: #000000;
+    background-color: #052123;
 }
 
 input:focus{
-    background-color:#f0f5ef;
-    border: 1px solid #1AD60D;
+    background-color:#dcff8f;
+    border: 1px solid #a6f202;
     box-shadow: none;
+}
+
+#header{
+    background-color: #052123;
+}
+
+#back_button{
+    background-color: #052123;
+}
+
+#back_button:hover{
+    background-color: #0f484c;
+}
+
+@media screen and (max-width: 342px)
+{
+  h5 {
+      font-size: 16px;
+      margin-left: 4px;
+      margin-right: 4px;
+  }
+
+  #shop_picture {
+    width: 100%;
+}
+h4{
+    font-size: 20px
+  }
 }

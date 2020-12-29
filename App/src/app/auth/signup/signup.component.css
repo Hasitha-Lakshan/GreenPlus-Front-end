@@ -1,5 +1,5 @@
 .container{
-    border: 1px solid #1AD60D;
+    border: 1px solid #052123;
 }
 
 .btn:focus{
@@ -8,14 +8,38 @@
 }
 
 #signup-btn{
-    background-color: #000000;
+    background-color: #052123;
+    border: none;
 }
 
 #clear-btn{
-    background-color: #000000;
+    background-color: #052123;
+    border: none;
 }
+
+#clear-btn:hover{
+    background-color: #0f484c;
+    border: none;
+}
+
 .container input:focus{
-    background-color:#f0f5ef;
-    border: 1px solid #1AD60D;
+    background-color:#dcff8f;
+    border: 1px solid #a6f202;
     box-shadow: none;
+}
+
+#header{
+    background-color: #052123;
+}
+
+.container select:focus{
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 342px)
+{
+  h4{
+    font-size: 20px
+  }
 }

@@ -68,7 +68,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn button" data-dismiss="modal">No</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"
                     (click)="deactivateAccount()">Yes</button>
             </div>
@@ -134,7 +134,7 @@
                             Password does not match</span>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn button" data-dismiss="modal">Cancel</button>
                         <button *ngIf="!isPasswordReset" type="submit" class="btn btn-danger"
                             [disabled]="resetPasswordForm.invalid">Submit</button>
                         <button *ngIf="isPasswordReset" type="button" class="btn btn-success" (click)="reLogin()"

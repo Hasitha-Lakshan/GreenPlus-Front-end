@@ -20,6 +20,12 @@ export class ShopUpdateComponent implements OnInit {
   datasaved: boolean;
   datanotsaved: boolean;
   username: string;
+  shopPicture: any;
+  isAvailableShopPicture: boolean;
+  shopPictureName: string;
+  shopPictureFromUser: File;
+  isInvalidType: boolean;
+  isExceedMax: boolean;
 
   constructor(private shopService: ShopService, private formbuilder: FormBuilder, private router: Router, private localStorageService: LocalStorageService) { }
 
@@ -30,6 +36,7 @@ export class ShopUpdateComponent implements OnInit {
       category: [''],
       subCategory: [''],
       description: [''],
+      shopPicture: [''],
       unit: [''],
       priceOfOneUnit: [''],
       deliveryDays: [''],
@@ -39,6 +46,25 @@ export class ShopUpdateComponent implements OnInit {
 
     this.getShopDetails();
     this.getUsernameFromLocalStorage();
+  }
+
+  // Getting the image data from user and assign it into the variable and validate the file type and size
+  getshopPictureDataFromUser(event: any) {
+    this.shopPictureFromUser = event.target.files[0];
+
+    if (this.shopPictureFromUser.size > 1.5e+6) {
+      this.isExceedMax = true;
+
+    } else {
+      this.isExceedMax = false;
+    }
+
+    if (!this.shopPictureFromUser.type.startsWith("image")) {
+      this.isInvalidType = true;
+
+    } else {
+      this.isInvalidType = false;
+    }
   }
 
   getUsernameFromLocalStorage() {
@@ -63,6 +89,7 @@ export class ShopUpdateComponent implements OnInit {
           title: new FormControl(this.shop.title, [Validators.required]),
           category: new FormControl(this.shop.category, [Validators.required]),
           subCategory: new FormControl(this.shop.subCategory, [Validators.required]),
+          shopPicture: new FormControl(""),
           description: new FormControl(this.shop.description, [Validators.required]),
           unit: new FormControl(this.shop.unit, [Validators.required]),
           priceOfOneUnit: new FormControl(this.shop.priceOfOneUnit, [Validators.required]),
@@ -70,6 +97,10 @@ export class ShopUpdateComponent implements OnInit {
           location: new FormControl(this.shop.location, [Validators.required]),
           shopStatus: new FormControl(this.shop.shopStatus)
         });
+
+        this.shopPicture = 'data:image/jpeg;base64,' + data.pictureBytes;
+        this.shopPictureName = data.pictureName;
+        this.isAvailableShopPicture = true;
 
       } else {
         this.router.navigate(['error']);
@@ -86,20 +117,30 @@ export class ShopUpdateComponent implements OnInit {
     this.datasaved = false;
     this.datanotsaved = false;
     this.updatedShop = this.shopFrom.value;
-    this.putShopData(this.updatedShop);
+
+    const updateShopData = new FormData();
+    updateShopData.append('shopDetails', new Blob([JSON.stringify(this.updatedShop)], { type: "application/json" }));
+
+    if(this.shopPictureFromUser != undefined) {
+      updateShopData.append('shopPicture', this.shopPictureFromUser, this.shopPictureFromUser.name);
+    }
+
+    this.putShopData(updateShopData);
   }
 
-  putShopData(updatedShop: ShopUpdatePayload) {
+  putShopData(updatedShop: FormData) {
     this.shopService.connectShopUpdateApi(updatedShop, this.getShopIdFromUrl()).subscribe(response => {
-      let shopCreatingResponse: ResponsePayload;
-      shopCreatingResponse = response;
+      let shopUpdatingResponse: ResponsePayload;
+      shopUpdatingResponse = response;
 
-      if (shopCreatingResponse.responseStatus) {
-        this.datasaved = shopCreatingResponse.responseStatus;
+      if (shopUpdatingResponse.responseStatus) {
+        this.datasaved = shopUpdatingResponse.responseStatus;
+        this.datanotsaved = false;
         this.ngOnInit();
       }
       else {
         this.datanotsaved = true;
+        this.datasaved = false;
       }
     },
       error => {

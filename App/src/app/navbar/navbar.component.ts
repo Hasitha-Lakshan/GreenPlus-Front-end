@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   username: string;
   isValidatedRole: boolean;
   DashboardRouterLink: string;
+  isFarmerOrBuyer: boolean;
 
   constructor(private authService: AuthService, private localStorageService: LocalStorageService) { }
 
@@ -31,16 +32,20 @@ export class NavbarComponent implements OnInit {
         this.isValidatedRole = true;
       }
 
+      if(this.localStorageService.retrieve('role') === "FARMER" || this.localStorageService.retrieve('role') === "BUYER") {
+        this.isFarmerOrBuyer = true;
+      }
+
       if(this.localStorageService.retrieve('role') === "FARMER") {
         this.DashboardRouterLink = '/user/'+ this.username +'/farmer-dashboard';
       }
 
       if(this.localStorageService.retrieve('role') === "ADMIN") {
-        this.DashboardRouterLink = '/user/'+ this.username +'/farmer-dashboard';
+        this.DashboardRouterLink = '/user/'+ this.username +'/admin-dashboard';
       }
 
       if(this.localStorageService.retrieve('role') === "BUYER") {
-        this.DashboardRouterLink = '/user/'+ this.username +'/farmer-dashboard';
+        this.DashboardRouterLink = '/user/'+ this.username +'/buyer-dashboard';
       }
 
     } else {

@@ -13,8 +13,8 @@
 }
 
 #update:hover {
-    border-bottom: 1px solid #1AD60D !important;
-    color: #1AD60D;
+    border-bottom: 1px solid #0f484c !important;
+    color: #0f484c;
 }
 
 #update:focus {
@@ -22,7 +22,7 @@
 }
 
 #upload {
-    background-color: black;
+    background-color: #052123;
 }
 
 #upload:focus {
@@ -33,9 +33,25 @@
     font-size: 14px;
 }
 
+.button {
+    background-color: #052123;
+    color: white;
+}
+
+.button:hover{
+    background-color: #0f484c;
+    color: white;
+}
+
+.button:focus{
+    background-color: #0f484c;
+    color: white;
+    box-shadow: none;
+}
+
 input:focus{
-    background-color:#f0f5ef;
-    border: 1px solid #1AD60D;
+    background-color:#dcff8f;
+    border: 1px solid #a6f202;
     box-shadow: none;
 }
 

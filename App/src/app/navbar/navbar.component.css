@@ -1,10 +1,10 @@
 #navbar{
-    background-color: black;
+    background-color: #052123;
 }
 
 .active{
     margin: 0px 5px;
-    border-bottom: 2px solid #1AD60D;
+    border-bottom: 2px solid #a6f202;
 }
 
 .navbar-brand{
@@ -18,7 +18,7 @@ li{
 
 .navbar-toggler:focus{
     outline: none;
-    border: 1px solid #1AD60D;
+    border: 1px solid #a6f202;
     border-radius: .25rem;
 }
 

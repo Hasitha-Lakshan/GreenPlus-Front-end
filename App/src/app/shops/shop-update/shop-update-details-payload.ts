@@ -11,4 +11,7 @@ export class ShopUpdateDetailsPayload {
 	createdDate: Date;
 	deliveryDays: number;
 	shopStatus: boolean;
+	pictureName: string;
+	pictureType: string;
+	pictureBytes: Blob;
 }

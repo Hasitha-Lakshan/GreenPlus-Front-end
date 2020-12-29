@@ -1,23 +1,42 @@
 .container{
-    border: 1px solid #1AD60D;
+    border: 1px solid #052123;
 }
 
 .btn:focus{
     box-shadow: none;
-    border: 1px solid #1AD60D;
 }
 
 #submit-btn{
-    background-color: #000000;
+    background-color: #052123;
 }
 
 #clear-btn{
-    background-color: #000000;
+    background-color: #052123;
 }
+
 .container input:focus{
-    background-color:#f0f5ef;
-    border: 1px solid #1AD60D;
+    background-color:#dcff8f;
+    border: 1px solid #a6f202;
     box-shadow: none;
+}
+
+.container select:focus{
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+.container textarea:focus{
+    background-color:#dcff8f;
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+#header{
+    background-color: #052123;
+}
+
+#shop_picture {
+    width: 50%;
 }
 
 @media screen and (max-width: 342px)
@@ -26,5 +45,12 @@
       font-size: 16px;
       margin-left: 4px;
       margin-right: 4px;
+  }
+
+  #shop_picture {
+    width: 100%;
+}
+h4{
+    font-size: 20px
   }
 }

@@ -1,6 +1,6 @@
 #shop_title{
     color: white;
-    background-color: rgb(0, 0, 0);
+    background-color: #052123;
     border: none;
 }
 
@@ -11,7 +11,7 @@ a:hover{
 #shop_title:hover{
     text-decoration: none;
     color: white !important;
-    background-color: #1AD60D !important;
+    background-color: #0f484c !important;
 }
 
 ul:hover{

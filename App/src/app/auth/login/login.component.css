@@ -1,20 +1,31 @@
 .container{
-    border: 1px solid #1AD60D;
+    border: 1px solid #052123;
 }
 
 .container button{
-    background-color: #000000;
-    border: 1px solid #1AD60D;
+    background-color: #052123;
+    border: none;
 }
 
 .container input:focus{
-    background-color:#f0f5ef;
-    border: 1px solid #1AD60D;
+    background-color:#dcff8f;
+    border: 1px solid #a6f202;
     box-shadow: none;
 }
 
 .container button:focus {
     border: none;
     box-shadow: none;
-    border: 1px solid #1AD60D !important;
+    background-color: #052123;
+}
+
+#header{
+    background-color: #052123;
+}
+
+@media screen and (max-width: 342px)
+{
+  h4{
+    font-size: 20px
+  }
 }

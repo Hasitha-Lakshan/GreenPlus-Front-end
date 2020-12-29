@@ -50,7 +50,6 @@ export class ShopService {
   }
 
   connectCreateShopApi(newShop: FormData): Observable<ResponsePayload> {
-
     return this.http.post<ResponsePayload>(this.url_2 + "shopcreating/", newShop);
   }
 
@@ -61,11 +60,8 @@ export class ShopService {
     return this.http.get<ShopUpdateDetailsPayload>(this.url_2 + "shopsbyshopid/" + shopId, options);
   }
 
-  connectShopUpdateApi(updatedShop: ShopUpdatePayload, shopId: string): Observable<ResponsePayload> {
-    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
-    let options = { headers: httpHeader };
-
-    return this.http.put<ResponsePayload>(this.url_2 + "shopupdate/" + shopId, updatedShop, options);
+  connectShopUpdateApi(updatedShop: FormData, shopId: string): Observable<ResponsePayload> {
+    return this.http.put<ResponsePayload>(this.url_2 + "shopupdate/" + shopId, updatedShop);
   }
 
   connectDeleteShopApi(shopId: number): Observable<ResponsePayload> {
