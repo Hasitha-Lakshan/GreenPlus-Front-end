@@ -11,24 +11,53 @@ button:focus{
 }
 
 .username{
-    color: black;
+    color: #052123;
 }
 
 .username:hover{
-    color: #1AD60D;
+    color: #0f484c;
     text-decoration: none;
 }
 
 .bigButton{
-    background-color: black;
+    background-color: #052123;
 }
 
 .bigButton:hover{
-    background-color: #1AD60D;
+    background-color: #0f484c;
 }
 
-h4{
-    background-color: rgb(230, 230, 230);
+ul{
+    padding-left: 18px;
+}
+
+.title{
+    background-color: #052123;
+}
+
+.data{
+    background-color: #f1f1f1;
+    color: #052123;
+}
+
+#description{
+    background-color: #f1f1f1;
+}
+
+@media screen and (max-width: 768px)
+{
+    #shopPicture{
+        margin: auto !important;
+        margin-bottom: 18px !important;
+    }
+
+    ul{
+        margin: auto !important;
+    }
+
+    ul{
+        padding: 0px !important;
+    }
 }
 
 @media screen and (max-width: 576px)

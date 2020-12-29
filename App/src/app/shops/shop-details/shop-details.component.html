@@ -2,11 +2,11 @@
 
 <div id="main_banner">
     <picture>
-        <source media="(max-width:576px)" srcset="../../assets/Banner_S.jpg">
-        <source media="(max-width:768px)" srcset="../../assets/Banner_M.jpg">
-        <source media="(max-width:992px)" srcset="../../assets/Banner_L.jpg">
-        <source media="(max-width:1920px)" srcset="../../assets/Banner_XL.jpg">
-        <img src="../../assets/Banner_xL.jpg">
+        <source media="(max-width:576px)" srcset="../../assets/shop_details/Banner_S.jpg">
+        <source media="(max-width:768px)" srcset="../../assets/shop_details/Banner_M.jpg">
+        <source media="(max-width:992px)" srcset="../../assets/shop_details/Banner_L.jpg">
+        <source media="(max-width:1920px)" srcset="../../assets/shop_details/Banner_XL.jpg">
+        <img src="../../assets/shop_details/Banner_xL.jpg">
     </picture>
 </div>
 
@@ -19,27 +19,30 @@
     </div>
     <hr>
 
-    <div class="row">
-        <button class="col btn btn-secondary py-3">Category: {{shop?.category}}</button>
-        <button class="col btn btn-dark">Sub Category: {{shop?.subCategory}}</button>
-        <button class="col btn btn-secondary">Location: {{shop?.location}}</button>
+    <div class="row mx-auto">
+        <div id="shopPicture" class="col-xl-6 col-lg-6 col-md-9 col-sm-12 px-0 my-auto">
+            <img *ngIf="isAvailableShopPicture" id="shop_picture" class="card-img-top" src="{{shopPicture}}"
+                alt="{{shopPictureName}}">
+            <img *ngIf="isAvailableNotShopPicture" id="shop_picture" class="card-img-top"
+                src="../../assets/shop details image.jpg" alt="shop_picture">
+        </div>
+        <div class="col-xl-6 col-md-3 col-lg-6 col-sm-12 p-0 my-auto">
+            <ul class="list-group text-center">
+                <li class="list-group-item text-light p-1 title">Category</li>
+                <li class="list-group-item p-2 data">{{shop?.category}}</li>
+                <li class="list-group-item text-light p-1 title">Sub Category</li>
+                <li class="list-group-item p-2 data">{{shop?.subCategory}}</li>
+                <li class="list-group-item text-light p-1 title">Location</li>
+                <li class="list-group-item p-2 data">{{shop?.location}}</li>
+                <li class="list-group-item text-light p-1 title">For {{shop?.unit}}</li>
+                <li class="list-group-item p-2 data">{{shop?.priceOfOneUnit}}.00 LKR</li>
+                <li class="list-group-item text-light p-1 title">Delivery in</li>
+                <li class="list-group-item p-2 data">{{shop?.deliveryDays}} Days</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="row text-center">
-        <img *ngIf="isAvailableShopPicture" id="shop_picture" class="card-img-top"
-            src="{{shopPicture}}" alt="{{shopPictureName}}">
-        <img *ngIf="isAvailableNotShopPicture" id="shop_picture" class="card-img-top"
-        src="../../assets/shop details image.jpg" alt="shop_picture">
-    </div>
-
-
-
-    <div class="row">
-        <button class="col btn btn-dark py-3">{{shop?.unit}} for {{shop?.priceOfOneUnit}}.00 LKR</button>
-        <button class="col btn btn-secondary">Delivery in {{shop?.deliveryDays}} Days</button>
-    </div>
-
-    <div class="row mt-3">
+    <div id="description" class="row mt-3 mx-0">
         <h4 class="col py-3 text-center">Description</h4>
     </div>
     <div>
