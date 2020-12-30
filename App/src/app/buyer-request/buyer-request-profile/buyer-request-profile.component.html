@@ -6,7 +6,8 @@
                 aria-controls="collapseOne">{{buyerRequest?.title}}
             </button>
             <p class="card-header">Created On: {{buyerRequest?.createdDate}} | Created By:
-                <b>{{buyerRequest?.username}}</b></p>
+                <b>{{buyerRequest?.username}}</b>
+            </p>
             <div id="buyerRequestId_{{buyerRequest?.buyerRequestId}}" class="collapse hide" aria-labelledby="headingOne"
                 data-parent="#accordionExample">
                 <div class="card-body">
@@ -24,6 +25,9 @@
                         </div>
                         <div class="col-md-4 col-sm-6 details">
                             <span><b>Price: </b></span><span>{{buyerRequest?.price}}.00 LKR</span>
+                        </div>
+                        <div class="col-md-4 col-sm-6 details">
+                            <span><b>Expect Days: </b></span><span>{{buyerRequest?.expectDays}}</span>
                         </div>
                         <div class="col-md-4 col-sm-6 details">
                             <span><b>Location: </b></span><span>{{buyerRequest?.location}}</span>
