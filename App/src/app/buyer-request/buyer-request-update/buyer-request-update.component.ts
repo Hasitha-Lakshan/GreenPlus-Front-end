@@ -61,14 +61,14 @@ export class BuyerRequestUpdateComponent implements OnInit {
       if (data != null) {
         this.buyerRequest = data;
         this.buyerRequestFrom = new FormGroup({
-          title: new FormControl(this.buyerRequest.title, [Validators.required]),
+          title: new FormControl(this.buyerRequest.title, [Validators.required, Validators.maxLength(55)]),
           category: new FormControl(this.buyerRequest.category, [Validators.required]),
           subCategory: new FormControl(this.buyerRequest.subCategory, [Validators.required]),
-          description: new FormControl(this.buyerRequest.description, [Validators.required]),
+          description: new FormControl(this.buyerRequest.description, [Validators.required, Validators.maxLength(350)]),
           unit: new FormControl(this.buyerRequest.unit, [Validators.required]),
-          quantity: new FormControl(this.buyerRequest.quantity, [Validators.required]),
-          price: new FormControl(this.buyerRequest.price, [Validators.required]),
-          expectDays: new FormControl(this.buyerRequest.expectDays, [Validators.required]),
+          quantity: new FormControl(this.buyerRequest.quantity, [Validators.pattern('^[0-9]*$'), Validators.max(999)]),
+          price: new FormControl(this.buyerRequest.price, [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(100000)]),
+          expectDays: new FormControl(this.buyerRequest.expectDays, [Validators.pattern('^[0-9]*$'), Validators.max(30)]),
           location: new FormControl(this.buyerRequest.location, [Validators.required]),
           buyerRequestStatus: new FormControl(this.buyerRequest.buyerRequestStatus)
         });

@@ -66,4 +66,16 @@ b{
     #contactBuyer {
         width: 100%;
     }
+
+    #headingOne{
+        font-size: 15px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    span {
+        font-size: 10px;
+    }
 }

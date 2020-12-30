@@ -24,14 +24,14 @@ export class BuyerRequestCreateComponent implements OnInit {
   ngOnInit(): void {
 
     this.newBuyerRequestFrom = this.formbuilder.group({
-      title: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.maxLength(55)]],
       category: ['', [Validators.required]],
       subCategory: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.maxLength(350)]],
       unit: ['', [Validators.required]],
-      quantity: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      expectDays: ['', [Validators.required]],
+      quantity: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(999)]],
+      price: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(100000)]],
+      expectDays: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(30)]],
       location: ['', [Validators.required]],
     });
   }

@@ -86,14 +86,14 @@ export class ShopUpdateComponent implements OnInit {
       if (data != null) {
         this.shop = data;
         this.shopFrom = new FormGroup({
-          title: new FormControl(this.shop.title, [Validators.required]),
+          title: new FormControl(this.shop.title, [Validators.required, Validators.maxLength(70)]),
           category: new FormControl(this.shop.category, [Validators.required]),
           subCategory: new FormControl(this.shop.subCategory, [Validators.required]),
           shopPicture: new FormControl(""),
-          description: new FormControl(this.shop.description, [Validators.required]),
+          description: new FormControl(this.shop.description, [Validators.required, Validators.maxLength(650)]),
           unit: new FormControl(this.shop.unit, [Validators.required]),
-          priceOfOneUnit: new FormControl(this.shop.priceOfOneUnit, [Validators.required]),
-          deliveryDays: new FormControl(this.shop.deliveryDays, [Validators.required]),
+          priceOfOneUnit: new FormControl(this.shop.priceOfOneUnit, [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(100000)]),
+          deliveryDays: new FormControl(this.shop.deliveryDays, [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(30)]),
           location: new FormControl(this.shop.location, [Validators.required]),
           shopStatus: new FormControl(this.shop.shopStatus)
         });

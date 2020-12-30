@@ -28,14 +28,14 @@ export class ShopCreateComponent implements OnInit {
   ngOnInit(): void {
 
     this.newShopFrom = this.formbuilder.group({
-      title: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.maxLength(70)]],
       category: ['', [Validators.required]],
       subCategory: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.maxLength(650)]],
       shopPicture: ['', [Validators.required]],
       unit: ['', [Validators.required]],
-      priceOfOneUnit: ['', [Validators.required]],
-      deliveryDays: ['', [Validators.required]],
+      priceOfOneUnit: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(100000)]],
+      deliveryDays: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(30)]],
       location: ['', [Validators.required]],
     });
   }

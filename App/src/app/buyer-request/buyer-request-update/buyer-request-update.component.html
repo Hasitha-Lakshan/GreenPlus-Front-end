@@ -22,6 +22,10 @@
                 *ngIf="formControls.title.errors?.required && formControls.title.touched">
                 Title is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.title.errors?.maxlength && formControls.title.touched">
+                Exceeds the maximum size!
+            </span>
         </div>
         <div class="form-group">
             <label>Category</label>
@@ -49,6 +53,10 @@
                 *ngIf="formControls.description.errors?.required && formControls.description.touched">
                 Description is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.description.errors?.maxlength && formControls.description.touched">
+                Exceeds the maximum size!
+            </span>
         </div>
         <div class="form-group">
             <label>Unit</label>
@@ -68,6 +76,14 @@
                 *ngIf="formControls.quantity.errors?.required && formControls.quantity.touched">
                 Quantity is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.quantity.errors?.max && formControls.quantity.touched">
+                Exceeds the maximum size!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.quantity.errors?.pattern && formControls.quantity.touched">
+                Invalid quantity!
+            </span>
         </div>
         <div class="form-group">
             <label>Price</label>
@@ -75,6 +91,13 @@
             <span class="form-text text-danger"
                 *ngIf="formControls.price.errors?.required && formControls.price.touched">
                 Price is required!
+            </span>
+            <span class="form-text text-danger" *ngIf="formControls.price.errors?.max && formControls.price.touched">
+                Exceeds the maximum price!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.price.errors?.pattern && formControls.price.touched">
+                Invalid price!
             </span>
         </div>
         <div class="form-group">
@@ -84,6 +107,14 @@
             <span class="form-text text-danger"
                 *ngIf="formControls.expectDays.errors?.required && formControls.expectDays.touched">
                 Expect Days is required!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.expectDays.errors?.max && formControls.expectDays.touched">
+                Exceeds the maximum expect days!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.expectDays.errors?.pattern && formControls.expectDays.touched">
+                Invalid input!
             </span>
         </div>
         <div class="form-group">

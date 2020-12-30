@@ -18,6 +18,10 @@
                 *ngIf="formControls.title.errors?.required && formControls.title.touched">
                 Title is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.title.errors?.maxlength && formControls.title.touched">
+                Exceeds the maximum size!
+            </span>
         </div>
         <div class="form-group">
             <label>Category</label>
@@ -44,6 +48,10 @@
             <span class="form-text text-danger"
                 *ngIf="formControls.description.errors?.required && formControls.description.touched">
                 Description is required!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.description.errors?.maxlength && formControls.description.touched">
+                Exceeds the maximum size!
             </span>
         </div>
         <div class="form-group">
@@ -74,6 +82,14 @@
                 *ngIf="formControls.priceOfOneUnit.errors?.required && formControls.priceOfOneUnit.touched">
                 Price of One Unit is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.priceOfOneUnit.errors?.max && formControls.priceOfOneUnit.touched">
+                Exceeds the maximum price!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.priceOfOneUnit.errors?.pattern && formControls.priceOfOneUnit.touched">
+                Invalid price!
+            </span>
         </div>
         <div class="form-group">
             <label>Delivery Days</label>
@@ -82,6 +98,14 @@
             <span class="form-text text-danger"
                 *ngIf="formControls.deliveryDays.errors?.required && formControls.deliveryDays.touched">
                 Delivery Days is required!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.deliveryDays.errors?.max && formControls.deliveryDays.touched">
+                Exceeds the maximum days!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.deliveryDays.errors?.pattern && formControls.deliveryDays.touched">
+                Invalid input!
             </span>
         </div>
         <div class="form-group">

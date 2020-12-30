@@ -73,15 +73,15 @@ export class UserDetailsUpdateComponent implements OnInit {
       if (data != null) {
         this.userDetailsGetPayload = data;
         this.userForm = new FormGroup({
-          firstName: new FormControl(this.userDetailsGetPayload.firstName, [Validators.required]),
-          lastName: new FormControl(this.userDetailsGetPayload.lastName, [Validators.required]),
-          username: new FormControl(this.userDetailsGetPayload.username),
+          firstName: new FormControl(this.userDetailsGetPayload.firstName, [Validators.required, Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]*$')]),
+          lastName: new FormControl(this.userDetailsGetPayload.lastName, [Validators.required, Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]*$')]),
+          username: new FormControl(this.userDetailsGetPayload.username, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]),
           role: new FormControl(this.userDetailsGetPayload.role),
           mobileNumber: new FormControl(this.userDetailsGetPayload.mobileNumber, [Validators.required, Validators.pattern('[1-9][0-9]{8}')]),
-          email: new FormControl(this.userDetailsGetPayload.email),
-          addressLine1: new FormControl(this.userDetailsGetPayload.addressLine1, [Validators.required]),
-          addressLine2: new FormControl(this.userDetailsGetPayload.addressLine2, [Validators.required]),
-          addressLine3: new FormControl(this.userDetailsGetPayload.addressLine3, [Validators.required])
+          email: new FormControl(this.userDetailsGetPayload.email, [Validators.required, Validators.email, Validators.maxLength(50)]),
+          addressLine1: new FormControl(this.userDetailsGetPayload.addressLine1, [Validators.required, Validators.maxLength(25)]),
+          addressLine2: new FormControl(this.userDetailsGetPayload.addressLine2, [Validators.required, Validators.maxLength(25)]),
+          addressLine3: new FormControl(this.userDetailsGetPayload.addressLine3, [Validators.required, Validators.maxLength(25)])
         });
 
       } else {

@@ -18,6 +18,14 @@
                 *ngIf="formControls.firstName.errors?.required && formControls.firstName.touched">
                 First Name is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.firstName.errors?.pattern && formControls.firstName.touched">
+                You entered an invalid name!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.firstName.errors?.maxlength && formControls.firstName.touched">
+                Exceeds the maximum size!
+            </span>
         </div>
         <div class="form-group">
             <label>Last Name</label>
@@ -25,6 +33,14 @@
             <span class="form-text text-danger"
                 *ngIf="formControls.lastName.errors?.required && formControls.lastName.touched">
                 Last Name is required!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.lastName.errors?.pattern && formControls.lastName.touched">
+                You entered an invalid name!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.lastName.errors?.maxlength && formControls.lastName.touched">
+                Exceeds the maximum size!
             </span>
         </div>
         <div class="form-group">
@@ -58,6 +74,10 @@
             <span class="form-text text-danger" *ngIf="formControls.email.errors?.email && formControls.email.touched">
                 You entered an invalid email!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.email.errors?.maxlength && formControls.email.touched">
+                Exceeds the maximum size!
+            </span>
         </div>
         <div class="form-group">
             <label>Address</label>
@@ -66,17 +86,29 @@
                 *ngIf="formControls.addressLine1.errors?.required && formControls.addressLine1.touched">
                 Address Line 1 is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine1.errors?.maxlength && formControls.addressLine1.touched">
+                Exceeds the maximum size!
+            </span>
             <input type="text" [formControlName]="'addressLine2'" class="form-control mt-2"
                 placeholder="Address line 2">
             <span class="form-text text-danger"
                 *ngIf="formControls.addressLine2.errors?.required && formControls.addressLine2.touched">
                 Address Line 2 is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine2.errors?.maxlength && formControls.addressLine2.touched">
+                Exceeds the maximum size!
+            </span>
             <input type="text" [formControlName]="'addressLine3'" class="form-control mt-2"
                 placeholder="Address line 3">
             <span class="form-text text-danger"
                 *ngIf="formControls.addressLine3.errors?.required && formControls.addressLine3.touched">
                 Address Line 3 is required!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine3.errors?.maxlength && formControls.addressLine3.touched">
+                Exceeds the maximum size!
             </span>
         </div>
         <div class="form-group">
@@ -92,6 +124,10 @@
             <span class="form-text text-danger"
                 *ngIf="formControls.username.errors?.minlength && formControls.username.touched">
                 Username must contains at least 5 characters!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.username.errors?.maxlength && formControls.username.touched">
+                Exceeds the maximum size!
             </span>
         </div>
         <div class=" form-group">

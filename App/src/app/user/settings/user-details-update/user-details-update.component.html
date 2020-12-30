@@ -18,6 +18,14 @@
                 *ngIf="formControls.firstName.errors?.required && formControls.firstName.touched">
                 First Name is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.firstName.errors?.pattern && formControls.firstName.touched">
+                You entered an invalid name!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.firstName.errors?.maxlength && formControls.firstName.touched">
+                Exceeds the maximum size!
+            </span>
         </div>
         <div class="form-group">
             <label>Last Name</label>
@@ -25,6 +33,14 @@
             <span class="form-text text-danger"
                 *ngIf="formControls.lastName.errors?.required && formControls.lastName.touched">
                 Last Name is required!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.lastName.errors?.pattern && formControls.lastName.touched">
+                You entered an invalid name!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.lastName.errors?.maxlength && formControls.lastName.touched">
+                Exceeds the maximum size!
             </span>
         </div>
         <div class="form-group">
@@ -68,11 +84,19 @@
                 *ngIf="formControls.addressLine1.errors?.required && formControls.addressLine1.touched">
                 Address Line 1 is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine1.errors?.maxlength && formControls.addressLine1.touched">
+                Exceeds the maximum size!
+            </span>
             <input type="text" [formControlName]="'addressLine2'" class="form-control mt-2"
                 placeholder="Address line 2">
             <span class="form-text text-danger"
                 *ngIf="formControls.addressLine2.errors?.required && formControls.addressLine2.touched">
                 Address Line 2 is required!
+            </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine2.errors?.maxlength && formControls.addressLine2.touched">
+                Exceeds the maximum size!
             </span>
             <input type="text" [formControlName]="'addressLine3'" class="form-control mt-2"
                 placeholder="Address line 3">
@@ -80,9 +104,14 @@
                 *ngIf="formControls.addressLine3.errors?.required && formControls.addressLine3.touched">
                 Address Line 3 is required!
             </span>
+            <span class="form-text text-danger"
+                *ngIf="formControls.addressLine3.errors?.maxlength && formControls.addressLine3.touched">
+                Exceeds the maximum size!
+            </span>
         </div>
         <div class="modal-footer">
-            <button id="go-to-Settings-btn" type="button" class="btn btn-secondary" routerLink='/user/{{username}}/settings'>Go
+            <button id="go-to-Settings-btn" type="button" class="btn btn-secondary"
+                routerLink='/user/{{username}}/settings'>Go
                 to Settings</button>
             <button id="update-btn" type="submit" class="btn btn-secondary" [disabled]="userForm.invalid"
                 data-toggle="modal" data-target="#resetPassword">Update</button>
@@ -131,7 +160,8 @@
                             Password does not match</span>
                     </div>
                     <div class="modal-footer">
-                        <button id="back_button" type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                        <button id="back_button" type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Back</button>
                         <button type="button" class="btn btn-success" [disabled]="passwordForm.invalid"
                             (click)="getPassword()" data-dismiss="modal">Submit</button>
                     </div>
