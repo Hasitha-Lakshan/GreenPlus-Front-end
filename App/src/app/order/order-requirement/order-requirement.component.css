@@ -1,0 +1,89 @@
+.jumbotron{
+    background-color: #052123;
+    color: white;
+}
+
+p {
+    font-size: 14px;
+}
+
+.btn:focus{
+    box-shadow: none;
+    color: white;
+}
+
+.btn{
+    background-color: #052123;
+    color: white;
+}
+
+.btn:hover{
+    background-color: #0f484c;
+    color: white;
+}
+
+.container input:focus{
+    background-color:#dcff8f;
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+#totalPrice {
+    background-color: #dcff8f;
+}
+
+#totalPrice:focus{
+    box-shadow: none;
+    background-color: #dcff8f;
+    border: 1px solid #ced4da;
+}
+
+.container select:focus{
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+.container textarea:focus{
+    background-color:#dcff8f;
+    border: 1px solid #a6f202;
+    box-shadow: none;
+}
+
+.username{
+    color: #052123;
+}
+
+.username:hover{
+    color: #0f484c;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 420px) 
+{
+    .input-group-text{
+        font-size: 14px;
+    }
+
+    #inlineFormInputGroup{
+        font-size: 14px;
+    }
+
+    .col-auto{
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 342px)
+{
+  h5 {
+      font-size: 16px;
+  }
+
+  h4{
+    font-size: 20px
+  }
+
+  p {
+      font-size: 12px;
+  }
+}

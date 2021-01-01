@@ -20,6 +20,8 @@ import { ShopCreateComponent } from './shops/shop-create/shop-create.component'
 import { BuyerRequestCreateComponent } from './buyer-request/buyer-request-create/buyer-request-create.component';
 import { BuyerRequestUpdateComponent } from './buyer-request/buyer-request-update/buyer-request-update.component';
 import { UserDetailsUpdateComponent } from './user/settings/user-details-update/user-details-update.component';
+import { OrderRequirementComponent } from './order/order-requirement/order-requirement.component';
+import { OrdersDashboardComponent } from './order/orders-dashboard/orders-dashboard.component'
 
 
 const routes: Routes = [
@@ -49,11 +51,15 @@ const routes: Routes = [
   { path: 'buyer-dashboard/update-buyer-request/:buyerRequestId', component: BuyerRequestUpdateComponent, canActivate: [AuthGuard] },
   { path: 'buyer-dashboard/create-buyer-request', component: BuyerRequestCreateComponent, canActivate: [AuthGuard] },
 
+  // Order Components
+  { path: 'shop/:shopId/order-requirement', component: OrderRequirementComponent, canActivate: [AuthGuard] },
+  { path: 'user/:username/orders-dashboard', component: OrdersDashboardComponent, canActivate: [AuthGuard] },
+
   // Error Components
   { path: 'error', component: ErrorComponent },
 
   // Auto Redirection for Unknown paths
-  { path: '**', redirectTo: 'error' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

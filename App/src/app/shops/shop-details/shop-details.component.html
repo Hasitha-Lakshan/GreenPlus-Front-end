@@ -50,8 +50,8 @@
     </div>
     <div>
         <button *ngIf="usernameFromLocalStorage != shop?.username" class="bigButton col btn text-light py-3"
-            [routerLink]="['/login']">
-            <h5>ORDER NOW</h5>
+            routerLink='/shop/{{shopId}}/order-requirement'>
+            <h5>PLACE ORDER NOW</h5>
         </button>
         <button *ngIf="usernameFromLocalStorage == shop?.username" class="bigButton col btn text-light py-3"
             routerLink='/farmer-dashboard/update-shop/{{shopId}}'>

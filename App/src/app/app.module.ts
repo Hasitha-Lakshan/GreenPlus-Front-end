@@ -34,6 +34,8 @@ import { ShopCreateComponent } from './shops/shop-create/shop-create.component';
 import { BuyerRequestCreateComponent } from './buyer-request/buyer-request-create/buyer-request-create.component';
 import { BuyerRequestUpdateComponent } from './buyer-request/buyer-request-update/buyer-request-update.component';
 import { UserDetailsUpdateComponent } from './user/settings/user-details-update/user-details-update.component';
+import { OrderRequirementComponent } from './order/order-requirement/order-requirement.component';
+import { OrdersDashboardComponent } from './order/orders-dashboard/orders-dashboard.component';
 
 
 @NgModule({
@@ -64,6 +66,8 @@ import { UserDetailsUpdateComponent } from './user/settings/user-details-update/
     BuyerRequestCreateComponent,
     BuyerRequestUpdateComponent,
     UserDetailsUpdateComponent,
+    OrderRequirementComponent,
+    OrdersDashboardComponent,
   ],
   imports: [
     BrowserModule,
