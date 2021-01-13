@@ -94,6 +94,12 @@
         <p class="text-justify p-3">{{orderDetailsPayload?.note}}</p>
     </div>
     <hr>
+    <div *ngIf="isBuyer">
+        <button class="bigButton col btn text-light py-3">
+            <h5>Complete Order</h5>
+        </button>
+        <hr>
+    </div>
 </div>
 
 <app-footer></app-footer>
