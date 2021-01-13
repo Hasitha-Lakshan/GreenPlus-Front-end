@@ -106,6 +106,7 @@ export class OrderRequirementComponent implements OnInit {
     this.newOrder.totalPrice = this.totalPrice;
     this.newOrder.shopId = this.shopId;
     this.newOrder.buyerUsername = this.buyerUsername;
+    this.newOrder.unit = this.unit;
 
     let createdDate = new Date();
     this.newOrder.createdDate = formatDate(createdDate, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');

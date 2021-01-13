@@ -22,6 +22,12 @@ import { BuyerRequestUpdateComponent } from './buyer-request/buyer-request-updat
 import { UserDetailsUpdateComponent } from './user/settings/user-details-update/user-details-update.component';
 import { OrderRequirementComponent } from './order/order-requirement/order-requirement.component';
 import { OrdersDashboardComponent } from './order/orders-dashboard/orders-dashboard.component'
+import { InprogressOrdersComponent } from './order/inprogress-orders/inprogress-orders.component';
+import { ActiveOrdersComponent } from './order/active-orders/active-orders.component';
+import { LateOrdersComponent } from './order/late-orders/late-orders.component';
+import { CompleteOrdersComponent } from './order/complete-orders/complete-orders.component';
+import { MessagesComponent } from './user/messages/messages.component';
+import { OrderDetailsComponent } from './order/order-details/order-details.component';
 
 
 const routes: Routes = [
@@ -36,6 +42,7 @@ const routes: Routes = [
   { path: 'user/:username', component: UserComponent },
   { path: 'user/:username/profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'user/:username/messages', component: MessagesComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/settings/update-user-details', component: UserDetailsUpdateComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: 'user/:username/buyer-dashboard', component: BuyerDashboardComponent, canActivate: [AuthGuard] },
@@ -53,7 +60,17 @@ const routes: Routes = [
 
   // Order Components
   { path: 'shop/:shopId/order-requirement', component: OrderRequirementComponent, canActivate: [AuthGuard] },
-  { path: 'user/:username/orders-dashboard', component: OrdersDashboardComponent, canActivate: [AuthGuard] },
+  {
+    path: 'user/:username/orders-dashboard', component: OrdersDashboardComponent,
+    children: [
+      { path: '', component: InprogressOrdersComponent },
+      { path: 'inprogress-orders', component: InprogressOrdersComponent },
+      { path: 'active-orders', component: ActiveOrdersComponent },
+      { path: 'late-orders', component: LateOrdersComponent },
+      { path: 'complete-orders', component: CompleteOrdersComponent }],
+    canActivate: [AuthGuard]
+  },
+  { path: 'user/:username/order/:orderId', component: OrderDetailsComponent, canActivate: [AuthGuard] },
 
   // Error Components
   { path: 'error', component: ErrorComponent },

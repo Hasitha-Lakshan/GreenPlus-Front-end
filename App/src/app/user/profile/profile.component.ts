@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
   }
 
   private isSameUser() {
-    if (this.authService.validateUserByUsernameFromUrlAndLocalStorageUsingUserId(this.getUsernameFromUrl())) {
+    if (this.authService.validateUserByUsernameFromUrlAndUsernameFromLocalStorage(this.getUsernameFromUrl())) {
       this.isValidateUser = true;
 
     } else {

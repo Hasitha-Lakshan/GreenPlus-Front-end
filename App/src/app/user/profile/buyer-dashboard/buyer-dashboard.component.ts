@@ -32,7 +32,7 @@ export class BuyerDashboardComponent implements OnInit {
   getAllDashboardBuyerRequests() {
     this.buyerRequestService.connectDashboardBuyerRequestsByUsernameApi(this.getUsernameFromUrl()).subscribe((data) => {
 
-      if (this.authService.validateUserByUsernameFromUrlAndLocalStorageUsingUserId(this.getUsernameFromUrl())) {
+      if (this.authService.validateUserByUsernameFromUrlAndUsernameFromLocalStorage(this.getUsernameFromUrl())) {
         this.dashboardBuyerRequests = data;
 
       } else {

@@ -1,0 +1,20 @@
+<div id="search_bar" class="jumbotron-fluid p-4">
+    <div class="container">
+        <div class="row">
+            <div class="dropdown col-md-3 col-sm-6 my-1">
+                <button class="btn btn-lg" type="button" routerLink='inprogress-orders' >Inprogress</button>
+            </div>
+            <div class="dropdown col-md-3 col-sm-6 my-1">
+                <button class="btn btn-lg" type="button" routerLink="active-orders">Active</button>
+            </div>
+            <div class="dropdown col-md-3 col-sm-6 my-1">
+                <button class="btn btn-lg" type="button" routerLink="late-orders">Late</button>
+            </div>
+            <div class="dropdown col-md-3 col-sm-6 my-1">
+                <button class="btn btn-lg" type="button" routerLink="complete-orders">Complete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

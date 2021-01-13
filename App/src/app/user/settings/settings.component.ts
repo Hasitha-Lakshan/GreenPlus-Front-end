@@ -167,7 +167,7 @@ export class SettingsComponent implements OnInit {
   }
 
   checkUserValidation() {
-    if (!this.authService.validateUserByUsernameFromUrlAndLocalStorageUsingUserId(this.username)) {
+    if (!this.authService.validateUserByUsernameFromUrlAndUsernameFromLocalStorage(this.username)) {
       this.router.navigate(['error']);
     }
   }

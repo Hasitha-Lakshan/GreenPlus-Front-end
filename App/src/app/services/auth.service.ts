@@ -42,7 +42,7 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(authenticationtoken);
   }
 
-  validateUserByUsernameFromUrlAndLocalStorageUsingUserId(usernameFromUrl: string): boolean {
+  validateUserByUsernameFromUrlAndUsernameFromLocalStorage(usernameFromUrl: string): boolean {
     let usernameFromLocalStorage = this.localStorageService.retrieve('username');
 
     if (this.isAuthenticated() && usernameFromUrl === usernameFromLocalStorage) {

@@ -32,7 +32,7 @@ export class FarmerDashboardComponent implements OnInit {
   getAllDashboardShops() {
     this.shopService.connectDashboardShopsByUsernameApi(this.getUsernameFromUrl()).subscribe((data) => {
 
-      if (this.authService.validateUserByUsernameFromUrlAndLocalStorageUsingUserId(this.getUsernameFromUrl())) {
+      if (this.authService.validateUserByUsernameFromUrlAndUsernameFromLocalStorage(this.getUsernameFromUrl())) {
         this.dashboardShops = data;
 
       } else {

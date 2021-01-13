@@ -1,0 +1,39 @@
+#header_bar {
+    background-color: #f7f7f7;
+    color: #052123;
+}
+
+button {
+    background-color: #052123;
+    color: white;
+}
+
+button:hover {
+    background-color: #0f484c;
+    color: white;
+}
+
+button:focus {
+    background-color: #0f484c;
+    box-shadow: none;
+    color: white;
+}
+
+#header{
+    background-color: #052123;
+}
+
+@media screen and (max-width: 342px)
+{
+  h5 {
+      font-size: 18px;
+  }
+
+  h4{
+    font-size: 18px
+  }
+
+  p {
+      font-size: 12px;
+  }
+}

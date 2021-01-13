@@ -36,6 +36,13 @@ import { BuyerRequestUpdateComponent } from './buyer-request/buyer-request-updat
 import { UserDetailsUpdateComponent } from './user/settings/user-details-update/user-details-update.component';
 import { OrderRequirementComponent } from './order/order-requirement/order-requirement.component';
 import { OrdersDashboardComponent } from './order/orders-dashboard/orders-dashboard.component';
+import { OrderStatusBarComponent } from './order/order-status-bar/order-status-bar.component';
+import { InprogressOrdersComponent } from './order/inprogress-orders/inprogress-orders.component';
+import { ActiveOrdersComponent } from './order/active-orders/active-orders.component';
+import { LateOrdersComponent } from './order/late-orders/late-orders.component';
+import { CompleteOrdersComponent } from './order/complete-orders/complete-orders.component';
+import { MessagesComponent } from './user/messages/messages.component';
+import { OrderDetailsComponent } from './order/order-details/order-details.component';
 
 
 @NgModule({
@@ -68,6 +75,13 @@ import { OrdersDashboardComponent } from './order/orders-dashboard/orders-dashbo
     UserDetailsUpdateComponent,
     OrderRequirementComponent,
     OrdersDashboardComponent,
+    OrderStatusBarComponent,
+    InprogressOrdersComponent,
+    ActiveOrdersComponent,
+    LateOrdersComponent,
+    CompleteOrdersComponent,
+    MessagesComponent,
+    OrderDetailsComponent,
   ],
   imports: [
     BrowserModule,

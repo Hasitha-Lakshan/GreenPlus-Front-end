@@ -11,4 +11,5 @@ export class OrderCreatingPayload {
     totalPrice: number;
     createdDate: string;
     dueDate: string;
+    unit: string;
 }
