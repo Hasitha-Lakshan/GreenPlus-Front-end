@@ -5,6 +5,7 @@ import { OrderRequirementPayload } from '../order/order-requirement/order-requir
 import { OrderCreatingPayload } from '../order/order-requirement/order-creating-payload';
 import { ResponsePayload } from '../shared/response-payload';
 import { OrderDashboardPayload } from '../order/orders-dashboard/order-dashboard-payload';
+import { OrderDetailsPayload } from '../order/order-details/order-details-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,13 @@ export class OrderService {
     let options = { headers: httpHeader };
 
     return this.http.post<OrderDashboardPayload[]>(this.url + "ordersbyfarmer/" + username, orderStatus, options);
+  }
+
+  connectGetOrderDetailsByOrderIdApi(orderId: string): Observable<OrderDetailsPayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.get<OrderDetailsPayload>(this.url + "orderdetails/" + orderId, options);
   }
 
 }
