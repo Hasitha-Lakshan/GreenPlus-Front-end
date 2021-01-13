@@ -29,7 +29,6 @@ export class CompleteOrdersComponent implements OnInit {
     if (this.router.url.endsWith('/complete-orders')) {
       this.username = this.router.url.slice(6, (this.router.url.length - 33));
       this.isValidateFarmer(this.username);
-      console.log(this.username);
     }
   }
 
