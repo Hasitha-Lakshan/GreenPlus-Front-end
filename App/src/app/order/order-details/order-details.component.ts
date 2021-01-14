@@ -24,6 +24,7 @@ export class OrderDetailsComponent implements OnInit {
   currentUsername: string;
   completedDate: string;
   isStatusUpdateFailed: boolean;
+  isDeclineFailed: boolean;
 
   constructor(private orderService: OrderService, private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
 
@@ -46,7 +47,22 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   decline() {
-    console.log("delete");
+    this.orderService.connectDeleteOrderByOrderIdApi(this.getOrderIdFromUrl()).subscribe((response) => {
+
+      let orderDeclineResponse: ResponsePayload;
+      orderDeclineResponse = response;
+
+      if (orderDeclineResponse.responseStatus) {
+        this.isDeclineFailed = !orderDeclineResponse.responseStatus;
+        this.router.navigate(['user/' + this.currentUsername + '/orders-dashboard']);
+
+      } else {
+        this.isDeclineFailed = !orderDeclineResponse.responseStatus;
+      }
+    },
+      error => {
+        //this.router.navigate(['error']);
+      });
   }
 
   toActive() {

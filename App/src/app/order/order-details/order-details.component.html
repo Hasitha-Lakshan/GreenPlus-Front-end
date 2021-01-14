@@ -10,6 +10,9 @@
     <div *ngIf="isStatusUpdateFailed" class="message alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Order Status Change Failed!</h4>
     </div>
+    <div *ngIf="isDeclineFailed" class="message alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Order Decline Failed!</h4>
+    </div>
     <!--Visible for Farmers-->
 
     <div *ngIf="isFarmer">

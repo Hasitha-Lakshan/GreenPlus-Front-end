@@ -53,6 +53,12 @@ export class OrderService {
     return this.http.put<ResponsePayload>(this.url + "changeorderstatus/", orderStatusData);
   }
 
+  connectDeleteOrderByOrderIdApi(orderId: string): Observable<ResponsePayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.delete<ResponsePayload>(this.url + "deleteorder/" + orderId, options);
+  }
 }
 
 
