@@ -3,31 +3,35 @@
 <div class="container mt-5">
 
     <div class="text-right">
-        <button class="btn btn-dark" routerLink='/user/{{currentUsername}}/messages'>Contact
+        <button id="contact-btn" class="btn btn-dark" routerLink='/user/{{currentUsername}}/messages'>Contact
             {{contactUsername}}</button>
     </div>
     <hr>
-
+    <div *ngIf="isStatusUpdateFailed" class="message alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Order Status Change Failed!</h4>
+    </div>
     <!--Visible for Farmers-->
 
     <div *ngIf="isFarmer">
-        <div class="jumbotron p-3 bg-light mb-3" *ngIf="isInprogressOrder">
+        <div class="jumbotron p-3 mb-3 success" *ngIf="isInprogressOrder">
             <h4>Order Confirmation</h4>
             <hr>
             <p>This order does not start yet. Do you want to accept and start this order now?</p>
             <hr>
             <div class="text-right">
-                <button class="btn btn-danger mx-1">Decline</button>
-                <button class="btn btn-success mx-1">Accept</button>
+                <button type="button" data-toggle="modal" data-target="#declineModal"
+                    class="btn btn-danger mx-1">Decline</button>
+                <button type="button" data-toggle="modal" data-target="#acceptModal"
+                    class="btn btn-success mx-1">Accept</button>
             </div>
         </div>
 
-        <div class="jumbotron bg-light p-3 mb-3 text-center" *ngIf="isLateOrder">
+        <div class="jumbotron p-3 mb-3 text-center unsuccess" *ngIf="isLateOrder">
             <h4>Hurry Up! This order is late.</h4>
         </div>
 
-        <div class="jumbotron bg-light p-3 mb-3 text-center" *ngIf="isCompletedOrder">
-            <h4>Whoooha! This order was completed on {{orderDetailsPayload?.completedDate}}.</h4>
+        <div class="jumbotron p-3 mb-3 text-center success" *ngIf="isCompletedOrder">
+            <h4>Whoooha! This order was completed on {{completedDate}}.</h4>
         </div>
     </div>
 
@@ -35,26 +39,26 @@
     <!--Visible for Buyers-->
 
     <div *ngIf="isBuyer">
-        <div class="jumbotron bg-light p-3 mb-3 text-center" *ngIf="isLateOrder">
+        <div class="jumbotron p-3 mb-3 text-center unsuccess" *ngIf="isLateOrder">
             <h4>Too Bad! This order is late.</h4>
         </div>
 
-        <div class="jumbotron bg-light p-3 mb-3 text-center" *ngIf="isCompletedOrder">
-            <h4>Whoooha! This order was completed on {{orderDetailsPayload?.completedDate}}.</h4>
+        <div class="jumbotron p-3 mb-3 text-center success" *ngIf="isCompletedOrder">
+            <h4>Whoooha! This order was completed on {{completedDate}}.</h4>
         </div>
     </div>
 
     <!--Visible for both farmers and buyers-->
 
-    <div class="jumbotron-fluid p-3 bg-light">
-        <h4>{{orderDetailsPayload?.shopTitle}}</h4>
+    <div id="order_header" class="jumbotron p-3">
+        <h3 class="text-left my-3">{{orderDetailsPayload?.shopTitle}}</h3>
         <hr>
-        <div class="row">
-            <div class="col">
-                <p>Created on: {{orderDetailsPayload?.createdDate}}</p>
+        <div class="row my-3">
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                <p class="mb-1">Created on: {{orderDetailsPayload?.createdDate}}</p>
             </div>
-            <div class="col text-right">
-                <p>Due on: {{orderDetailsPayload?.dueDate}}</p>
+            <div id="dueDate" class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                <p class="mb-1">Due on: {{orderDetailsPayload?.dueDate}}</p>
             </div>
         </div>
     </div>
@@ -62,31 +66,46 @@
     <div class="text-center p-5">
         <h5>The clock is here</h5>
     </div>
-
-    <div class="jumbotron bg-light p-3 mb-3 text-left">
+    <hr>
+    <div id="details" class="mb-3 text-center">
         <div class="row p-2">
             <div class="col">
-                <span>Quantity : {{orderDetailsPayload?.quantity}} {{orderDetailsPayload?.unit}}</span>
+                <p class="title p-2">Category</p>
+                <p>{{orderDetailsPayload?.category}}</p>
             </div>
             <div class="col">
-                <span>Total Price : {{orderDetailsPayload?.totalPrice}}.00 LKR</span>
-            </div>
-            <div class="col">
-                <span>Delivery in {{orderDetailsPayload?.deliveryDays}} days</span>
+                <p class="title p-2">Sub Category</p>
+                <p>{{orderDetailsPayload?.subCategory}}</p>
             </div>
         </div>
-        <hr>
         <div class="row p-2">
             <div class="col">
-                <span>Delivery Address : {{orderDetailsPayload?.deliveryAddressLine1}},
-                    {{orderDetailsPayload?.deliveryAddressLine2}}, {{orderDetailsPayload?.deliveryAddressLine3}}.</span>
+                <p class="title p-2">Delivery in</p>
+                <p>{{orderDetailsPayload?.deliveryDays}} days</p>
             </div>
             <div class="col">
-                <span>Delivery Location : {{orderDetailsPayload?.deliveryLocation}}</span>
+                <p class="title p-2">Quantity</p>
+                <p>{{orderDetailsPayload?.quantity}} {{orderDetailsPayload?.unit}}</p>
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col">
+                <p class="title p-2">Total Price</p>
+                <p>{{orderDetailsPayload?.totalPrice}}.00 LKR</p>
+            </div>
+            <div class="col">
+                <p class="title p-2">Location</p>
+                <p>{{orderDetailsPayload?.deliveryLocation}}</p>
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col">
+                <p class="title p-2">Delivery Address</p>
+                <p>{{orderDetailsPayload?.deliveryAddressLine1}}, {{orderDetailsPayload?.deliveryAddressLine2}},
+                    {{orderDetailsPayload?.deliveryAddressLine3}}.</p>
             </div>
         </div>
     </div>
-
     <div id="note" class="row mt-3 mx-0">
         <h4 class="col py-3 text-center">Order Note</h4>
     </div>
@@ -94,11 +113,78 @@
         <p class="text-justify p-3">{{orderDetailsPayload?.note}}</p>
     </div>
     <hr>
-    <div *ngIf="isBuyer && !isInprogressOrder">
-        <button class="bigButton col btn text-light py-3">
+    <div *ngIf="isBuyer && !isInprogressOrder && !isCompletedOrder">
+        <button type="button" data-toggle="modal" data-target="#completeModal"
+            class="bigButton col btn text-light py-3">
             <h5>Complete Order</h5>
         </button>
         <hr>
+    </div>
+</div>
+
+<!---------------MODALS----------------->
+
+<!-- Accept Modal -->
+<div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="acceptModalLabel">Accept Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure, do you want to accept this order?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="contact-btn" type="button" class="btn" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="toActive()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Complete Modal -->
+<div class="modal fade" id="completeModal" tabindex="-1" aria-labelledby="completeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="completeModalLabel">Complete Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure, do you want to complete this order?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="contact-btn" type="button" class="btn" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal"
+                    (click)="toComplete()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Decline Modal -->
+<div class="modal fade" id="declineModal" tabindex="-1" aria-labelledby="declineModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="declineModalLabel">Decline Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure, do you want to decline this order?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="contact-btn" type="button" class="btn" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="decline()">Confirm</button>
+            </div>
+        </div>
     </div>
 </div>
 

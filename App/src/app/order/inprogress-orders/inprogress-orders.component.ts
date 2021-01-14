@@ -16,6 +16,8 @@ export class InprogressOrdersComponent implements OnInit {
   inprogressOrdersByFarmer: OrderDashboardPayload[];
   isFarmer: boolean;
   username: string;
+  isEmptyOrdersByFarmer: boolean;
+  isEmptyOrdersByShops: boolean;
 
   constructor(private orderService: OrderService, private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
 
@@ -60,6 +62,13 @@ export class InprogressOrdersComponent implements OnInit {
       if (data != null) {
         this.inprogressOrders = data;
       }
+
+      if (data.length == 0) {
+        this.isEmptyOrdersByShops = true;
+
+      } else {
+        this.isEmptyOrdersByShops = false;
+      }
     },
       error => {
         this.router.navigate(['error']);
@@ -71,6 +80,13 @@ export class InprogressOrdersComponent implements OnInit {
 
       if (data != null) {
         this.inprogressOrdersByFarmer = data;
+      }
+
+      if (data.length == 0) {
+        this.isEmptyOrdersByFarmer = true;
+
+      } else {
+        this.isEmptyOrdersByFarmer = false;
       }
     },
       error => {

@@ -1,3 +1,31 @@
+#contact-btn{
+    background-color: #052123;
+    color: white;
+}
+
+button:focus {
+    box-shadow: none;
+}
+
+#contact-btn:hover{
+    background-color: #0f484c;
+    color: white;
+}
+
+#contact-btn:focus{
+    background-color: #0f484c;
+    box-shadow: none;
+    color: white;
+}
+
+.success {
+    background-color: #e1ffc8;
+}
+
+.unsuccess {
+    background-color: #ff000d11;
+}
+
 #note{
     background-color: #f1f1f1;
 }
@@ -8,4 +36,49 @@
 
 .bigButton:hover{
     background-color: #0f484c;
+}
+
+#dueDate {
+    text-align: right;
+}
+
+#order_header{
+    background-color: #f1f1f1;
+}
+
+.title {
+    background-color: #052123;
+    color: white;
+}
+
+#details .col {
+    padding: 0px;
+    margin: 0px 15px;
+    background-color: #f1f1f1;
+}
+
+@media screen and (max-width: 768px)
+{
+    h4{
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 15px;
+    }
+
+    #dueDate {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 342px)
+{
+  h4{
+    font-size: 18px;
+  }
+
+  p {
+      font-size: 12px;
+  }
 }

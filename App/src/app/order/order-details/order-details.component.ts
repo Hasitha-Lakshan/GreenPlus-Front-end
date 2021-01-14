@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from 'ngx-webstorage';
+import { ResponsePayload } from 'src/app/shared/response-payload';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-order-details',
@@ -20,18 +22,20 @@ export class OrderDetailsComponent implements OnInit {
   isLateOrder: boolean;
   isCompletedOrder: boolean;
   currentUsername: string;
+  completedDate: string;
+  isStatusUpdateFailed: boolean;
 
   constructor(private orderService: OrderService, private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
 
-    this.getShopIdFromUrl();
+    this.getOrderIdFromUrl();
     this.getCurrentUsername();
     this.getShopDetails();
   }
 
   //Slice the current url and get the orderId
-  getShopIdFromUrl(): string {
+  getOrderIdFromUrl(): string {
     return this.router.url.slice(this.router.url.search("/order/") + 7, (this.router.url.length));
   }
 
@@ -41,11 +45,55 @@ export class OrderDetailsComponent implements OnInit {
     }
   }
 
+  decline() {
+    console.log("delete");
+  }
+
+  toActive() {
+
+    const orderStatusData = new FormData();
+    orderStatusData.append("orderId", this.getOrderIdFromUrl());
+    orderStatusData.append("username", this.currentUsername);
+    orderStatusData.append("orderStatus", "ACTIVE");
+
+    this.changeOrderStatus(orderStatusData);
+  }
+
+  toComplete() {
+
+    const orderStatusData = new FormData();
+    orderStatusData.append("orderId", this.getOrderIdFromUrl());
+    orderStatusData.append("username", this.currentUsername);
+    orderStatusData.append("orderStatus", "COMPLETE");
+
+    this.changeOrderStatus(orderStatusData);
+  }
+
+  changeOrderStatus(orderStatusData: FormData) {
+    this.orderService.connectChangeOrderStatusByOrderIdApi(orderStatusData).subscribe((response) => {
+
+      let orderStatusUpdateResponse: ResponsePayload;
+      orderStatusUpdateResponse = response;
+
+      if (orderStatusUpdateResponse.responseStatus) {
+        this.isStatusUpdateFailed = !orderStatusUpdateResponse.responseStatus;
+        this.ngOnInit();
+
+      } else {
+        this.isStatusUpdateFailed = !orderStatusUpdateResponse.responseStatus;
+      }
+    },
+      error => {
+        this.router.navigate(['error']);
+      });
+  }
+
   getShopDetails() {
-    this.orderService.connectGetOrderDetailsByOrderIdApi(this.getShopIdFromUrl()).subscribe((data) => {
+    this.orderService.connectGetOrderDetailsByOrderIdApi(this.getOrderIdFromUrl()).subscribe((data) => {
 
       if (data != null) {
         this.orderDetailsPayload = data;
+        this.completedDate = formatDate(data.completedDate, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
 
         //////////////////////////////////     Check Order Status     //////////////////////////////////////////
 

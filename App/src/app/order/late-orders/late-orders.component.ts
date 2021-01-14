@@ -16,6 +16,8 @@ export class LateOrdersComponent implements OnInit {
   lateOrdersByFarmer: OrderDashboardPayload[];
   isFarmer: boolean;
   username: string;
+  isEmptyOrdersByFarmer: boolean;
+  isEmptyOrdersByShops: boolean;
 
   constructor(private orderService: OrderService, private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
 
@@ -54,6 +56,13 @@ export class LateOrdersComponent implements OnInit {
       if (data != null) {
         this.lateOrders = data;
       }
+
+      if (data.length == 0) {
+        this.isEmptyOrdersByShops = true;
+
+      } else {
+        this.isEmptyOrdersByShops = false;
+      }
     },
       error => {
         this.router.navigate(['error']);
@@ -65,6 +74,13 @@ export class LateOrdersComponent implements OnInit {
 
       if (data != null) {
         this.lateOrdersByFarmer = data;
+      }
+
+      if (data.length == 0) {
+        this.isEmptyOrdersByFarmer = true;
+
+      } else {
+        this.isEmptyOrdersByFarmer = false;
       }
     },
       error => {

@@ -49,6 +49,10 @@ export class OrderService {
     return this.http.get<OrderDetailsPayload>(this.url + "orderdetails/" + orderId, options);
   }
 
+  connectChangeOrderStatusByOrderIdApi(orderStatusData: FormData): Observable<ResponsePayload> {
+    return this.http.put<ResponsePayload>(this.url + "changeorderstatus/", orderStatusData);
+  }
+
 }
 
 

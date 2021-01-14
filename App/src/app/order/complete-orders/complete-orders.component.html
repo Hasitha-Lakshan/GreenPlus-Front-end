@@ -2,6 +2,12 @@
     <div id="header" class="py-3 text-light text-center mb-3">
         <h4>Complete Orders</h4>
     </div>
+    <div *ngIf="isEmptyOrdersByShops && isFarmer" class="message alert text-center" role="alert">
+        <h5 class="alert-heading">There is no complete orders for your shops.</h5>
+    </div>
+    <div *ngIf="isEmptyOrdersByShops && !isFarmer" class="message alert text-center" role="alert">
+        <h5 class="alert-heading">There are no complete orders ordered by you.</h5>
+    </div>
     <div id="header_bar" class="jumbotron p-4 mb-2" *ngFor="let completeOrder of completeOrders">
         <div class="row">
             <div class="col-xl-10 col-lg-9 col-md-9 col-sm-12">
@@ -18,6 +24,9 @@
 
 <div class="container mt-5 mb-5" *ngIf="isFarmer">
     <hr>
+    <div *ngIf="isEmptyOrdersByFarmer" class="message alert text-center" role="alert">
+        <h5 class="alert-heading">There are no complete orders ordered by you.</h5>
+    </div>
     <div id="header_bar" class="jumbotron p-4 mb-2" *ngFor="let completeOrdersByFarmer of completeOrdersByFarmer">
         <div class="row">
             <div class="col-xl-10 col-lg-9 col-md-9 col-sm-12">

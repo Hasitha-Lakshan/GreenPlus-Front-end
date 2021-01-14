@@ -1,6 +1,8 @@
 export class OrderDetailsPayload {
 
     shopTitle: string;
+    category: string;
+    subCategory: string;
     farmerUsername: string;
     buyerUsername: string;
     note: string;
