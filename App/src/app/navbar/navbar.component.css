@@ -1,9 +1,9 @@
 #navbar{
     background-color: #052123;
+    
 }
 
 .active{
-    margin: 0px 5px;
     border-bottom: 2px solid #a6f202;
 }
 
@@ -22,12 +22,36 @@ li{
     border-radius: .25rem;
 }
 
+#profile_items a {
+    color:  white;
+    padding: 10px;
+}
+
+#profile_items a:focus{
+   background-color: #38585a;
+}
+
+#profile_items a:hover{
+    background-color: #536a6b;
+ }
+
+#profile_items{
+    background-color: #204042;
+}
+
 @media screen and (max-width: 992px)
 {
     .navbar-brand{
         font-size: 24px;
     }
 
+    #profile_items{
+        text-align: center;
+    }
+
+    #drop_down_profile {
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 768px)
@@ -35,6 +59,5 @@ li{
     .navbar-brand{
         font-size: 22px;
     }
-
 }
 

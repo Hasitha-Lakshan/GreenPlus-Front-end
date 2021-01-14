@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top sticky-top p-3">
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark sticky-top p-3">
 
     <a class="navbar-brand" [routerLink]="['/home']"><span style="color:#a6f202;">Green</span>Plus</a>
 
@@ -27,22 +27,28 @@
             <li class="nav-item mt-2" *ngIf="!isLogin">
                 <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">SIGNUP</a>
             </li>
-            <li class="nav-item mt-2" *ngIf="isLogin" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact:true}">
-                <a class="nav-link" routerLink='/user/{{username}}/profile'>Profile</a>
-                <a class="nav-link" routerLink='/user/{{username}}' style="display: none"></a>
-            </li>
             <li class="nav-item mt-2" *ngIf="isLogin">
                 <a class="nav-link" routerLink={{DashboardRouterLink}} routerLinkActive="active">Dashboard</a>
             </li>
             <li class="nav-item mt-2" *ngIf="isLogin">
                 <a class="nav-link" routerLink='/user/{{username}}/messages' routerLinkActive="active">Messages</a>
             </li>
-            <li class="nav-item mt-2" *ngIf="isLogin">
-                <a class="nav-link" routerLink='/user/{{username}}/settings' routerLinkActive="active">Settings</a>
-            </li>
-            <li class="nav-item mt-2" *ngIf="isLogin">
-                <a class="nav-link" [routerLink]="['/home']" (click)="logout()">Logout</a>
+            <li id="drop_down_profile" class="nav-item dropdown mt-2" *ngIf="isLogin">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">{{username}}</a>
+
+                <div id="profile_items" class="dropdown-menu dropdown-menu-right p-3">
+                    <div routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <a class="dropdown-item" routerLink='/user/{{username}}/profile'>Profile</a>
+                        <a class="dropdown-item" routerLink='/user/{{username}}' style="display: none"></a>
+                    </div>
+                    <div routerLinkActive="active">
+                        <a class="dropdown-item" routerLink='/user/{{username}}/settings'>Settings</a>
+                    </div>
+                    <div style="background-color: #38585a;">
+                        <a class="dropdown-item" [routerLink]="['/home']" (click)="logout()">Logout</a>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
