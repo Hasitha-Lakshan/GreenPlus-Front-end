@@ -25,6 +25,7 @@ li{
 #profile_items a {
     color:  white;
     padding: 10px;
+    font-size: 14px;
 }
 
 #profile_items a:focus{

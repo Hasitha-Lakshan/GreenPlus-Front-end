@@ -1,6 +1,6 @@
 <div class="container mt-5 mb-5">
     <div id="header" class="py-3 text-light text-center mb-3">
-        <h4>Active Orders From Buyers</h4>
+        <h4>Active Orders</h4>
     </div>
     <div id="header_bar" class="jumbotron p-4 mb-2" *ngFor="let activeOrder of activeOrders">
         <div class="row">
@@ -18,9 +18,7 @@
 </div>
 
 <div class="container mt-5 mb-5" *ngIf="isFarmer">
-    <div id="header" class="py-3 text-light text-center mb-3">
-        <h4>Active Orders By Me</h4>
-    </div>
+    <hr>
     <div id="header_bar" class="jumbotron p-4 mb-2" *ngFor="let activeOrdersByFarmer of activeOrdersByFarmer">
         <div class="row">
             <div class="col-xl-10 col-lg-9 col-md-9 col-sm-12">
