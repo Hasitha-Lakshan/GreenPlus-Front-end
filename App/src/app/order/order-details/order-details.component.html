@@ -34,7 +34,7 @@
         </div>
 
         <div class="jumbotron p-3 mb-3 text-center success" *ngIf="isCompletedOrder">
-            <h4>Whoooha! This order was completed on {{completedDate}}.</h4>
+            <h4>Whoooha! This order was completed on {{orderDetailsPayload?.completedDate}}.</h4>
         </div>
     </div>
 
@@ -47,7 +47,7 @@
         </div>
 
         <div class="jumbotron p-3 mb-3 text-center success" *ngIf="isCompletedOrder">
-            <h4>Whoooha! This order was completed on {{completedDate}}.</h4>
+            <h4>Whoooha! This order was completed on {{orderDetailsPayload?.completedDate}}.</h4>
         </div>
     </div>
 

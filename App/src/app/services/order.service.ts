@@ -6,6 +6,7 @@ import { OrderCreatingPayload } from '../order/order-requirement/order-creating-
 import { ResponsePayload } from '../shared/response-payload';
 import { OrderDashboardPayload } from '../order/orders-dashboard/order-dashboard-payload';
 import { OrderDetailsPayload } from '../order/order-details/order-details-payload';
+import { OrderStatusChangePayload } from '../order/order-details/order-status-change-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -49,8 +50,11 @@ export class OrderService {
     return this.http.get<OrderDetailsPayload>(this.url + "orderdetails/" + orderId, options);
   }
 
-  connectChangeOrderStatusByOrderIdApi(orderStatusData: FormData): Observable<ResponsePayload> {
-    return this.http.put<ResponsePayload>(this.url + "changeorderstatus/", orderStatusData);
+  connectChangeOrderStatusByOrderIdApi(orderStatusChangePayload: OrderStatusChangePayload): Observable<ResponsePayload> {
+    let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
+    let options = { headers: httpHeader };
+
+    return this.http.put<ResponsePayload>(this.url + "changeorderstatus/", orderStatusChangePayload, options);
   }
 
   connectDeleteOrderByOrderIdApi(orderId: string): Observable<ResponsePayload> {

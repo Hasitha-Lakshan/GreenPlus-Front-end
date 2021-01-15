@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { ResponsePayload } from 'src/app/shared/response-payload';
 import { formatDate } from '@angular/common';
+import { OrderStatusChangePayload } from './order-status-change-payload';
 
 @Component({
   selector: 'app-order-details',
@@ -22,7 +23,6 @@ export class OrderDetailsComponent implements OnInit {
   isLateOrder: boolean;
   isCompletedOrder: boolean;
   currentUsername: string;
-  completedDate: string;
   isStatusUpdateFailed: boolean;
   isDeclineFailed: boolean;
 
@@ -61,32 +61,38 @@ export class OrderDetailsComponent implements OnInit {
       }
     },
       error => {
-        //this.router.navigate(['error']);
+        this.router.navigate(['error']);
       });
   }
 
   toActive() {
 
-    const orderStatusData = new FormData();
-    orderStatusData.append("orderId", this.getOrderIdFromUrl());
-    orderStatusData.append("username", this.currentUsername);
-    orderStatusData.append("orderStatus", "ACTIVE");
+    const activateOrder = new OrderStatusChangePayload();
 
-    this.changeOrderStatus(orderStatusData);
+    activateOrder.orderId = this.getOrderIdFromUrl();
+    activateOrder.username = this.currentUsername;
+    activateOrder.orderStatus = "ACTIVE";
+
+    this.changeOrderStatus(activateOrder);
   }
 
   toComplete() {
 
-    const orderStatusData = new FormData();
-    orderStatusData.append("orderId", this.getOrderIdFromUrl());
-    orderStatusData.append("username", this.currentUsername);
-    orderStatusData.append("orderStatus", "COMPLETE");
+    const completeOrder = new OrderStatusChangePayload();
 
-    this.changeOrderStatus(orderStatusData);
+    completeOrder.orderId = this.getOrderIdFromUrl();
+    completeOrder.username = this.currentUsername;
+    completeOrder.orderStatus = "COMPLETE";
+
+    let createdDate = new Date();
+    completeOrder.completedDate = formatDate(createdDate, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
+
+
+    this.changeOrderStatus(completeOrder);
   }
 
-  changeOrderStatus(orderStatusData: FormData) {
-    this.orderService.connectChangeOrderStatusByOrderIdApi(orderStatusData).subscribe((response) => {
+  changeOrderStatus(orderStatusChangePayload: OrderStatusChangePayload) {
+    this.orderService.connectChangeOrderStatusByOrderIdApi(orderStatusChangePayload).subscribe((response) => {
 
       let orderStatusUpdateResponse: ResponsePayload;
       orderStatusUpdateResponse = response;
@@ -109,7 +115,6 @@ export class OrderDetailsComponent implements OnInit {
 
       if (data != null) {
         this.orderDetailsPayload = data;
-        this.completedDate = formatDate(data.completedDate, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
 
         //////////////////////////////////     Check Order Status     //////////////////////////////////////////
 
