@@ -17,6 +17,7 @@ export class FarmerDashboardComponent implements OnInit {
   isShopNotDeleted: boolean;
   shopId: number;
   shopTitle: string;
+  hasIncompletedOrders: boolean;
 
   constructor(private shopService: ShopService, private router: Router, private authService: AuthService) { }
 
@@ -59,11 +60,19 @@ export class FarmerDashboardComponent implements OnInit {
       if (shopDeletingResponse.responseStatus) {
         this.isShopDeleted = shopDeletingResponse.responseStatus;
         this.isShopNotDeleted = false;
+        this.hasIncompletedOrders = false;
         this.ngOnInit();
       }
       else {
-        this.isShopNotDeleted = true;
-        this.isShopDeleted = false;
+
+        if (shopDeletingResponse.responseBody === "The shop has incompleted orders, Shop delete failed!") {
+          this.hasIncompletedOrders = true;
+          this.isShopDeleted = false;
+
+        } else {
+          this.isShopNotDeleted = true;
+          this.isShopDeleted = false;
+        }
       }
     },
       error => {

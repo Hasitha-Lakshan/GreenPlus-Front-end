@@ -20,6 +20,9 @@
     <div *ngIf="isShopNotDeleted" class="message alert alert-danger text-center" role="alert">
         <h5 class="alert-heading">Shop Deleting is failed!</h5>
     </div>
+    <div *ngIf="hasIncompletedOrders" class="message alert alert-danger text-center" role="alert">
+        <h5 class="alert-heading">The Shop has Incompleted Orders, Shop Deleting is failed!</h5>
+    </div>
     <div class="card mb-4" *ngFor="let dashboardShop of dashboardShops">
         <span id="headingOne" class="text-left card-header py-3">{{dashboardShop?.title}}</span>
         <div class="card-body">

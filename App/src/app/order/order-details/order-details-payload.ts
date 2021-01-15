@@ -9,9 +9,9 @@ export class OrderDetailsPayload {
     quantity: number;
     unit: string;
     totalPrice: number;
-    createdDate: Date;
+    createdDate: string;
     dueDate: Date;
-    completedDate: Date;
+    completedDate: string;
     orderStatus: string;
     deliveryDays: number;
     deliveryAddressLine1: string;

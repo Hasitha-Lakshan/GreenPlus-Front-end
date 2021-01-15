@@ -7,6 +7,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { ResponsePayload } from 'src/app/shared/response-payload';
 import { formatDate } from '@angular/common';
 import { OrderStatusChangePayload } from './order-status-change-payload';
+import { Countdown } from './countdown';
 
 @Component({
   selector: 'app-order-details',
@@ -25,6 +26,11 @@ export class OrderDetailsComponent implements OnInit {
   currentUsername: string;
   isStatusUpdateFailed: boolean;
   isDeclineFailed: boolean;
+  dueDate: string;
+
+
+  countdown: Countdown;
+  dueDateInDate: Date;
 
   constructor(private orderService: OrderService, private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
 
@@ -33,6 +39,57 @@ export class OrderDetailsComponent implements OnInit {
     this.getOrderIdFromUrl();
     this.getCurrentUsername();
     this.getShopDetails();
+
+    setInterval(() => {
+      const currentDate = new Date();
+      this.setCountdown(currentDate);
+
+    }, 1000);
+  }
+
+  //Countdown Clock
+  setCountdown(currentDate: Date) {
+    const remainingTime = new Date(this.dueDateInDate.getTime() - currentDate.getTime());
+
+    if (!(remainingTime.getTime() <= 0)) {
+      const countdown = new Countdown();
+
+      countdown.days = remainingTime.getDate();
+      countdown.hours = remainingTime.getHours();
+      countdown.minutes = remainingTime.getMinutes();
+      countdown.seconds = remainingTime.getSeconds();
+
+      this.countdown = countdown;
+
+    } else {
+      const countdown = new Countdown();
+
+      countdown.days = 0;
+      countdown.hours = 0;
+      countdown.minutes = 0;
+      countdown.seconds = 0;
+
+      this.countdown = countdown;
+
+      if (!this.isLateOrder) {
+        this.toLate();
+      }
+    }
+  }
+
+  toLate() {
+    this.orderService.connectChangeOrderStatusToLateByOrderIdApi(this.getOrderIdFromUrl()).subscribe((response) => {
+
+      let orderStatusUpdateToLateResponse: ResponsePayload;
+      orderStatusUpdateToLateResponse = response;
+
+      if (orderStatusUpdateToLateResponse.responseStatus) {
+        this.ngOnInit();
+      }
+    },
+      error => {
+        //this.router.navigate(['error']);
+      });
   }
 
   //Slice the current url and get the orderId
@@ -115,6 +172,8 @@ export class OrderDetailsComponent implements OnInit {
 
       if (data != null) {
         this.orderDetailsPayload = data;
+        this.dueDateInDate = new Date(data.dueDate);
+        this.dueDate = formatDate(data.dueDate, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
 
         //////////////////////////////////     Check Order Status     //////////////////////////////////////////
 
