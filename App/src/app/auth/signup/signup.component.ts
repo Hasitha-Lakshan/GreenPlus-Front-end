@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
   signupPayload: SignupPayload;
   datasaved: boolean;
   datanotsaved: boolean;
+  responseMessage: string;
 
   constructor(private authService: AuthService, private formbuilder: FormBuilder, private router: Router) { }
 
@@ -56,16 +57,18 @@ export class SignupComponent implements OnInit {
   }
 
   postData(newUser: SignupPayload) {
-    this.authService.connectSignupApi(newUser).subscribe(status => {
-      let signupStatus: any;
-      signupStatus = status;
+    this.authService.connectSignupApi(newUser).subscribe(response => {
+      const signupResponse = response;
 
-      if (signupStatus) {
-        this.datasaved = signupStatus;
+      if (signupResponse.responseStatus) {
+        this.datasaved = signupResponse.responseStatus;
+        this.datanotsaved = !signupResponse.responseStatus;
         this.signupForm.reset();
       }
       else {
-        this.datanotsaved = true;
+        this.responseMessage = signupResponse.responseBody;
+        this.datanotsaved = !signupResponse.responseStatus;
+        this.datasaved = signupResponse.responseStatus;
       }
     });
   }

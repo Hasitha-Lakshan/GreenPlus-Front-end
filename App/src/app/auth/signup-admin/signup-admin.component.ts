@@ -18,6 +18,7 @@ export class SignupAdminComponent implements OnInit {
   signupPayload: SignupPayload;
   datasaved: boolean;
   datanotsaved: boolean;
+  responseMessage: string;
 
   ngOnInit(): void {
     this.logincheck();
@@ -55,16 +56,18 @@ export class SignupAdminComponent implements OnInit {
   }
 
   postData(newUser: SignupPayload) {
-    this.authService.connectSignupApi(newUser).subscribe(status => {
-      let signupStatus: any;
-      signupStatus = status;
+    this.authService.connectSignupApi(newUser).subscribe(response => {
+      const signupResponse = response;
 
-      if (signupStatus) {
-        this.datasaved = signupStatus;
+      if (signupResponse.responseStatus) {
+        this.datasaved = signupResponse.responseStatus;
+        this.datanotsaved = !signupResponse.responseStatus;
         this.signupForm.reset();
       }
       else {
-        this.datanotsaved = true;
+        this.responseMessage = signupResponse.responseBody;
+        this.datanotsaved = !signupResponse.responseStatus;
+        this.datasaved = signupResponse.responseStatus;
       }
     });
   }

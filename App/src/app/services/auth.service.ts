@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { LocalStorageService } from 'ngx-webstorage';
 import { SignupPayload } from '../auth/signup/signup-payload'
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ResponsePayload } from '../shared/response-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,12 @@ export class AuthService {
 
   constructor(private http: HttpClient, private localStorageService: LocalStorageService, public jwtHelper: JwtHelperService) { }
 
-  connectSignupApi(signupPayload: SignupPayload): Observable<SignupPayload> {
+  connectSignupApi(signupPayload: SignupPayload): Observable<ResponsePayload> {
     let httpHeader = new HttpHeaders().set('Content-Type', 'application/Json');
     let options = {
       headers: httpHeader
     };
-    return this.http.post<SignupPayload>(this.url + 'signup', signupPayload, options);
+    return this.http.post<ResponsePayload>(this.url + 'signup', signupPayload, options);
   }
 
   connectLoginApi(loginPayload: LoginPayload): Observable<void> {

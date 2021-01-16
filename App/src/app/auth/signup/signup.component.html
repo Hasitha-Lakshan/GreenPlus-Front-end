@@ -9,7 +9,11 @@
         <hr>
         <p>Please login with using your username and password.</p>
     </div>
-    <p *ngIf="datanotsaved" class="message alert alert-danger">Registration is failed!</p>
+    <div *ngIf="datanotsaved" class="message alert alert-danger" role="alert">
+        <h4 class="alert-heading">Your Registration is Unsuccessful!</h4>
+        <hr>
+        <p>{{responseMessage}}</p>
+    </div>
     <form [formGroup]="signupForm" (ngSubmit)="submitUserData()">
         <div class="form-group">
             <label>First Name</label>
@@ -114,9 +118,6 @@
         <div class="form-group">
             <label>Username</label>
             <input type="text" [formControlName]="'username'" class="form-control" placeholder="Enter an unique name">
-            <span class="form-text text-danger" *ngIf="datanotsaved">
-                Username already taken!
-            </span>
             <span class="form-text text-danger"
                 *ngIf="formControls.username.errors?.required && formControls.username.touched">
                 Username is required!
