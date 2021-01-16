@@ -57,6 +57,11 @@ button:focus {
     background-color: #f1f1f1;
 }
 
+.clock-box {
+    border: 1px solid #052123;
+    
+}
+
 @media screen and (max-width: 768px)
 {
     h4{

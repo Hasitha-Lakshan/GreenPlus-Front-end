@@ -48,6 +48,8 @@ li{
 
     #profile_items{
         text-align: center;
+        margin: 0px auto;
+        width: 70%;
     }
 
     #drop_down_profile {
